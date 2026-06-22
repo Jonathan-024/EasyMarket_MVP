@@ -257,15 +257,59 @@ body {
 
 /* ─── Hero ──────────────────────────────────────────────── */
 .hero {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 60px;
   padding: 80px 20px;
-  background: $light-blue;
+  max-width: 800px;
+  margin: 0 auto;
 
-  .slogan {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: $dark-blue;
+  .hero-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    flex-shrink: 0;
+
+    .hero-logo-name {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1;
+
+      .brand-easy   { color: darken($primary-blue, 10%); }
+      .brand-market { color: $dark-blue; }
+    }
+
+    .btn.primary {
+      width: 100%;
+      font-size: 1rem;
+      padding: 10px 0;
+      text-align: center;
+    }
+  }
+
+  .hero-pitch {
+    background: #fff;
+    border-left: 4px solid $primary-blue;
+    border-radius: 0 10px 10px 0;
+    padding: 28px 28px 28px 32px;
+    box-shadow: 0 4px 16px rgba(30, 144, 255, 0.08);
+
+    .hero-tagline {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: $text-dark;
+      margin-bottom: 16px;
+    }
+
+    .hero-slogan {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: $dark-blue;
+      padding-top: 12px;
+      border-top: 1px solid $border-blue;
+    }
   }
 }
 
