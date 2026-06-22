@@ -313,6 +313,77 @@ body {
   }
 }
 
+/* ─── Boutique ──────────────────────────────────────────────── */
+.boutiques {
+  padding: 60px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $dark-blue;
+    margin-bottom: 28px;
+  }
+
+  .boutiques-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .boutique-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    background: #fff;
+    border: 1px solid $border-blue;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(30, 144, 255, 0.06);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 8px 24px rgba(30, 144, 255, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .boutique-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
+      .boutique-name {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: $dark-blue;
+      }
+
+      .boutique-category {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: $primary-blue;
+        background: $light-blue;
+        padding: 2px 8px;
+        border-radius: 20px;
+        align-self: flex-start;
+      }
+
+      .boutique-desc {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: $text-dark;
+      }
+    }
+
+    .btn.primary {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
 /* ─── About ─────────────────────────────────────────────── */
 .about {
   padding: 40px 20px;
