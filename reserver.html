@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EasyMarket - Accueil</title>
+  <title>EasyMarket - Réserver</title>
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/reserver.css">
 </head>
 <body>
 
   <!-- HEADER / NAV -->
   <header>
     <nav class="navbar">
-
       <div class="navbar-inner">
         <a href="home.html" class="navbar-brand">
           <svg class="logo" width="30" height="40" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -26,13 +25,8 @@
             <span class="brand-easy">Easy</span><span class="brand-market">Market</span>
           </span>
         </a>
-
-        <!-- Droite : Boutons + Burger -->
         <div class="navbar-actions">
-          <button class="btn primary">Réserver</button>
           <button class="btn secondary">Connexion</button>
-
-          <!-- Menu burger -->
           <div class="burger-menu">
             <input type="checkbox" id="menu-toggle">
             <label for="menu-toggle" class="menu-icon" aria-label="Menu">
@@ -71,113 +65,69 @@
           </div>
         </div>
       </div>
-
     </nav>
   </header>
 
   <!-- MAIN -->
-  <main>
-    <section class="hero">
-      <div class="hero-brand">
-        <span class="hero-logo-name">
-          <span class="brand-easy">Easy</span><span class="brand-market">Market</span>
-        </span>
-        <button class="btn primary">Réserver</button>
-      </div>
+  <main class="reserver-main">
+    <div class="reserver-container">
 
-      <div class="hero-pitch">
-        <p class="hero-tagline">Réservez vos produits en avance, évitez l'attente et profitez d'une expérience d'achat sereine. Pour les vendeurs, c'est plus d'organisation, moins de stress et une clientèle fidélisée.</p>
-        <p class="hero-slogan">Votre temps a de la valeur — on le respecte.</p>
-      </div>
-    </section>
+      <h1 class="reserver-title">Nouvelle réservation</h1>
 
-    <section class="boutiques">
-      <h2 class="section-title">Boutiques</h2>
+      <form class="reserver-form" id="reserver-form" novalidate>
 
-      <div class="boutiques-grid">
-
-        <div class="boutique-card">
-          <div class="boutique-info">
-            <h3 class="boutique-name">Marché Frais</h3>
-            <span class="boutique-category">Fruits &amp; Légumes</span>
-            <p class="boutique-desc">Produits frais du marché local, sélectionnés chaque matin directement auprès des producteurs.</p>
+        <!-- A) Identité -->
+        <fieldset class="form-section">
+          <legend class="form-section-title">Votre identité</legend>
+          <div class="form-group">
+            <label for="client-nom">Nom complet</label>
+            <input type="text" id="client-nom" class="form-input" placeholder="Ex : Jean Dupont">
           </div>
-          <button class="btn primary">Réserver</button>
-        </div>
-
-        <div class="boutique-card">
-          <div class="boutique-info">
-            <h3 class="boutique-name">Boucherie Centrale</h3>
-            <span class="boutique-category">Viandes &amp; Charcuterie</span>
-            <p class="boutique-desc">Viandes de qualité, découpées à la demande par nos bouchers experts.</p>
+          <div class="form-group">
+            <label for="client-whatsapp">Numéro WhatsApp</label>
+            <input type="tel" id="client-whatsapp" class="form-input" placeholder="Ex : +243 81 234 5678">
           </div>
-          <button class="btn primary">Réserver</button>
-        </div>
+        </fieldset>
 
-        <div class="boutique-card">
-          <div class="boutique-info">
-            <h3 class="boutique-name">La Fromagerie</h3>
-            <span class="boutique-category">Fromages &amp; Produits laitiers</span>
-            <p class="boutique-desc">Une sélection raffinée de fromages artisanaux locaux et d'importation.</p>
+        <!-- B) Produits -->
+        <fieldset class="form-section">
+          <legend class="form-section-title">Produits à réserver</legend>
+          <div class="produit-input-row">
+            <input type="text" id="produit-input" class="form-input" placeholder="Ex : Tomates fraîches — 2kg — 5000 FC">
+            <button type="button" class="btn primary" id="btn-ajouter">Ajouter</button>
           </div>
-          <button class="btn primary">Réserver</button>
-        </div>
+          <ul class="produits-list" id="produits-list"></ul>
+        </fieldset>
 
-        <div class="boutique-card">
-          <div class="boutique-info">
-            <h3 class="boutique-name">Épicerie du Coin</h3>
-            <span class="boutique-category">Épicerie générale</span>
-            <p class="boutique-desc">Tout le nécessaire du quotidien : conserves, céréales, condiments et produits d'entretien.</p>
+        <!-- C) Boutique -->
+        <fieldset class="form-section">
+          <legend class="form-section-title">Boutique</legend>
+          <div class="form-group">
+            <label for="boutique-select">Choisir une boutique</label>
+            <select id="boutique-select" class="form-input form-select">
+              <option value="" disabled selected>-- Sélectionnez une boutique --</option>
+              <option value="marche-frais">Marché Frais — Fruits &amp; Légumes</option>
+              <option value="boucherie-centrale">Boucherie Centrale — Viandes &amp; Charcuterie</option>
+              <option value="fromagerie">La Fromagerie — Fromages &amp; Produits laitiers</option>
+              <option value="epicerie-coin">Épicerie du Coin — Épicerie générale</option>
+              <option value="boulangerie-doree">Boulangerie Dorée — Boulangerie &amp; Pâtisserie</option>
+              <option value="poissonnerie-bleue">Poissonnerie Bleue — Poissons &amp; Fruits de mer</option>
+            </select>
           </div>
-          <button class="btn primary">Réserver</button>
+        </fieldset>
+
+        <!-- D) Envoyer -->
+        <div class="form-submit">
+          <button type="submit" class="btn primary" id="btn-envoyer">Envoyer</button>
         </div>
 
-        <div class="boutique-card">
-          <div class="boutique-info">
-            <h3 class="boutique-name">Boulangerie Dorée</h3>
-            <span class="boutique-category">Boulangerie &amp; Pâtisserie</span>
-            <p class="boutique-desc">Pains artisanaux, viennoiseries et pâtisseries fraîches préparées chaque jour.</p>
-          </div>
-          <button class="btn primary">Réserver</button>
-        </div>
-
-        <div class="boutique-card">
-          <div class="boutique-info">
-            <h3 class="boutique-name">Poissonnerie Bleue</h3>
-            <span class="boutique-category">Poissons &amp; Fruits de mer</span>
-            <p class="boutique-desc">Poissons frais et fruits de mer livrés quotidiennement depuis les ports locaux.</p>
-          </div>
-          <button class="btn primary">Réserver</button>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="about">
-      <h2>À propos</h2>
-      <p>
-        EasyMarket est une plateforme de réservation de produits en boutique, conçue pour éliminer les longues files d'attente. Les clients réservent leur créneau à l'avance, les vendeurs gèrent leur flux sereinement — tout le monde y gagne du temps et de la tranquillité.
-      </p>
-    </section>
-
-    <section class="contact">
-      <h2 class="section-title">Contactez-nous</h2>
-
-      <div class="contact-wrapper">
-        <div class="contact-form">
-          <input type="text" class="form-input" placeholder="Votre nom">
-          <input type="email" class="form-input" placeholder="Votre email">
-          <textarea class="form-input" rows="4" placeholder="Votre message"></textarea>
-          <button class="btn primary form-input">Envoyer</button>
-        </div>
-      </div>
-    </section>
+      </form>
+    </div>
   </main>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-content">
-
       <div class="footer-top">
         <div class="footer-brand">
           <span class="brand-name">
@@ -185,7 +135,6 @@
             <span class="footer-tagline">Le marché facile — pour tous !</span>
           </span>
         </div>
-
         <div class="footer-links">
           <a href="https://wa.me/VOTRE_NUMERO" class="footer-link" target="_blank" rel="noopener noreferrer">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M20.52 3.48A11.93 11.93 0 0012 0C5.37 0 0 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.18-1.57A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 22c-1.85 0-3.66-.5-5.23-1.43l-.37-.22-3.87.98.99-3.76-.24-.38A9.94 9.94 0 012 12C2 6.48 6.48 2 12 2c2.67 0 5.18 1.04 7.07 2.93A9.94 9.94 0 0122 12c0 5.52-4.48 10-10 10zm5.44-7.3c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.79-1.68-2.09-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.2-.24-.58-.48-.5-.67-.51H6.9c-.2 0-.52.07-.79.37C5.84 8.2 5.1 8.9 5.1 10.35s1.05 2.87 1.2 3.07c.15.2 2.07 3.16 5.01 4.43.7.3 1.25.48 1.67.62.7.22 1.34.19 1.84.12.56-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
@@ -198,16 +147,13 @@
           <a href="#" class="footer-link">Mentions légales</a>
         </div>
       </div>
-
       <div class="footer-bottom">
         <p>&copy; 2026 EasyMarket. Tous droits réservés.</p>
       </div>
-
     </div>
   </footer>
-  
-  <script src="js/main.js"></script>
-  <script src="js/home.js"></script>
 
+  <script src="js/main.js"></script>
+  <script src="js/reserver.js"></script>
 </body>
 </html>

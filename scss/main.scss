@@ -1,42 +1,12 @@
 /* main.scss */
 
-/* ─── Variables ─────────────────────────────────────────── */
-$primary-blue:   #1E90FF;
-$dark-blue:      #0A3D62;
-$medium-blue:    #1070CC;
-$light-blue:     #EAF6FF;
-$border-blue:    #D6EAFF;
-$muted-blue:     #5B8FB9;
-$text-dark:      #2C3E50;
-$danger-red:     #e32d2d;
-$danger-dark:    #be2424;
+@use 'variables' as *;
 
 /* ─── Reset ─────────────────────────────────────────────── */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-/* ─── Transitions globales ──────────────────────────────── */
-.boutique-card,
-.contact-channel,
-.footer-link,
-.menu-link,
-.btn {
-  transition: all 0.25s ease;
-}
-
-/* ─── Scroll behavior ───────────────────────────────────── */
-html {
-  scroll-behavior: smooth;
-}
-
-/* ─── Légère ombre de séparation entre header et main ───── */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
 }
 
 /* ─── Body ──────────────────────────────────────────────── */
@@ -275,6 +245,78 @@ body {
 
       svg {
         opacity: 1;
+      }
+    }
+  }
+}
+
+/* ─── Footer ────────────────────────────────────────────── */
+footer {
+  background: $dark-blue;
+  color: #fff;
+  padding: 30px 20px 24px;
+
+  .footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .footer-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        .brand-name {
+          font-size: 1.3rem;
+          font-weight: 800;
+          letter-spacing: -0.3px;
+
+          .brand-easy   { color: #4EABFF; }
+          .brand-market { color: #fff; }
+        }
+
+        .footer-tagline {
+          font-size: 1rem;
+          font-weight: 200;
+          color: rgba(255, 255, 255, 0.45);
+        }
+      }
+
+      .footer-links {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .footer-link {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          text-decoration: none;
+          font-size: 0.7rem;
+          font-weight: 500;
+          color: rgba(255, 255, 255, 0.7);
+          transition: color 0.2s ease;
+
+          &:hover { color: #fff; }
+        }
+      }
+    }
+
+    .footer-bottom {
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+
+      p {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.3);
       }
     }
   }

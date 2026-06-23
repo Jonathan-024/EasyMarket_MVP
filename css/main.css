@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /* main.scss */
+/* _variables.scss */
 /* ─── Variables ─────────────────────────────────────────── */
 /* ─── Reset ─────────────────────────────────────────────── */
 * {
@@ -7,28 +8,6 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-}
-
-/* ─── Transitions globales ──────────────────────────────── */
-.boutique-card,
-.contact-channel,
-.footer-link,
-.menu-link,
-.btn {
-  -webkit-transition: all 0.25s ease;
-  transition: all 0.25s ease;
-}
-
-/* ─── Scroll behavior ───────────────────────────────────── */
-html {
-  scroll-behavior: smooth;
-}
-
-/* ─── Légère ombre de séparation entre header et main ───── */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
 }
 
 /* ─── Body ──────────────────────────────────────────────── */
@@ -299,4 +278,96 @@ body {
 }
 .burger-menu .menu-link:hover svg {
   opacity: 1;
+}
+
+/* ─── Footer ────────────────────────────────────────────── */
+footer {
+  background: #0A3D62;
+  color: #fff;
+  padding: 30px 20px 24px;
+}
+footer .footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
+footer .footer-content .footer-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+footer .footer-content .footer-top .footer-brand {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 6px;
+}
+footer .footer-content .footer-top .footer-brand .brand-name {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+footer .footer-content .footer-top .footer-brand .brand-name .brand-easy {
+  color: #4EABFF;
+}
+footer .footer-content .footer-top .footer-brand .brand-name .brand-market {
+  color: #fff;
+}
+footer .footer-content .footer-top .footer-brand .footer-tagline {
+  font-size: 1rem;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.45);
+}
+footer .footer-content .footer-top .footer-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+footer .footer-content .footer-top .footer-links .footer-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  -webkit-transition: color 0.2s ease;
+  transition: color 0.2s ease;
+}
+footer .footer-content .footer-top .footer-links .footer-link:hover {
+  color: #fff;
+}
+footer .footer-content .footer-bottom {
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+footer .footer-content .footer-bottom p {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.3);
 }/*# sourceMappingURL=main.css.map */
