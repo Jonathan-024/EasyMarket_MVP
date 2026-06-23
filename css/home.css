@@ -689,4 +689,16 @@ main > section {
 
 main > section:first-child {
   border-top: none;
+}
+
+.input-error {
+  border-color: #e32d2d;
+  -webkit-box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+          box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.error-msg {
+  font-size: 0.8rem;
+  color: #e32d2d;
+  margin-top: -6px;
 }/*# sourceMappingURL=home.css.map */

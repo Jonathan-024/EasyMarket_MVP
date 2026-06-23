@@ -616,3 +616,15 @@ main > section {
 main > section:first-child {
   border-top: none;
 }
+
+// ─── Validation formulaire ────────────────────────────────
+.input-error {
+  border-color: $danger-red;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.error-msg {
+  font-size: 0.8rem;
+  color: $danger-red;
+  margin-top: -6px;
+}
