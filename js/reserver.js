@@ -120,6 +120,54 @@ form.addEventListener('submit', (e) => {
     boutique: inputBoutique.options[inputBoutique.selectedIndex].text,
   };
 
-  console.log('Réservation prête :', reservation);
-  // → ouverture du modal ici à la prochaine étape
+  // Remplir le modal
+  document.getElementById('modal-nom').textContent = reservation.nom;
+  document.getElementById('modal-whatsapp').textContent = reservation.whatsapp;
+  document.getElementById('modal-boutique').textContent = reservation.boutique;
+
+  const modalProduits = document.getElementById('modal-produits');
+  modalProduits.innerHTML = '';
+  reservation.produits.forEach((p) => {
+    const li = document.createElement('li');
+    li.textContent = p;
+    modalProduits.appendChild(li);
+  });
+
+  // Ouvrir le modal
+  document.getElementById('modal-overlay').classList.add('active');
+});
+
+// ─── Modal : fermer / confirmer ───────────────────────────
+document.getElementById('btn-annuler').addEventListener('click', () => {
+  document.getElementById('modal-overlay').classList.remove('active');
+});
+
+document.getElementById('btn-confirmer').addEventListener('click', () => {
+  const btnConfirmer = document.getElementById('btn-confirmer');
+  btnConfirmer.disabled = true;
+  btnConfirmer.textContent = 'Envoi en cours...';
+
+  setTimeout(() => {
+    btnConfirmer.textContent = 'Confirmé ✓';
+    btnConfirmer.style.background = '#27AE60';
+    btnConfirmer.style.borderColor = '#27AE60';
+
+    setTimeout(() => {
+      document.getElementById('modal-overlay').classList.remove('active');
+      form.reset();
+      produits = [];
+      renderProduits();
+      btnConfirmer.disabled = false;
+      btnConfirmer.textContent = 'Confirmer';
+      btnConfirmer.style.background = '';
+      btnConfirmer.style.borderColor = '';
+    }, 2000);
+  }, 1000);
+});
+
+// Fermer au clic sur l'overlay
+document.getElementById('modal-overlay').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('modal-overlay')) {
+    document.getElementById('modal-overlay').classList.remove('active');
+  }
 });
