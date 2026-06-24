@@ -1,3 +1,13 @@
+// ─── Disponibilité par boutique ───────────────────────────
+const indisponibles = {
+  'marche-frais': ['mangues', 'avocats'],
+  'boucherie-centrale': ['foie de bœuf'],
+  'fromagerie': ['camembert', 'brie'],
+  'epicerie-coin': [],
+  'boulangerie-doree': ['croissants'],
+  'poissonnerie-bleue': ['crevettes', 'homard'],
+};
+
 // ─── Produits ────────────────────────────────────────────
 const produitInput = document.getElementById('produit-input');
 const btnAjouter = document.getElementById('btn-ajouter');
@@ -33,6 +43,12 @@ function ajouterProduit() {
     return;
   }
   produitInput.classList.remove('input-error');
+
+  // Supprimer le message d'erreur produit si présent
+  const inputRow = document.querySelector('.produit-input-row');
+  const errMsg = inputRow.nextElementSibling;
+  if (errMsg && errMsg.classList.contains('error-msg')) errMsg.remove();
+
   produits.push(valeur);
   produitInput.value = '';
   produitInput.focus();
@@ -42,7 +58,7 @@ function ajouterProduit() {
 btnAjouter.addEventListener('click', ajouterProduit);
 
 produitInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
+  if (e.key === 'Enter' || e.key === 'Tab') {
     e.preventDefault();
     ajouterProduit();
   }
@@ -94,13 +110,14 @@ form.addEventListener('submit', (e) => {
   }
 
   if (produits.length === 0) {
+    const inputRow = document.querySelector('.produit-input-row');
     produitInput.classList.add('input-error');
-    const existing = produitInput.nextElementSibling;
+    const existing = inputRow.nextElementSibling;
     if (!existing || !existing.classList.contains('error-msg')) {
       const msg = document.createElement('p');
       msg.classList.add('error-msg');
       msg.textContent = 'Ajoutez au moins un produit.';
-      produitInput.insertAdjacentElement('afterend', msg);
+      inputRow.insertAdjacentElement('afterend', msg);
     }
     valid = false;
   }
@@ -121,9 +138,28 @@ form.addEventListener('submit', (e) => {
   };
 
   // Remplir le modal
+  const boutiqueValue = inputBoutique.value;
+  const indispoList = indisponibles[boutiqueValue] || [];
+
+  // Avertissement indisponibilités
+  const alertBlock = document.getElementById('modal-indispo');
+  const alertList = document.getElementById('modal-indispo-list');
+  alertList.innerHTML = '';
+
+  if (indispoList.length > 0) {
+    indispoList.forEach((produit) => {
+      const li = document.createElement('li');
+      li.textContent = produit;
+      alertList.appendChild(li);
+    });
+    alertBlock.style.display = 'flex';
+  } else {
+    alertBlock.style.display = 'none';
+  }
+
+  document.getElementById('modal-boutique').textContent = reservation.boutique;
   document.getElementById('modal-nom').textContent = reservation.nom;
   document.getElementById('modal-whatsapp').textContent = reservation.whatsapp;
-  document.getElementById('modal-boutique').textContent = reservation.boutique;
 
   const modalProduits = document.getElementById('modal-produits');
   modalProduits.innerHTML = '';
@@ -133,7 +169,6 @@ form.addEventListener('submit', (e) => {
     modalProduits.appendChild(li);
   });
 
-  // Ouvrir le modal
   document.getElementById('modal-overlay').classList.add('active');
 });
 

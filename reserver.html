@@ -104,8 +104,10 @@
         <fieldset class="form-section">
           <legend class="form-section-title">Produits à réserver</legend>
           <div class="produit-input-row">
-            <input type="text" id="produit-input" class="form-input" placeholder="Ex : Tomates fraîches — 2kg — 5000 FC">
-            <button type="button" class="btn primary" id="btn-ajouter">Ajouter</button>
+            <div class="input-row">
+              <input type="text" id="produit-input" class="form-input" placeholder="Ex : Tomates fraîches — 2kg — 5000 FC">
+              <button type="button" class="btn primary" id="btn-ajouter">Ajouter</button>
+            </div>
           </div>
           <ul class="produits-list" id="produits-list"></ul>
         </fieldset>
@@ -170,6 +172,21 @@
       <h2 class="modal-title">Confirmer la réservation</h2>
 
       <div class="modal-section">
+        <p class="modal-label">Boutique</p>
+        <p class="modal-value" id="modal-boutique"></p>
+      </div>
+
+      <div class="modal-section modal-indispo" id="modal-indispo" style="display:none;">
+        <p class="modal-label modal-indispo-title">⚠ Produits indisponibles</p>
+        <ul class="modal-produits modal-indispo-list" id="modal-indispo-list"></ul>
+      </div>
+
+      <div class="modal-section">
+        <p class="modal-label">Produits demandés</p>
+        <ul class="modal-produits" id="modal-produits"></ul>
+      </div>
+
+      <div class="modal-section">
         <p class="modal-label">Nom</p>
         <p class="modal-value" id="modal-nom"></p>
       </div>
@@ -179,22 +196,15 @@
         <p class="modal-value" id="modal-whatsapp"></p>
       </div>
 
-      <div class="modal-section">
-        <p class="modal-label">Boutique</p>
-        <p class="modal-value" id="modal-boutique"></p>
-      </div>
-
-      <div class="modal-section">
-        <p class="modal-label">Produits</p>
-        <ul class="modal-produits" id="modal-produits"></ul>
-      </div>
-
       <div class="modal-actions">
         <button class="btn secondary" id="btn-annuler">Annuler</button>
         <button class="btn primary" id="btn-confirmer">Confirmer</button>
       </div>
     </div>
   </div>
+
+<script src="js/main.js"></script>
+<script src="js/reserver.js"></script>
 
   <script src="js/main.js"></script>
   <script src="js/reserver.js"></script>

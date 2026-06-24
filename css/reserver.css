@@ -131,14 +131,24 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 10px;
 }
-.produit-input-row .form-input {
+.produit-input-row .input-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+.produit-input-row .input-row .form-input {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
-.produit-input-row .btn.primary {
+.produit-input-row .input-row .btn.primary {
   -ms-flex-negative: 0;
       flex-shrink: 0;
   padding: 11px 18px;
@@ -185,7 +195,7 @@
   transition: color 0.2s ease;
 }
 .produits-list .produit-item .produit-remove:hover {
-  color: #e32d2d;
+  color: #0A3D62;
 }
 
 /* ─── Bouton Envoyer ────────────────────────────────────── */
@@ -194,6 +204,15 @@
   padding: 12px;
   font-size: 1rem;
   text-align: center;
+}
+
+.error-msg {
+  font-size: 0.8rem;
+  color: #fff;
+  background: #e32d2d;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-top: 4px;
 }
 
 /* ─── Modal confirmation ─────────────────────────────────── */
@@ -233,6 +252,20 @@
   margin-bottom: 24px;
   padding-bottom: 10px;
   border-bottom: 2px solid #D6EAFF;
+}
+.modal #modal-boutique {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0A3D62;
+  margin-bottom: 5px;
+}
+.modal .modal-section.modal-indispo .modal-indispo-title {
+  color: #e32d2d;
+}
+.modal .modal-section.modal-indispo .modal-produits li {
+  background: #FDDEDE !important;
+  border-color: #FCCACA !important;
+  color: #e32d2d !important;
 }
 .modal .modal-section {
   display: -webkit-box;
