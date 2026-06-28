@@ -29,6 +29,103 @@
   margin-top: 8px;
 }
 
+/* ─── Layout avec nav latérale ───────────────────────────── */
+.reservation-layout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 28px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.reservation-container {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  min-width: 0;
+}
+
+/* ─── Nav latérale ───────────────────────────────────────── */
+.side-nav {
+  width: 180px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  position: sticky;
+  top: 80px;
+  background: #fff;
+  border: 1px solid #D6EAFF;
+  border-radius: 10px;
+  padding: 16px;
+  -webkit-box-shadow: 0 4px 16px rgba(30, 144, 255, 0.06);
+          box-shadow: 0 4px 16px rgba(30, 144, 255, 0.06);
+}
+.side-nav .side-nav-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #5B8FB9;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #D6EAFF;
+}
+.side-nav .side-nav-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 9px 10px;
+  border-radius: 7px;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #2C3E50;
+  -webkit-transition: background 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
+  margin-bottom: 4px;
+}
+.side-nav .side-nav-link:hover {
+  background: #EAF6FF;
+  color: #1E90FF;
+}
+.side-nav .side-nav-link.active {
+  background: #EAF6FF;
+  color: #1E90FF;
+  font-weight: 700;
+}
+
+/* ─── Badges nav latérale ────────────────────────────────── */
+.side-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 20px;
+}
+.side-badge--blue {
+  background: #EAF6FF;
+  color: #1E90FF;
+  border: 1px solid #D6EAFF;
+}
+.side-badge--orange {
+  background: #FEF3E2;
+  color: #E67E22;
+  border: 1px solid #FDEBD0;
+}
+.side-badge--green {
+  background: #E8F8F1;
+  color: #27AE60;
+  border: 1px solid #A9DFBF;
+}
+
 /* ─── Liste ─────────────────────────────────────────────── */
 .reservation-list {
   display: -webkit-box;

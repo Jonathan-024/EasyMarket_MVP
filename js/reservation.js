@@ -18,9 +18,16 @@ let servis = [
 
 function updateCounts() {
   const countAttente = document.getElementById('count-attente');
-  if (countAttente) {
-    countAttente.textContent = document.querySelectorAll('.reservation-card').length;
-  }
+  const sideAttente = document.getElementById('side-count-attente');
+  const sidePrets = document.getElementById('side-count-prets');
+  const sideServis = document.getElementById('side-count-servis');
+
+  const attenteCount = document.querySelectorAll('.reservation-card').length;
+  if (countAttente) countAttente.textContent = attenteCount;
+  if (sideAttente) sideAttente.textContent = attenteCount;
+  if (sidePrets) sidePrets.textContent = prets.length;
+  if (sideServis) sideServis.textContent = servis.length;
+
   countPrets.textContent = prets.length;
   countServis.textContent = servis.length;
 }
@@ -112,19 +119,25 @@ document.querySelectorAll('.notify-btn').forEach((btn) => {
     });
 
     // Construction du message WhatsApp
-    let message = `*EasyMarket — Le marché facile, pour tous !*\n\n`;
-    message += `Bonjour ${client},\n\n`;
-    message += `Vos produits sont prêts. \n\nVoici le montant à régler pour les récupérer :\n`;
-    message += `*${montant} ${devise}*\n`;
+    const boutique = document.querySelector('.page-title').textContent.replace('Tableau de bord — ', '');
+
+    let message = `🛍️ *EasyMarket* — _Le marché facile, pour tous !_\n`;
+    message += `🏪 *${boutique}*\n`;
+    message += `─────────────────────\n\n`;
+    message += `Bonjour *${client}* 👋,\n\n`;
+    message += `✅ Vos produits sont prêts à être récupérés !\n\n`;
+    message += `💰 *Montant à régler :* ${montant} ${devise}\n`;
 
     if (indispos.length > 0) {
-      message += `\nℹ️ Produits non disponibles :\n`;
-      indispos.forEach((p) => { message += `• ${p}\n`; });
+      message += `\n⚠️ *Produits non disponibles :*\n`;
+      indispos.forEach((p) => { message += `  • ${p}\n`; });
     }
 
-    message += `\nVous pouvez dès à présent passer récupérer votre commande.\n\n`;
-    message += `_La boutique ferme à 20h00._\n\n`;
-    message += `Merci pour votre confiance. À tout à l'heure ! 🙏`;
+    message += `\n─────────────────────\n`;
+    message += `🕗 La boutique ferme à *20h00*.\n`;
+    message += `📍 Vous pouvez dès à présent passer récupérer votre commande.\n\n`;
+    message += `Merci pour votre confiance ! 🙏\n`;
+    message += `_À tout à l'heure !_`;
 
     // Numéro WhatsApp — retire espaces et +
     const numero = contact.replace(/[\s+]/g, '');
@@ -151,6 +164,24 @@ document.querySelectorAll('.notify-btn').forEach((btn) => {
       card.style.transform = 'translateY(-8px)';
       setTimeout(() => card.remove(), 400);
     }, 1000);
+  });
+});
+
+// ─── Nav latérale active au scroll ───────────────────────
+const sections = [
+  { id: 'section-attente', link: document.querySelector('a[href="#section-attente"]') },
+  { id: 'section-prets',   link: document.querySelector('a[href="#section-prets"]') },
+  { id: 'section-servis',  link: document.querySelector('a[href="#section-servis"]') },
+];
+
+window.addEventListener('scroll', () => {
+  let current = sections[0].id;
+  sections.forEach(({ id }) => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top <= 120) current = id;
+  });
+  sections.forEach(({ id, link }) => {
+    link.classList.toggle('active', id === current);
   });
 });
 

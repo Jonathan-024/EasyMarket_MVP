@@ -82,182 +82,204 @@
   <!-- MAIN -->
   <main class="reservation-main">
     <div class="reservation-container">
-      <h1 class="page-title">Tableau de bord — Boutique</h1>
+      <div class="reservation-layout">
 
-      <section class="reservation-list">
-        <h2 class="section-heading">
-          Réservations en attente
-          <span class="section-count section-count--blue" id="count-attente">4</span>
-        </h2>
+        <!-- Nav latérale -->
+        <aside class="side-nav">
+          <p class="side-nav-title">Vue d'ensemble</p>
+          <a href="#section-attente" class="side-nav-link active">
+            <span>En attente</span>
+            <span class="side-badge side-badge--blue" id="side-count-attente">4</span>
+          </a>
+          <a href="#section-prets" class="side-nav-link">
+            <span>Non servis</span>
+            <span class="side-badge side-badge--orange" id="side-count-prets">0</span>
+          </a>
+          <a href="#section-servis" class="side-nav-link">
+            <span>Servis</span>
+            <span class="side-badge side-badge--green" id="side-count-servis">0</span>
+          </a>
+        </aside>
 
-        <article class="reservation-card">
-          <div class="reservation-card-top">
-            <div>
-              <p class="card-label">Client</p>
-              <h2 class="client-name">Jonathan M.</h2>
-              <p class="client-contact">+243 90 677 9261</p>
+        <!-- Contenu principal -->
+        <div class="reservation-container">
+
+          <h1 class="page-title">Tableau de bord — Boutique</h1>
+
+          <section class="reservation-section" id="section-attente">
+            <h2 class="section-heading">
+              Réservations en attente
+              <span class="section-count section-count--blue" id="count-attente">4</span>
+            </h2>
+            <div class="reservation-list" id="reservation-list">
+              <article class="reservation-card">
+                <div class="reservation-card-top">
+                  <div>
+                    <p class="card-label">Client</p>
+                    <h2 class="client-name">Jonathan M.</h2>
+                    <p class="client-contact">+243 90 677 9261</p>
+                  </div>
+                </div>
+
+                <div class="reservation-block">
+                  <p class="block-title">Produits demandés</p>
+                  <ul class="reservation-items">
+                    <li><label><input type="checkbox"> 5 kg de riz blanc</label></li>
+                    <li><label><input type="checkbox"> 2 litres d'huile végétale</label></li>
+                    <li><label><input type="checkbox"> 1 paquet de café moulu</label></li>
+                  </ul>
+                </div>
+
+                <div class="reservation-action-row">
+                  <p class="amount-label">Montant total à payer</p>
+                  <div class="amount-group">
+                    <div class="amount-input-wrapper">
+                      <input id="amount-1" type="text" class="form-input amount-input" placeholder="0">
+                      <select class="amount-select" aria-label="Devise">
+                        <option value="cdf" selected>CDF</option>
+                        <option value="usd">USD</option>
+                      </select>
+                    </div>
+                    <button class="btn primary notify-btn">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.13 1.05.37 2.08.72 3.08a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1-1a2 2 0 012.11-.45c1 .35 2.03.59 3.08.72A2 2 0 0122 16.92z"/></svg>
+                      Notifier le client
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="reservation-card">
+                <div class="reservation-card-top">
+                  <div>
+                    <p class="card-label">Client</p>
+                    <h2 class="client-name">Amina B.</h2>
+                    <p class="client-contact">+243 99 765 4321</p>
+                  </div>
+                </div>
+
+                <div class="reservation-block">
+                  <p class="block-title">Produits demandés</p>
+                  <ul class="reservation-items">
+                    <li><label><input type="checkbox"> 3 pains de farine</label></li>
+                    <li><label><input type="checkbox"> 1 sachet de sucre</label></li>
+                    <li><label><input type="checkbox"> 1 boîte de conserve</label></li>
+                  </ul>
+                </div>
+
+                <div class="reservation-action-row">
+                  <p class="amount-label">Montant total à payer</p>
+                  <div class="amount-group">
+                    <div class="amount-input-wrapper">
+                      <input id="amount-1" type="text" class="form-input amount-input" placeholder="0">
+                      <select class="amount-select" aria-label="Devise">
+                        <option value="cdf" selected>CDF</option>
+                        <option value="usd">USD</option>
+                      </select>
+                    </div>
+                    <button class="btn primary notify-btn">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.13 1.05.37 2.08.72 3.08a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1-1a2 2 0 012.11-.45c1 .35 2.03.59 3.08.72A2 2 0 0122 16.92z"/></svg>
+                      Notifier le client
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="reservation-card">
+                <div class="reservation-card-top">
+                  <div>
+                    <p class="card-label">Client</p>
+                    <h2 class="client-name">Jean-Paul N.</h2>
+                    <p class="client-contact">+243 82 564 7890</p>
+                  </div>
+                </div>
+
+                <div class="reservation-block">
+                  <p class="block-title">Produits demandés</p>
+                  <ul class="reservation-items">
+                    <li><label><input type="checkbox"> 6 bananes plantain</label></li>
+                    <li><label><input type="checkbox"> 1 kg de poisson frais</label></li>
+                  </ul>
+                </div>
+
+                <div class="reservation-action-row">
+                  <p class="amount-label">Montant total à payer</p>
+                  <div class="amount-group">
+                    <div class="amount-input-wrapper">
+                      <input id="amount-1" type="text" class="form-input amount-input" placeholder="0">
+                      <select class="amount-select" aria-label="Devise">
+                        <option value="cdf" selected>CDF</option>
+                        <option value="usd">USD</option>
+                      </select>
+                    </div>
+                    <button class="btn primary notify-btn">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.13 1.05.37 2.08.72 3.08a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1-1a2 2 0 012.11-.45c1 .35 2.03.59 3.08.72A2 2 0 0122 16.92z"/></svg>
+                      Notifier le client
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="reservation-card">
+                <div class="reservation-card-top">
+                  <div>
+                    <p class="card-label">Client</p>
+                    <h2 class="client-name">Lina M.</h2>
+                    <p class="client-contact">+243 85 300 1122</p>
+                  </div>
+                  <span class="badge badge-new">Nouveau client</span>
+                </div>
+
+                <div class="reservation-block">
+                  <p class="block-title">Produits demandés</p>
+                  <ul class="reservation-items">
+                    <li><label><input type="checkbox"> 1 paquet de farine</label></li>
+                    <li><label><input type="checkbox"> 2 litres de lait</label></li>
+                    <li><label><input type="checkbox"> 1 bouteille de jus</label></li>
+                  </ul>
+                </div>
+
+                <div class="reservation-action-row">
+                  <p class="amount-label">Montant total à payer</p>
+                  <div class="amount-group">
+                    <div class="amount-input-wrapper">
+                      <input id="amount-1" type="text" class="form-input amount-input" placeholder="0">
+                      <select class="amount-select" aria-label="Devise">
+                        <option value="cdf" selected>CDF</option>
+                        <option value="usd">USD</option>
+                      </select>
+                    </div>
+                    <button class="btn primary notify-btn">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.13 1.05.37 2.08.72 3.08a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1-1a2 2 0 012.11-.45c1 .35 2.03.59 3.08.72A2 2 0 0122 16.92z"/></svg>
+                      Notifier le client
+                    </button>
+                  </div>
+                </div>
+              </article>
             </div>
-          </div>
+          </section>
 
-          <div class="reservation-block">
-            <p class="block-title">Produits demandés</p>
-            <ul class="reservation-items">
-              <li><label><input type="checkbox"> 5 kg de riz blanc</label></li>
-              <li><label><input type="checkbox"> 2 litres d'huile végétale</label></li>
-              <li><label><input type="checkbox"> 1 paquet de café moulu</label></li>
-            </ul>
-          </div>
-
-          <div class="reservation-action-row">
-            <p class="amount-label">Montant total à payer</p>
-            <div class="amount-group">
-              <div class="amount-input-wrapper">
-                <input id="amount-1" type="text" class="form-input amount-input" placeholder="0">
-                <select class="amount-select" aria-label="Devise">
-                  <option value="cdf" selected>CDF</option>
-                  <option value="usd">USD</option>
-                </select>
-              </div>
-              <button class="btn primary notify-btn">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.13 1.05.37 2.08.72 3.08a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1-1a2 2 0 012.11-.45c1 .35 2.03.59 3.08.72A2 2 0 0122 16.92z"/></svg>
-                Notifier le client
-              </button>
+          <section class="reservation-section" id="section-prets">
+            <h2 class="section-heading">
+              Prêts — non servis
+              <span class="section-count" id="count-prets">0</span>
+            </h2>
+            <div class="prets-list" id="prets-list">
+              <p class="empty-state" id="empty-prets">Aucun produit prêt pour le moment.</p>
             </div>
-          </div>
-        </article>
+          </section>
 
-        <article class="reservation-card">
-          <div class="reservation-card-top">
-            <div>
-              <p class="card-label">Client</p>
-              <h2 class="client-name">Amina B.</h2>
-              <p class="client-contact">+243 99 765 4321</p>
+          <section class="reservation-section" id="section-servis">
+            <h2 class="section-heading">
+              Servis
+              <span class="section-count section-count--green" id="count-servis">0</span>
+            </h2>
+            <div class="servis-list" id="servis-list">
+              <p class="empty-state" id="empty-servis">Aucun produit servi pour le moment.</p>
             </div>
-          </div>
+          </section>
 
-          <div class="reservation-block">
-            <p class="block-title">Produits demandés</p>
-            <ul class="reservation-items">
-              <li><label><input type="checkbox"> 3 pains de farine</label></li>
-              <li><label><input type="checkbox"> 1 sachet de sucre</label></li>
-              <li><label><input type="checkbox"> 1 boîte de conserve</label></li>
-            </ul>
-          </div>
-
-          <div class="reservation-action-row">
-            <p class="amount-label">Montant total à payer</p>
-            <div class="amount-group">
-              <div class="amount-input-wrapper">
-                <input id="amount-1" type="text" class="form-input amount-input" placeholder="0">
-                <select class="amount-select" aria-label="Devise">
-                  <option value="cdf" selected>CDF</option>
-                  <option value="usd">USD</option>
-                </select>
-              </div>
-              <button class="btn primary notify-btn">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.13 1.05.37 2.08.72 3.08a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1-1a2 2 0 012.11-.45c1 .35 2.03.59 3.08.72A2 2 0 0122 16.92z"/></svg>
-                Notifier le client
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <article class="reservation-card">
-          <div class="reservation-card-top">
-            <div>
-              <p class="card-label">Client</p>
-              <h2 class="client-name">Jean-Paul N.</h2>
-              <p class="client-contact">+243 82 564 7890</p>
-            </div>
-          </div>
-
-          <div class="reservation-block">
-            <p class="block-title">Produits demandés</p>
-            <ul class="reservation-items">
-              <li><label><input type="checkbox"> 6 bananes plantain</label></li>
-              <li><label><input type="checkbox"> 1 kg de poisson frais</label></li>
-            </ul>
-          </div>
-
-          <div class="reservation-action-row">
-            <p class="amount-label">Montant total à payer</p>
-            <div class="amount-group">
-              <div class="amount-input-wrapper">
-                <input id="amount-1" type="text" class="form-input amount-input" placeholder="0">
-                <select class="amount-select" aria-label="Devise">
-                  <option value="cdf" selected>CDF</option>
-                  <option value="usd">USD</option>
-                </select>
-              </div>
-              <button class="btn primary notify-btn">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.13 1.05.37 2.08.72 3.08a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1-1a2 2 0 012.11-.45c1 .35 2.03.59 3.08.72A2 2 0 0122 16.92z"/></svg>
-                Notifier le client
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <article class="reservation-card">
-          <div class="reservation-card-top">
-            <div>
-              <p class="card-label">Client</p>
-              <h2 class="client-name">Lina M.</h2>
-              <p class="client-contact">+243 85 300 1122</p>
-            </div>
-            <span class="badge badge-new">Nouveau client</span>
-          </div>
-
-          <div class="reservation-block">
-            <p class="block-title">Produits demandés</p>
-            <ul class="reservation-items">
-              <li><label><input type="checkbox"> 1 paquet de farine</label></li>
-              <li><label><input type="checkbox"> 2 litres de lait</label></li>
-              <li><label><input type="checkbox"> 1 bouteille de jus</label></li>
-            </ul>
-          </div>
-
-          <div class="reservation-action-row">
-            <p class="amount-label">Montant total à payer</p>
-            <div class="amount-group">
-              <div class="amount-input-wrapper">
-                <input id="amount-1" type="text" class="form-input amount-input" placeholder="0">
-                <select class="amount-select" aria-label="Devise">
-                  <option value="cdf" selected>CDF</option>
-                  <option value="usd">USD</option>
-                </select>
-              </div>
-              <button class="btn primary notify-btn">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.13 1.05.37 2.08.72 3.08a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1-1a2 2 0 012.11-.45c1 .35 2.03.59 3.08.72A2 2 0 0122 16.92z"/></svg>
-                Notifier le client
-              </button>
-            </div>
-          </div>
-        </article>
-      </section>
-
-      <!-- Produits prêts non servis -->
-      <section class="reservation-section" id="section-prets">
-        <h2 class="section-heading">
-          Prêts — non servis
-          <span class="section-count" id="count-prets">0</span>
-        </h2>
-
-        <div class="prets-list" id="prets-list">
-          <p class="empty-state" id="empty-prets">Aucun produit prêt pour le moment.</p>
         </div>
-      </section>
-
-      <!-- Produits servis -->
-      <section class="reservation-section" id="section-servis">
-        <h2 class="section-heading">
-          Servis
-          <span class="section-count section-count--green" id="count-servis">0</span>
-        </h2>
-
-        <div class="servis-list" id="servis-list">
-          <p class="empty-state" id="empty-servis">Aucun produit servi pour le moment.</p>
-        </div>
-      </section>
+      </div>
     </div>
   </main>
 
