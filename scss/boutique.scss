@@ -1,0 +1,670 @@
+/* boutique.scss */
+@use 'variables' as *;
+
+/* ─── Page ──────────────────────────────────────────────── */
+.boutique-main {
+  background: $light-blue;
+  min-height: calc(100vh - 70px);
+  padding: 50px 20px 70px;
+}
+
+.boutique-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.boutique-container {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ─── Nav latérale ───────────────────────────────────────── */
+.side-nav {
+  width: 180px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 80px;
+  background: #fff;
+  border: 1px solid $border-blue;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(30, 144, 255, 0.06);
+
+  .side-nav-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: $muted-blue;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $border-blue;
+  }
+
+  .side-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 10px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: $text-dark;
+    transition: background 0.2s ease, color 0.2s ease;
+    margin-bottom: 4px;
+
+    svg { flex-shrink: 0; }
+
+    &:hover {
+      background: $light-blue;
+      color: $primary-blue;
+    }
+
+    &.active {
+      background: $light-blue;
+      color: $primary-blue;
+      font-weight: 700;
+    }
+  }
+}
+
+/* ─── Titres ─────────────────────────────────────────────── */
+.page-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: $dark-blue;
+  margin-bottom: 36px;
+}
+
+.boutique-section {
+  margin-bottom: 60px;
+
+  .section-heading {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: $dark-blue;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid $border-blue;
+  }
+}
+
+/* ─── Formulaire boutique ────────────────────────────────── */
+.boutique-form {
+  background: #fff;
+  border: 1px solid $border-blue;
+  border-radius: 10px;
+  padding: 28px;
+  box-shadow: 0 4px 16px rgba(30, 144, 255, 0.06);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  .form-group--full {
+    grid-column: 1 / -1;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: $dark-blue;
+  }
+}
+
+.form-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid $border-blue;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: $text-dark;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &::placeholder { color: $muted-blue; }
+
+  &:focus {
+    border-color: $primary-blue;
+    box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.1);
+  }
+}
+
+textarea.form-input {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* ─── Horaires ───────────────────────────────────────────── */
+.horaires-grid {
+  display: flex;
+  gap: 16px;
+
+  .horaire-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+
+    .horaire-label {
+      font-size: 0.85rem;
+      color: $muted-blue;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .horaire-input {
+      flex: 1;
+    }
+  }
+}
+
+/* ─── Jours ──────────────────────────────────────────────── */
+.jours-grid {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  .jour-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: $light-blue;
+    border: 1px solid $border-blue;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: $text-dark;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+
+    input[type="checkbox"] {
+      accent-color: $primary-blue;
+      width: 14px;
+      height: 14px;
+    }
+
+    &:has(input:checked) {
+      background: $primary-blue;
+      border-color: $primary-blue;
+      color: #fff;
+    }
+  }
+}
+
+/* ─── Bouton enregistrer ─────────────────────────────────── */
+.form-submit {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ─── Produits ───────────────────────────────────────────── */
+.produits-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+
+  .btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+}
+
+.produits-block {
+  margin-bottom: 32px;
+
+  .produits-block-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: $muted-blue;
+    margin-bottom: 14px;
+  }
+}
+
+/* ─── Filtres produits ───────────────────────────────────── */
+.produits-filtres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+
+  .filtre-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid $border-blue;
+    background: #fff;
+    color: $text-dark;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: $light-blue;
+      border-color: $primary-blue;
+      color: $primary-blue;
+    }
+
+    &.active {
+      background: $primary-blue;
+      border-color: $primary-blue;
+      color: #fff;
+    }
+  }
+}
+
+/* ─── Clients ────────────────────────────────────────────── */
+.clients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.client-card {
+  background: #fff;
+  border: 1px solid $border-blue;
+  border-radius: 10px;
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 4px 16px rgba(30, 144, 255, 0.06);
+
+  .client-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    .client-avatar {
+      width: 40px;
+      height: 40px;
+      background: $primary-blue;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .client-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: $dark-blue;
+    }
+
+    .client-whatsapp {
+      font-size: 0.82rem;
+      color: $muted-blue;
+      margin-top: 2px;
+    }
+  }
+
+  .client-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+
+    .client-stat {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: $text-dark;
+    }
+
+    .client-date {
+      font-size: 0.78rem;
+      color: $muted-blue;
+    }
+  }
+}
+
+/* ─── Badges ─────────────────────────────────────────────── */
+.badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+
+  &.badge-new {
+    background: #E8F8F1;
+    color: #27AE60;
+    border: 1px solid #A9DFBF;
+  }
+
+  &.badge-old {
+    background: $light-blue;
+    color: $primary-blue;
+    border: 1px solid $border-blue;
+  }
+}
+
+/* ─── Empty state ────────────────────────────────────────── */
+.empty-state {
+  font-size: 0.9rem;
+  color: $muted-blue;
+  font-style: italic;
+  padding: 16px 0;
+}
+
+/* ─── Modal ──────────────────────────────────────────────── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 61, 98, 0.45);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+
+  &.active {
+    display: flex;
+  }
+}
+
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px;
+  width: 100%;
+  max-width: 480px;
+  margin: 20px;
+  box-shadow: 0 16px 48px rgba(30, 144, 255, 0.15);
+
+  .modal-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: $dark-blue;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid $border-blue;
+  }
+
+  .modal-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+
+    .modal-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: $muted-blue;
+    }
+  }
+
+  .modal-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid $border-blue;
+
+    .btn {
+      flex: 1;
+      text-align: center;
+      padding: 11px;
+    }
+  }
+
+  .amount-group {
+    display: flex;
+    gap: 8px;
+
+    .amount-input { flex: 1; }
+
+    .amount-select {
+      width: 80px;
+      appearance: none;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}
+
+/* ─── Produit card ───────────────────────────────────────── */
+.produit-card {
+  background: #fff;
+  border: 1px solid $border-blue;
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 16px rgba(30, 144, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .produit-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .produit-main {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+
+      .produit-id {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: $muted-blue;
+        letter-spacing: 0.05em;
+      }
+
+      .produit-nom {
+        font-size: 1rem;
+        font-weight: 700;
+        color: $dark-blue;
+      }
+    }
+  }
+
+  .produit-card-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    .produit-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      background: $light-blue;
+      border: 1px solid $border-blue;
+      border-radius: 7px;
+      padding: 7px 12px;
+      font-size: 0.88rem;
+      color: $text-dark;
+
+      .meta-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: $muted-blue;
+      }
+
+      .meta-select {
+        border: none;
+        background: transparent;
+        font-size: 0.88rem;
+        color: $text-dark;
+        font-family: inherit;
+        cursor: pointer;
+        outline: none;
+        width: 100%;
+
+        &:focus {
+          color: $primary-blue;
+        }
+      }
+
+      &--full {
+        width: 100%;
+      }
+    }
+  }
+
+  .produit-card-actions {
+    display: flex;
+    gap: 8px;
+    padding-top: 10px;
+    border-top: 1px solid $border-blue;
+
+    button {
+      flex: 1;
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .btn-toggle-dispo {
+      background: $light-blue;
+      border: 1px solid $border-blue;
+      color: $primary-blue;
+
+      &:hover {
+        background: $primary-blue;
+        color: #fff;
+        border-color: $primary-blue;
+      }
+    }
+
+    .btn-delete-produit {
+      background: #FFF5F5;
+      border: 1px solid #FCCACA;
+      color: $danger-red;
+
+      &:hover {
+        background: $danger-red;
+        color: #fff;
+        border-color: $danger-red;
+      }
+    }
+  }
+}
+
+/* ─── Statut ─────────────────────────────────────────────── */
+.produit-statut {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+
+  &.statut--dispo {
+    background: #E8F8F1;
+    color: #27AE60;
+    border: 1px solid #A9DFBF;
+  }
+
+  &.statut--indispo {
+    background: #FFF5F5;
+    color: $danger-red;
+    border: 1px solid #FCCACA;
+  }
+}
+
+/* ─── Catégorie bloc ─────────────────────────────────────── */
+.categorie-bloc {
+  background: #fff;
+  border: 1px solid $border-blue;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(30, 144, 255, 0.05);
+
+  .categorie-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    background: $light-blue;
+    border-bottom: 1px solid $border-blue;
+
+    .btn-assign-produits {
+      background: $primary-blue;
+      border: none;
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s ease;
+
+      &:hover { background: $medium-blue; }
+    }
+
+    .categorie-nom {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: $dark-blue;
+      flex: 1;
+    }
+
+    .categorie-count {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: $muted-blue;
+    }
+
+    .btn-delete-cat {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: $muted-blue;
+      font-size: 0.9rem;
+      padding: 2px 4px;
+      transition: color 0.2s;
+
+      &:hover { color: $danger-red; }
+    }
+  }
+
+  .categorie-produits {
+    padding: 12px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .categorie-produit-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      border: 1px solid $border-blue;
+      border-radius: 7px;
+      font-size: 0.9rem;
+      color: $text-dark;
+    }
+  }
+}
