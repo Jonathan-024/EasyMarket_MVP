@@ -4,6 +4,7 @@ const sections = [
   { id: 'section-vendeurs',   link: document.querySelector('a[href="#section-vendeurs"]') },
   { id: 'section-clients',    link: document.querySelector('a[href="#section-clients"]') },
   { id: 'section-historique', link: document.querySelector('a[href="#section-historique"]') },
+  { id: 'section-commission', link: document.querySelector('a[href="#section-commission"]') },
 ];
 
 window.addEventListener('scroll', () => {
@@ -132,3 +133,67 @@ document.querySelectorAll('.clients-filtres .filtre-btn').forEach((btn) => {
     });
   });
 });
+
+// ─── Données commission par vendeur (simulées) ────────────
+const vendeurStats = {
+  'Marché Frais':       { reservations: 42, retraits: 38, caCDF: 184500 },
+  'Boucherie Centrale': { reservations: 0,  retraits: 0,  caCDF: 0 },
+  'Épicerie du Coin':   { reservations: 0,  retraits: 0,  caCDF: 0 },
+};
+
+function calcRatio(retraits, reservations) {
+  if (reservations === 0) return '—';
+  return Math.round((retraits / reservations) * 100) + '%';
+}
+
+function renderCommissionAdmin() {
+  const container = document.getElementById('commission-admin');
+  if (!container) return;
+
+  let totalCommission = 0;
+  let rows = '';
+
+  Object.entries(vendeurStats).forEach(([nom, stats]) => {
+    const commission = Math.round(stats.caCDF * 0.1);
+    const ratio = calcRatio(stats.retraits, stats.reservations);
+    const alerte = stats.reservations > 0 &&
+      (stats.retraits / stats.reservations) < 0.6;
+
+    totalCommission += commission;
+
+    rows += `
+      <tr class="${alerte ? 'row--alerte' : ''}">
+        <td>${nom}</td>
+        <td>${stats.reservations}</td>
+        <td>${stats.retraits}</td>
+        <td>${ratio}</td>
+        <td>${stats.caCDF.toLocaleString('fr-FR')} CDF</td>
+        <td>${commission.toLocaleString('fr-FR')} CDF</td>
+        <td>${alerte ? '<span class="alerte-badge">⚠ Vérifier</span>' : '—'}</td>
+      </tr>
+    `;
+  });
+
+  container.innerHTML = `
+    <div class="commission-total">
+      Commission totale du mois :
+      <strong>${totalCommission.toLocaleString('fr-FR')} CDF</strong>
+    </div>
+    <table class="historique-table commission-table">
+      <thead>
+        <tr>
+          <th>Boutique</th>
+          <th>Réservations</th>
+          <th>Retraits</th>
+          <th>Ratio</th>
+          <th>CA déclaré</th>
+          <th>Commission</th>
+          <th>Alerte</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>
+  `;
+}
+
+renderCommissionAdmin();

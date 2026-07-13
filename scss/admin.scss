@@ -566,3 +566,38 @@ textarea.form-input {
   resize: vertical;
   min-height: 100px;
 }
+
+/* ─── Commission admin ───────────────────────────────────── */
+.commission-total {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: $text-dark;
+  background: #fff;
+  border: 1px solid $border-blue;
+  border-left: 4px solid $primary-blue;
+  border-radius: 10px;
+  padding: 14px 20px;
+  margin-bottom: 16px;
+
+  strong {
+    color: $dark-blue;
+    font-size: 1.1rem;
+    margin-left: 8px;
+  }
+}
+
+.commission-table {
+  .row--alerte td {
+    background: #FFF5F5;
+  }
+
+  .alerte-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: $danger-red;
+    background: #FFF5F5;
+    border: 1px solid #FCCACA;
+    padding: 3px 8px;
+    border-radius: 20px;
+  }
+}

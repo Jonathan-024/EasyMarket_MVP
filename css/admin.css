@@ -769,4 +769,35 @@
 textarea.form-input {
   resize: vertical;
   min-height: 100px;
+}
+
+/* ─── Commission admin ───────────────────────────────────── */
+.commission-total {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2C3E50;
+  background: #fff;
+  border: 1px solid #D6EAFF;
+  border-left: 4px solid #1E90FF;
+  border-radius: 10px;
+  padding: 14px 20px;
+  margin-bottom: 16px;
+}
+.commission-total strong {
+  color: #0A3D62;
+  font-size: 1.1rem;
+  margin-left: 8px;
+}
+
+.commission-table .row--alerte td {
+  background: #FFF5F5;
+}
+.commission-table .alerte-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #e32d2d;
+  background: #FFF5F5;
+  border: 1px solid #FCCACA;
+  padding: 3px 8px;
+  border-radius: 20px;
 }/*# sourceMappingURL=admin.css.map */
