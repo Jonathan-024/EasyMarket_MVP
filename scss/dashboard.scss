@@ -1,0 +1,208 @@
+/* dashboard.scss */
+@use 'variables' as *;
+
+/* ─── Page ──────────────────────────────────────────────── */
+.dashboard-main {
+  background: $light-blue;
+  min-height: calc(100vh - 70px);
+  padding: 50px 20px 70px;
+}
+
+.dashboard-container {
+  max-width: 900px;
+  margin: 0 auto;
+
+  .page-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: $dark-blue;
+    margin-bottom: 32px;
+  }
+}
+
+/* ─── Taux de change ─────────────────────────────────────── */
+.taux-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: $muted-blue;
+
+  label {
+    color: $dark-blue;
+    font-weight: 700;
+  }
+
+  .taux-input {
+    width: 90px;
+    padding: 6px 10px;
+    border: 1px solid $border-blue;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: $dark-blue;
+    font-family: inherit;
+    outline: none;
+    text-align: center;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:focus {
+      border-color: $primary-blue;
+      box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.1);
+    }
+  }
+}
+
+/* ─── Card danger ────────────────────────────────────────── */
+.kpi-card--danger {
+  border-color: #FCCACA;
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba(231, 76, 60, 0.1);
+  }
+}
+
+.kpi-icon--red {
+  background: #FFF5F5;
+  color: $danger-red;
+  border: 1px solid #FCCACA;
+}
+
+/* ─── KPI Grid ───────────────────────────────────────────── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.kpi-card {
+  background: #fff;
+  border: 1px solid $border-blue;
+  border-radius: 10px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  box-shadow: 0 4px 16px rgba(30, 144, 255, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(30, 144, 255, 0.1);
+  }
+
+  .kpi-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    &--blue   { background: $light-blue;  color: $primary-blue; border: 1px solid $border-blue; }
+    &--orange { background: #FEF3E2; color: #E67E22; border: 1px solid #FDEBD0; }
+    &--green  { background: #E8F8F1; color: #27AE60; border: 1px solid #A9DFBF; }
+    &--purple { background: #F3EEFF; color: #8E44AD; border: 1px solid #D7BEF5; }
+  }
+
+  .kpi-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .kpi-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: $muted-blue;
+    }
+
+    .kpi-value {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: $dark-blue;
+      line-height: 1.1;
+
+      &--small {
+        font-size: 1rem;
+        font-weight: 600;
+        color: $muted-blue;
+      }
+
+      .kpi-unit {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: $muted-blue;
+      }
+    }
+
+    .kpi-sub {
+      font-size: 0.8rem;
+      color: $muted-blue;
+      margin-top: 2px;
+    }
+  }
+}
+
+/* ─── Historique ─────────────────────────────────────────── */
+.historique-section {
+  .section-heading {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: $dark-blue;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid $border-blue;
+  }
+}
+
+.historique-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid $border-blue;
+  box-shadow: 0 4px 16px rgba(30, 144, 255, 0.06);
+
+  thead {
+    background: $dark-blue;
+    color: #fff;
+
+    th {
+      padding: 13px 16px;
+      text-align: left;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid $border-blue;
+      transition: background 0.15s ease;
+
+      &:last-child { border-bottom: none; }
+      &:hover { background: $light-blue; }
+    }
+
+    td {
+      padding: 13px 16px;
+      font-size: 0.9rem;
+      color: $text-dark;
+
+      &:first-child {
+        font-weight: 600;
+        color: $dark-blue;
+      }
+    }
+  }
+}

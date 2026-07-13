@@ -1,1 +1,238 @@
-/*# sourceMappingURL=dashboard.css.map */
+@charset "UTF-8";
+/* dashboard.scss */
+/* _variables.scss */
+/* ─── Variables ─────────────────────────────────────────── */
+/* ─── Page ──────────────────────────────────────────────── */
+.dashboard-main {
+  background: #EAF6FF;
+  min-height: calc(100vh - 70px);
+  padding: 50px 20px 70px;
+}
+
+.dashboard-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.dashboard-container .page-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0A3D62;
+  margin-bottom: 32px;
+}
+
+/* ─── Taux de change ─────────────────────────────────────── */
+.taux-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #5B8FB9;
+}
+.taux-row label {
+  color: #0A3D62;
+  font-weight: 700;
+}
+.taux-row .taux-input {
+  width: 90px;
+  padding: 6px 10px;
+  border: 1px solid #D6EAFF;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0A3D62;
+  font-family: inherit;
+  outline: none;
+  text-align: center;
+  -webkit-transition: border-color 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, -webkit-box-shadow 0.2s ease;
+}
+.taux-row .taux-input:focus {
+  border-color: #1E90FF;
+  -webkit-box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.1);
+          box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.1);
+}
+
+/* ─── Card danger ────────────────────────────────────────── */
+.kpi-card--danger {
+  border-color: #FCCACA;
+}
+.kpi-card--danger:hover {
+  -webkit-box-shadow: 0 8px 24px rgba(231, 76, 60, 0.1);
+          box-shadow: 0 8px 24px rgba(231, 76, 60, 0.1);
+}
+
+.kpi-icon--red {
+  background: #FFF5F5;
+  color: #e32d2d;
+  border: 1px solid #FCCACA;
+}
+
+/* ─── KPI Grid ───────────────────────────────────────────── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.kpi-card {
+  background: #fff;
+  border: 1px solid #D6EAFF;
+  border-radius: 10px;
+  padding: 20px 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 16px;
+  -webkit-box-shadow: 0 4px 16px rgba(30, 144, 255, 0.06);
+          box-shadow: 0 4px 16px rgba(30, 144, 255, 0.06);
+  -webkit-transition: -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
+}
+.kpi-card:hover {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0 8px 24px rgba(30, 144, 255, 0.1);
+          box-shadow: 0 8px 24px rgba(30, 144, 255, 0.1);
+}
+.kpi-card .kpi-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+.kpi-card .kpi-icon--blue {
+  background: #EAF6FF;
+  color: #1E90FF;
+  border: 1px solid #D6EAFF;
+}
+.kpi-card .kpi-icon--orange {
+  background: #FEF3E2;
+  color: #E67E22;
+  border: 1px solid #FDEBD0;
+}
+.kpi-card .kpi-icon--green {
+  background: #E8F8F1;
+  color: #27AE60;
+  border: 1px solid #A9DFBF;
+}
+.kpi-card .kpi-icon--purple {
+  background: #F3EEFF;
+  color: #8E44AD;
+  border: 1px solid #D7BEF5;
+}
+.kpi-card .kpi-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 4px;
+}
+.kpi-card .kpi-info .kpi-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #5B8FB9;
+}
+.kpi-card .kpi-info .kpi-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0A3D62;
+  line-height: 1.1;
+}
+.kpi-card .kpi-info .kpi-value--small {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #5B8FB9;
+}
+.kpi-card .kpi-info .kpi-value .kpi-unit {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #5B8FB9;
+}
+.kpi-card .kpi-info .kpi-sub {
+  font-size: 0.8rem;
+  color: #5B8FB9;
+  margin-top: 2px;
+}
+
+/* ─── Historique ─────────────────────────────────────────── */
+.historique-section .section-heading {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0A3D62;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #D6EAFF;
+}
+
+.historique-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #D6EAFF;
+  -webkit-box-shadow: 0 4px 16px rgba(30, 144, 255, 0.06);
+          box-shadow: 0 4px 16px rgba(30, 144, 255, 0.06);
+}
+.historique-table thead {
+  background: #0A3D62;
+  color: #fff;
+}
+.historique-table thead th {
+  padding: 13px 16px;
+  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.historique-table tbody tr {
+  border-bottom: 1px solid #D6EAFF;
+  -webkit-transition: background 0.15s ease;
+  transition: background 0.15s ease;
+}
+.historique-table tbody tr:last-child {
+  border-bottom: none;
+}
+.historique-table tbody tr:hover {
+  background: #EAF6FF;
+}
+.historique-table tbody td {
+  padding: 13px 16px;
+  font-size: 0.9rem;
+  color: #2C3E50;
+}
+.historique-table tbody td:first-child {
+  font-weight: 600;
+  color: #0A3D62;
+}/*# sourceMappingURL=dashboard.css.map */
