@@ -549,4 +549,105 @@
 .servi-card .btn-annuler-servi:hover {
   border-color: #e32d2d;
   color: #e32d2d;
+}
+
+/* ─── Commission summary ─────────────────────────────────── */
+.commission-summary {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  background: #fff;
+  border: 1px solid #D6EAFF;
+  border-left: 4px solid #1E90FF;
+  border-radius: 10px;
+  padding: 14px 20px;
+  margin-bottom: 32px;
+  font-size: 0.88rem;
+  color: #2C3E50;
+  -webkit-box-shadow: 0 4px 16px rgba(30, 144, 255, 0.06);
+          box-shadow: 0 4px 16px rgba(30, 144, 255, 0.06);
+}
+.commission-summary span {
+  color: #5B8FB9;
+}
+.commission-summary strong {
+  color: #0A3D62;
+}
+
+/* ─── Pret actions ───────────────────────────────────────── */
+.pret-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 8px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+.pret-actions .btn-retire {
+  background: #E8F8F1;
+  border: 1px solid #A9DFBF;
+  color: #27AE60;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.pret-actions .btn-retire:hover {
+  background: #27AE60;
+  color: #fff;
+  border-color: #27AE60;
+}
+.pret-actions .btn-servir {
+  background: #EAF6FF;
+  border: 1px solid #D6EAFF;
+  color: #5B8FB9;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.pret-actions .btn-servir:hover {
+  background: #D6EAFF;
+  color: #0A3D62;
+}
+
+/* ─── Badge retrait ──────────────────────────────────────── */
+.servi-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.badge-retire {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+.badge-retire.retire--oui {
+  background: #E8F8F1;
+  color: #27AE60;
+  border: 1px solid #A9DFBF;
+}
+.badge-retire.retire--non {
+  background: #FFF5F5;
+  color: #e32d2d;
+  border: 1px solid #FCCACA;
 }/*# sourceMappingURL=reservation.css.map */

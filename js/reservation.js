@@ -1,4 +1,4 @@
-// ─── Compteurs ───────────────────────────────────────────
+// ─── Données ──────────────────────────────────────────────
 const countPrets = document.getElementById('count-prets');
 const countServis = document.getElementById('count-servis');
 const pretsList = document.getElementById('prets-list');
@@ -7,15 +7,48 @@ const emptyPrets = document.getElementById('empty-prets');
 const emptyServis = document.getElementById('empty-servis');
 
 let prets = [
-  { client: 'Fatou D.', montant: '32 000', devise: 'CDF' },
-  { client: 'Patrick M.', montant: '18 500', devise: 'CDF' },
+  { client: 'Fatou D.', montant: '32000', devise: 'CDF', retire: false },
+  { client: 'Patrick M.', montant: '18500', devise: 'CDF', retire: false },
 ];
 
 let servis = [
-  { client: 'Grace K.', montant: '27 000', devise: 'CDF' },
-  { client: 'Samuel T.', montant: '45', devise: 'USD' },
+  { client: 'Grace K.', montant: '27000', devise: 'CDF', retire: true },
+  { client: 'Samuel T.', montant: '45', devise: 'USD', retire: true },
 ];
 
+// ─── Statistiques commission ──────────────────────────────
+function calcCommission() {
+  const taux = 2800; // CDF par USD, à synchroniser avec dashboard
+  let totalCDF = 0;
+
+  servis.forEach((item) => {
+    if (!item.retire) return;
+    const montant = parseFloat(item.montant.replace(/\s/g, '')) || 0;
+    totalCDF += item.devise === 'USD' ? montant * taux : montant;
+  });
+
+  return {
+    totalCDF,
+    commissionCDF: Math.round(totalCDF * 0.1),
+    retraits: servis.filter((s) => s.retire).length,
+    ratio: servis.length > 0
+      ? Math.round((servis.filter((s) => s.retire).length / (prets.length + servis.length)) * 100)
+      : 0,
+  };
+}
+
+function updateStats() {
+  const stats = calcCommission();
+  const el = document.getElementById('commission-summary');
+  if (!el) return;
+  el.innerHTML = `
+    <span>CA encaissé : <strong>${stats.totalCDF.toLocaleString('fr-FR')} CDF</strong></span>
+    <span>Commission (10%) : <strong>${stats.commissionCDF.toLocaleString('fr-FR')} CDF</strong></span>
+    <span>Ratio retrait : <strong>${stats.ratio}%</strong></span>
+  `;
+}
+
+// ─── Compteurs ────────────────────────────────────────────
 function updateCounts() {
   const countAttente = document.getElementById('count-attente');
   const sideAttente = document.getElementById('side-count-attente');
@@ -30,8 +63,11 @@ function updateCounts() {
 
   countPrets.textContent = prets.length;
   countServis.textContent = servis.length;
+
+  updateStats();
 }
 
+// ─── Render prêts ─────────────────────────────────────────
 function renderPrets() {
   pretsList.innerHTML = '';
   if (prets.length === 0) {
@@ -44,17 +80,38 @@ function renderPrets() {
     card.innerHTML = `
       <div class="pret-info">
         <span class="pret-client">${item.client}</span>
-        <span class="pret-montant">${item.montant} ${item.devise}</span>
+        <span class="pret-montant">${Number(item.montant).toLocaleString('fr-FR')} ${item.devise}</span>
       </div>
-      <button class="btn-servir" data-index="${index}">Marquer comme servi</button>
+      <div class="pret-actions">
+        <button class="btn-retire" data-index="${index}">
+          ✓ Retiré
+        </button>
+        <button class="btn-servir" data-index="${index}">
+          Marquer servi sans retrait
+        </button>
+      </div>
     `;
     pretsList.appendChild(card);
+  });
+
+  pretsList.querySelectorAll('.btn-retire').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const index = parseInt(btn.dataset.index);
+      const item = prets.splice(index, 1)[0];
+      item.retire = true;
+      servis.unshift(item);
+      renderPrets();
+      renderServis();
+      updateCounts();
+    });
   });
 
   pretsList.querySelectorAll('.btn-servir').forEach((btn) => {
     btn.addEventListener('click', () => {
       const index = parseInt(btn.dataset.index);
-      servis.unshift(prets.splice(index, 1)[0]);
+      const item = prets.splice(index, 1)[0];
+      item.retire = false;
+      servis.unshift(item);
       renderPrets();
       renderServis();
       updateCounts();
@@ -62,6 +119,7 @@ function renderPrets() {
   });
 }
 
+// ─── Render servis ────────────────────────────────────────
 function renderServis() {
   servisList.innerHTML = '';
   if (servis.length === 0) {
@@ -74,9 +132,14 @@ function renderServis() {
     card.innerHTML = `
       <div class="servi-info">
         <span class="servi-client">${item.client}</span>
-        <span class="servi-montant">${item.montant} ${item.devise}</span>
+        <span class="servi-montant">${Number(item.montant).toLocaleString('fr-FR')} ${item.devise}</span>
       </div>
-      <button class="btn-annuler-servi" data-index="${index}">Annuler</button>
+      <div class="servi-right">
+        <span class="badge-retire ${item.retire ? 'retire--oui' : 'retire--non'}">
+          ${item.retire ? '✓ Payé' : '✗ Non retiré'}
+        </span>
+        <button class="btn-annuler-servi" data-index="${index}">Annuler</button>
+      </div>
     `;
     servisList.appendChild(card);
   });
@@ -109,7 +172,6 @@ document.querySelectorAll('.notify-btn').forEach((btn) => {
 
     card.querySelector('.amount-input').classList.remove('input-error');
 
-    // Produits non cochés = indisponibles
     const items = card.querySelectorAll('.reservation-items li');
     const indispos = [];
     items.forEach((li) => {
@@ -118,7 +180,6 @@ document.querySelectorAll('.notify-btn').forEach((btn) => {
       if (!checkbox.checked) indispos.push(label);
     });
 
-    // Construction du message WhatsApp
     const boutique = document.querySelector('.page-title').textContent.replace('Tableau de bord — ', '');
 
     let message = `🛍️ *EasyMarket* — _Le marché facile, pour tous !_\n`;
@@ -139,25 +200,21 @@ document.querySelectorAll('.notify-btn').forEach((btn) => {
     message += `Merci pour votre confiance ! 🙏\n`;
     message += `_À tout à l'heure !_`;
 
-    // Numéro WhatsApp — retire espaces et +
     const numero = contact.replace(/[\s+]/g, '');
     const url = `https://wa.me/${numero}?text=${encodeURIComponent(message)}`;
 
-    // Feedback bouton
     btn.disabled = true;
     btn.textContent = 'Envoyé ✓';
     btn.style.background = '#27AE60';
     btn.style.borderColor = '#27AE60';
 
-    // Ouvrir WhatsApp
     window.open(url, '_blank');
 
-    // Ajouter dans prêts non servis
-    prets.push({ client, montant, devise });
+    // Enregistrer le montant notifié — retire = false par défaut
+    prets.push({ client, montant: montant.replace(/\s/g, ''), devise, retire: false });
     renderPrets();
     updateCounts();
 
-    // Retirer la card
     setTimeout(() => {
       card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
       card.style.opacity = '0';
@@ -178,7 +235,7 @@ window.addEventListener('scroll', () => {
   let current = sections[0].id;
   sections.forEach(({ id }) => {
     const el = document.getElementById(id);
-    if (el && el.getBoundingClientRect().top <= 120) current = id;
+    if (el && el.getBoundingClientRect().top <= window.innerHeight / 2) current = id;
   });
   sections.forEach(({ id, link }) => {
     link.classList.toggle('active', id === current);
