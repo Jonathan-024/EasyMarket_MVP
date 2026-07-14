@@ -1,0 +1,176 @@
+/* connexion.scss */
+@use 'variables' as *;
+
+/* ─── Page ──────────────────────────────────────────────── */
+.auth-page {
+  min-height: 100vh;
+  background: $light-blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* ─── Brand ──────────────────────────────────────────────── */
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  margin-bottom: 32px;
+
+  .brand-name {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+
+    .brand-easy   { color: #4EABFF; }
+    .brand-market { color: $dark-blue; }
+  }
+}
+
+/* ─── Card ───────────────────────────────────────────────── */
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  border: 1px solid $border-blue;
+  border-radius: 14px;
+  padding: 32px;
+  box-shadow: 0 8px 32px rgba(30, 144, 255, 0.1);
+
+  .auth-context-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: $muted-blue;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+
+/* ─── Tabs ───────────────────────────────────────────────── */
+.auth-tabs {
+  display: flex;
+  background: $light-blue;
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 28px;
+
+  .auth-tab {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: $muted-blue;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+
+    &.active {
+      background: #fff;
+      color: $primary-blue;
+      box-shadow: 0 2px 8px rgba(30, 144, 255, 0.12);
+    }
+  }
+}
+
+/* ─── Formulaires ────────────────────────────────────────── */
+.auth-form {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+
+  &.active {
+    display: flex;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: $dark-blue;
+  }
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid $border-blue;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: $text-dark;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &::placeholder { color: $muted-blue; }
+
+  &:focus {
+    border-color: $primary-blue;
+    box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.1);
+  }
+}
+
+.form-hint {
+  font-size: 0.78rem;
+  color: $muted-blue;
+  margin-top: 2px;
+}
+
+/* ─── Submit ─────────────────────────────────────────────── */
+.auth-submit {
+  width: 100%;
+  padding: 13px;
+  font-size: 0.95rem;
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* ─── Switch ─────────────────────────────────────────────── */
+.auth-switch {
+  text-align: center;
+  font-size: 0.85rem;
+  color: $muted-blue;
+  margin-top: 6px;
+
+  .auth-switch-link {
+    background: none;
+    border: none;
+    color: $primary-blue;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-family: inherit;
+    padding: 0;
+    margin-left: 4px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* ─── Footer note ────────────────────────────────────────── */
+.auth-footer-note {
+  margin-top: 24px;
+  font-size: 0.8rem;
+  color: $muted-blue;
+  text-align: center;
+
+  a {
+    color: $primary-blue;
+    text-decoration: none;
+
+    &:hover { text-decoration: underline; }
+  }
+}

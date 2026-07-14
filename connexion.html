@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EasyMarket - Connexion</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/connexion.css">
+</head>
+<body>
+
+  <div class="auth-page">
+
+    <!-- Logo -->
+    <a href="home.html" class="auth-brand">
+      <svg width="34" height="34" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M32 38 C32 20 68 20 68 38" stroke="#1E90FF" stroke-width="9" stroke-linecap="round" fill="none"/>
+        <path d="M14 42 Q12 42 11 48 L6 88 Q5 98 15 100 L85 100 Q95 98 94 88 L89 48 Q88 42 86 42 Z" fill="#EAF6FF" stroke="#1E90FF" stroke-width="9" stroke-linejoin="round"/>
+        <line x1="32" y1="42" x2="32" y2="54" stroke="#1E90FF" stroke-width="9" stroke-linecap="round"/>
+        <line x1="68" y1="42" x2="68" y2="54" stroke="#1E90FF" stroke-width="9" stroke-linecap="round"/>
+        <polyline points="30,72 44,86 70,60" stroke="#0A3D62" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span class="brand-name">
+        <span class="brand-easy">Easy</span><span class="brand-market">Market</span>
+      </span>
+    </a>
+
+    <!-- Card auth -->
+    <div class="auth-card">
+
+      <h1 class="auth-context-title">Espace vendeur</h1>
+      
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Connexion</button>
+        <button class="auth-tab" data-tab="register">Inscription</button>
+      </div>
+
+      <!-- Formulaire Connexion -->
+      <form class="auth-form active" id="form-login" novalidate>
+        <div class="form-group">
+          <label for="login-whatsapp">Numéro WhatsApp</label>
+          <input type="tel" id="login-whatsapp" class="form-input" placeholder="Ex : +243 81 234 5678">
+        </div>
+
+        <div class="form-group">
+          <label for="login-code">Code d'accès</label>
+          <input type="password" id="login-code" class="form-input" placeholder="Ex : EM-XXXXXX">
+        </div>
+
+        <button type="submit" class="btn primary auth-submit">Se connecter</button>
+
+        <p class="auth-switch">
+          Pas encore de compte vendeur ?
+          <button type="button" class="auth-switch-link" data-tab="register">S'inscrire</button>
+        </p>
+      </form>
+
+      <!-- Formulaire Inscription -->
+      <form class="auth-form" id="form-register" novalidate>
+        <div class="form-group">
+          <label for="register-boutique">Nom de la boutique</label>
+          <input type="text" id="register-boutique" class="form-input" placeholder="Ex : Marché Frais">
+        </div>
+
+        <div class="form-group">
+          <label for="register-nom">Nom du vendeur</label>
+          <input type="text" id="register-nom" class="form-input" placeholder="Ex : Jean Dupont">
+        </div>
+
+        <div class="form-group">
+          <label for="register-whatsapp">Numéro WhatsApp</label>
+          <input type="tel" id="register-whatsapp" class="form-input" placeholder="Ex : +243 81 234 5678">
+        </div>
+
+        <div class="form-group">
+          <label for="register-email">Email</label>
+          <input type="email" id="register-email" class="form-input" placeholder="Ex : contact@boutique.com">
+        </div>
+
+        <div class="form-group">
+          <label for="register-code">Code d'accès reçu</label>
+          <input type="text" id="register-code" class="form-input" placeholder="Ex : EM-XXXXXX">
+          <p class="form-hint">Ce code vous a été transmis par l'équipe EasyMarket après validation.</p>
+        </div>
+
+        <button type="submit" class="btn primary auth-submit">Créer mon compte</button>
+
+        <p class="auth-switch">
+          Déjà inscrit ?
+          <button type="button" class="auth-switch-link" data-tab="login">Se connecter</button>
+        </p>
+      </form>
+
+    </div>
+
+    <p class="auth-footer-note">
+      En continuant, vous acceptez les
+      <a href="#">conditions d'utilisation</a> d'EasyMarket.
+    </p>
+
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/connexion.js"></script>
+</body>
+</html>
