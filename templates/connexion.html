@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EasyMarket - Connexion</title>
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/connexion.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/connexion.css') }}">
 </head>
 <body>
 
   <div class="auth-page">
 
     <!-- Logo -->
-    <a href="home.html" class="auth-brand">
+    <a href="{{ url_for('main.home') }}" class="auth-brand">
       <svg width="34" height="34" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M32 38 C32 20 68 20 68 38" stroke="#1E90FF" stroke-width="9" stroke-linecap="round" fill="none"/>
         <path d="M14 42 Q12 42 11 48 L6 88 Q5 98 15 100 L85 100 Q95 98 94 88 L89 48 Q88 42 86 42 Z" fill="#EAF6FF" stroke="#1E90FF" stroke-width="9" stroke-linejoin="round"/>
@@ -29,7 +29,7 @@
     <div class="auth-card">
 
       <h1 class="auth-context-title">Espace vendeur</h1>
-      
+
       <!-- Tabs -->
       <div class="auth-tabs">
         <button class="auth-tab active" data-tab="login">Connexion</button>
@@ -37,15 +37,15 @@
       </div>
 
       <!-- Formulaire Connexion -->
-      <form class="auth-form active" id="form-login" novalidate>
+      <form class="auth-form active" id="form-login" method="post" action="{{ url_for('auth.login') }}" novalidate>
         <div class="form-group">
           <label for="login-whatsapp">Numéro WhatsApp</label>
-          <input type="tel" id="login-whatsapp" class="form-input" placeholder="Ex : +243 81 234 5678">
+          <input type="tel" id="login-whatsapp" name="whatsapp" class="form-input" placeholder="Ex : +243 81 234 5678">
         </div>
 
         <div class="form-group">
           <label for="login-code">Code d'accès</label>
-          <input type="password" id="login-code" class="form-input" placeholder="Ex : EM-XXXXXX">
+          <input type="password" id="login-code" name="code" class="form-input" placeholder="Ex : EM-XXXXXX">
         </div>
 
         <button type="submit" class="btn primary auth-submit">Se connecter</button>
@@ -57,30 +57,30 @@
       </form>
 
       <!-- Formulaire Inscription -->
-      <form class="auth-form" id="form-register" novalidate>
+      <form class="auth-form" id="form-register" method="post" action="{{ url_for('auth.register') }}" novalidate>
         <div class="form-group">
           <label for="register-boutique">Nom de la boutique</label>
-          <input type="text" id="register-boutique" class="form-input" placeholder="Ex : Marché Frais">
+          <input type="text" id="register-boutique" name="boutique" class="form-input" placeholder="Ex : Marché Frais">
         </div>
 
         <div class="form-group">
           <label for="register-nom">Nom du vendeur</label>
-          <input type="text" id="register-nom" class="form-input" placeholder="Ex : Jean Dupont">
+          <input type="text" id="register-nom" name="nom" class="form-input" placeholder="Ex : Jean Dupont">
         </div>
 
         <div class="form-group">
           <label for="register-whatsapp">Numéro WhatsApp</label>
-          <input type="tel" id="register-whatsapp" class="form-input" placeholder="Ex : +243 81 234 5678">
+          <input type="tel" id="register-whatsapp" name="whatsapp" class="form-input" placeholder="Ex : +243 81 234 5678">
         </div>
 
         <div class="form-group">
           <label for="register-email">Email</label>
-          <input type="email" id="register-email" class="form-input" placeholder="Ex : contact@boutique.com">
+          <input type="email" id="register-email" name="email" class="form-input" placeholder="Ex : contact@boutique.com">
         </div>
 
         <div class="form-group">
           <label for="register-code">Code d'accès reçu</label>
-          <input type="text" id="register-code" class="form-input" placeholder="Ex : EM-XXXXXX">
+          <input type="text" id="register-code" name="code" class="form-input" placeholder="Ex : EM-XXXXXX">
           <p class="form-hint">Ce code vous a été transmis par l'équipe EasyMarket après validation.</p>
         </div>
 
@@ -101,7 +101,7 @@
 
   </div>
 
-  <script src="js/main.js"></script>
-  <script src="js/connexion.js"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/connexion.js') }}"></script>
 </body>
 </html>

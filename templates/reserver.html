@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}EasyMarket - Réserver{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/reserver.css') }}">
+{% endblock %}
+
+{% block content %}
+<main class="reserver-main">
+  <div class="reserver-container">
+
+    <h1 class="reserver-title">Nouvelle réservation</h1>
+
+    <form class="reserver-form" id="reserver-form" novalidate>
+
+      <fieldset class="form-section">
+        <legend class="form-section-title">Votre identité</legend>
+        <div class="form-group">
+          <label for="client-nom">Nom complet</label>
+          <input type="text" id="client-nom" class="form-input" placeholder="Ex : Jean Dupont">
+        </div>
+        <div class="form-group">
+          <label for="client-whatsapp">Numéro WhatsApp</label>
+          <input type="tel" id="client-whatsapp" class="form-input" placeholder="Ex : +243 81 234 5678">
+        </div>
+      </fieldset>
+
+      <fieldset class="form-section">
+        <legend class="form-section-title">Produits à réserver</legend>
+        <div class="produit-input-row">
+          <div class="input-row">
+            <input type="text" id="produit-input" class="form-input" placeholder="Ex : Tomates fraîches — 2kg — 5000 FC">
+            <button type="button" class="btn primary" id="btn-ajouter">Ajouter</button>
+          </div>
+        </div>
+        <ul class="produits-list" id="produits-list"></ul>
+      </fieldset>
+
+      <fieldset class="form-section">
+        <legend class="form-section-title">Boutique</legend>
+        <div class="form-group">
+          <label for="boutique-select">Choisir une boutique</label>
+          <select id="boutique-select" class="form-input form-select">
+            <option value="" disabled selected>-- Sélectionnez une boutique --</option>
+            {% for boutique in boutiques %}
+            <option value="{{ boutique.id }}">{{ boutique.nom }} — {{ boutique.categorie }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </fieldset>
+
+      <div class="form-submit">
+        <button type="submit" class="btn primary" id="btn-envoyer">Envoyer</button>
+      </div>
+
+    </form>
+  </div>
+</main>
+
+<!-- MODAL CONFIRMATION -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <h2 class="modal-title">Confirmer la réservation</h2>
+
+    <div class="modal-section">
+      <p class="modal-label">Boutique</p>
+      <p class="modal-value" id="modal-boutique"></p>
+    </div>
+
+    <div class="modal-section modal-indispo" id="modal-indispo" style="display:none;">
+      <p class="modal-label modal-indispo-title">⚠ Produits indisponibles</p>
+      <ul class="modal-produits modal-indispo-list" id="modal-indispo-list"></ul>
+    </div>
+
+    <div class="modal-section">
+      <p class="modal-label">Produits demandés</p>
+      <ul class="modal-produits" id="modal-produits"></ul>
+    </div>
+
+    <div class="modal-section">
+      <p class="modal-label">Nom</p>
+      <p class="modal-value" id="modal-nom"></p>
+    </div>
+
+    <div class="modal-section">
+      <p class="modal-label">WhatsApp</p>
+      <p class="modal-value" id="modal-whatsapp"></p>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn secondary" id="btn-annuler">Annuler</button>
+      <button class="btn primary" id="btn-confirmer">Confirmer</button>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/reserver.js') }}"></script>
+{% endblock %}
