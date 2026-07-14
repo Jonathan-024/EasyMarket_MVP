@@ -19,6 +19,48 @@
   color: #0A3D62;
   margin-bottom: 32px;
 }
+.dashboard-container .dashboard-shortcuts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.dashboard-container .dashboard-shortcuts .shortcut-card {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid #D6EAFF;
+  border-radius: 10px;
+  padding: 18px 22px;
+  text-decoration: none;
+  color: #0A3D62;
+  font-weight: 700;
+  font-size: 0.95rem;
+  -webkit-box-shadow: 0 4px 16px rgba(30, 144, 255, 0.06);
+          box-shadow: 0 4px 16px rgba(30, 144, 255, 0.06);
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.dashboard-container .dashboard-shortcuts .shortcut-card svg {
+  color: #1E90FF;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+.dashboard-container .dashboard-shortcuts .shortcut-card:hover {
+  background: #EAF6FF;
+  border-color: #1E90FF;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
 
 /* ─── Taux de change ─────────────────────────────────────── */
 .taux-row {

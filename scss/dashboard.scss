@@ -18,6 +18,37 @@
     color: $dark-blue;
     margin-bottom: 32px;
   }
+
+  .dashboard-shortcuts {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 40px;
+
+    .shortcut-card {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      border: 1px solid $border-blue;
+      border-radius: 10px;
+      padding: 18px 22px;
+      text-decoration: none;
+      color: $dark-blue;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 16px rgba(30, 144, 255, 0.06);
+      transition: all 0.2s ease;
+
+      svg { color: $primary-blue; flex-shrink: 0; }
+
+      &:hover {
+        background: $light-blue;
+        border-color: $primary-blue;
+        transform: translateY(-2px);
+      }
+    }
+  }
 }
 
 /* ─── Taux de change ─────────────────────────────────────── */

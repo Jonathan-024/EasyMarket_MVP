@@ -29,8 +29,8 @@
 
         <!-- Droite : Boutons + Burger -->
         <div class="navbar-actions">
-          <button class="btn primary">Réserver</button>
-          <button class="btn secondary">Connexion</button>
+          <button class="btn primary" onclick="location.href='reserver.html'">Réserver</button>
+          <button class="btn secondary" onclick="location.href='connexion.html'">Connexion</button>
 
           <!-- Menu burger -->
           <div class="burger-menu">
@@ -84,6 +84,17 @@
     <div class="dashboard-container">
 
       <h1 class="page-title">Tableau de bord</h1>
+
+      <div class="dashboard-shortcuts">
+        <a href="reservation.html" class="shortcut-card">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Réservations</span>
+        </a>
+        <a href="boutique.html" class="shortcut-card">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18v10a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M3 9l2.5-5h13L21 9"/><line x1="12" y1="9" x2="12" y2="21"/></svg>
+          <span>Ma boutique</span>
+        </a>
+      </div>
 
       <!-- Taux de change -->
       <div class="taux-row">
