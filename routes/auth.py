@@ -10,11 +10,14 @@ def connexion():
 
 @auth_bp.route('/login', methods=['POST'])
 def login():
-    # logique de vérification à venir
     return redirect(url_for('vendeur.dashboard'))
 
 
 @auth_bp.route('/register', methods=['POST'])
 def register():
-    # logique de création de compte à venir
     return redirect(url_for('vendeur.dashboard'))
+
+
+@auth_bp.route('/logout', methods=['POST'])
+def logout():
+    return redirect(url_for('main.home'))
