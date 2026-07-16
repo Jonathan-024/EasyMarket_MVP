@@ -6,25 +6,6 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
 {% endblock %}
 
-{% block navbar_actions %}{% endblock %}
-
-{% block menu_profile %}
-<div class="menu-profile">
-  <div class="menu-profile-avatar">AD</div>
-  <div class="menu-profile-info">
-    <p class="name">Administrateur</p>
-    <p class="status">Admin</p>
-  </div>
-</div>
-<div class="menu-divider"></div>
-{% endblock %}
-
-{% block menu_logout %}
-<form action="{{ url_for('auth.logout') }}" method="post" style="margin:0;">
-  <button type="submit" class="btn danger">Déconnexion</button>
-</form>
-{% endblock %}
-
 {% block content %}
 <main class="admin-main">
   <div class="admin-layout">

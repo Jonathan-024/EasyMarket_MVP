@@ -29,11 +29,7 @@ formLogin.addEventListener('submit', (e) => {
   if (!code.value.trim()) { showError(code, 'Code requis.'); valid = false; }
   if (!valid) return;
 
-  const btn = formLogin.querySelector('.auth-submit');
-  btn.textContent = 'Connexion...';
-  setTimeout(() => {
-    window.location.href = 'dashboard.html';
-  }, 800);
+  formLogin.submit();
 });
 
 // ─── Validation register ──────────────────────────────────
@@ -54,11 +50,7 @@ formRegister.addEventListener('submit', (e) => {
   });
   if (!valid) return;
 
-  const btn = formRegister.querySelector('.auth-submit');
-  btn.textContent = 'Création...';
-  setTimeout(() => {
-    window.location.href = 'boutique.html';
-  }, 800);
+  formRegister.submit();
 });
 
 // ─── Utilitaires erreurs ──────────────────────────────────

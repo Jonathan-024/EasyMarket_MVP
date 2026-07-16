@@ -28,8 +28,10 @@
 
         <div class="navbar-actions">
           {% block navbar_actions %}
+          {% if not session.role %}
           <button class="btn primary" onclick="location.href='{{ url_for('main.reserver') }}'">Réserver</button>
           <button class="btn secondary" onclick="location.href='{{ url_for('auth.connexion') }}'">Connexion</button>
+          {% endif %}
           {% endblock %}
 
           <!-- Menu burger -->
@@ -42,20 +44,33 @@
             </label>
             <div class="menu-content">
               {% block menu_profile %}
+              {% if session.role == 'vendeur' %}
               <div class="menu-profile">
-                <div class="menu-profile-avatar">JD</div>
+                <div class="menu-profile-avatar">{{ session.vendeur_initiales }}</div>
                 <div class="menu-profile-info">
-                  <p class="name">Jean Dupont</p>
+                  <p class="name">{{ session.vendeur_nom }}</p>
                   <p class="status">Vendeur</p>
                 </div>
               </div>
               <div class="menu-divider"></div>
+              {% elif session.role == 'admin' %}
+              <div class="menu-profile">
+                <div class="menu-profile-avatar">AD</div>
+                <div class="menu-profile-info">
+                  <p class="name">Administrateur</p>
+                  <p class="status">Admin</p>
+                </div>
+              </div>
+              <div class="menu-divider"></div>
+              {% endif %}
               {% endblock %}
 
               <a href="{{ url_for('main.home') }}" class="menu-link">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E90FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                 Accueil
               </a>
+
+              {% if session.role == 'vendeur' %}
               <a href="{{ url_for('vendeur.boutique') }}" class="menu-link">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E90FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18v10a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M3 9l2.5-5h13L21 9"/><line x1="12" y1="9" x2="12" y2="21"/></svg>
                 Boutique
@@ -68,10 +83,15 @@
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E90FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
                 Tableau de bord
               </a>
+              {% endif %}
+
+              {% if session.role == 'admin' %}
               <a href="{{ url_for('admin.dashboard') }}" class="menu-link">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E90FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
                 Administration
               </a>
+              {% endif %}
+
               <a href="{{ url_for('main.home') }}#about" class="menu-link">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E90FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                 À propos
@@ -85,7 +105,11 @@
 
               <div class="menu-divider"></div>
               {% block menu_logout %}
-              <button class="btn danger">Déconnexion</button>
+              {% if session.role %}
+              <form action="{{ url_for('auth.logout') }}" method="post" style="margin:0;">
+                <button type="submit" class="btn danger">Déconnexion</button>
+              </form>
+              {% endif %}
               {% endblock %}
             </div>
           </div>

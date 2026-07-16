@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for, session
+from utils.decorators import login_required
 
 vendeur_bp = Blueprint('vendeur', __name__)
 
@@ -13,41 +14,43 @@ RESERVATIONS_TEMP = [
 
 
 @vendeur_bp.route('/boutique')
+@login_required(role='vendeur')
 def boutique():
     return render_template(
         'boutique.html',
-        vendeur={'nom': 'Jean Dupont', 'initiales': 'JD'},
+        vendeur={'nom': session['vendeur_nom'], 'initiales': session['vendeur_initiales']},
         boutique={},
         clients=[]
     )
     
 
 @vendeur_bp.route('/boutique/update', methods=['POST'])
+@login_required(role='vendeur')
 def update_boutique():
     return redirect(url_for('vendeur.boutique'))
 
 
 @vendeur_bp.route('/reservation')
+@login_required(role='vendeur')
 def reservation():
     return render_template(
         'reservation.html',
-        vendeur={'nom': 'Jean Dupont', 'initiales': 'JD'},
+        vendeur={'nom': session['vendeur_nom'], 'initiales': session['vendeur_initiales']},
         reservations_attente=RESERVATIONS_TEMP,
         boutique={'nom': 'Marché Frais'}
     )
 
 
 @vendeur_bp.route('/dashboard')
+@login_required(role='vendeur')
 def dashboard():
     historique_temp = [
         {'date': '12 juil. 2026', 'reservations': 15, 'ca_cdf': '210 000', 'ca_usd': 280, 'nouveaux_clients': 2},
         {'date': '11 juil. 2026', 'reservations': 9, 'ca_cdf': '132 500', 'ca_usd': 150, 'nouveaux_clients': 1},
         {'date': '10 juil. 2026', 'reservations': 18, 'ca_cdf': '265 000', 'ca_usd': 410, 'nouveaux_clients': 4},
     ]
-
     return render_template(
         'dashboard.html',
-        vendeur={'nom': 'Jean Dupont', 'initiales': 'JD'},
         taux_change=2250,
         ca_cdf='184 500',
         reservations_jour=12,
