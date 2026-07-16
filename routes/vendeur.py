@@ -4,7 +4,7 @@ from utils.decorators import login_required
 vendeur_bp = Blueprint('vendeur', __name__)
 
 RESERVATIONS_TEMP = [
-    {'id': 1, 'client_nom': 'Jonathan M.', 'client_whatsapp': '+243 90 677 9261',
+    {'id': 1, 'client_nom': 'Jonathan M.', 'client_whatsapp': '+243 84 991 2381',
      'nouveau_client': False, 'produits': ['5 kg de riz blanc', "2 litres d'huile végétale", '1 paquet de café moulu']},
     {'id': 2, 'client_nom': 'Jean-Paul N.', 'client_whatsapp': '+243 82 564 7890',
      'nouveau_client': False, 'produits': ['6 bananes plantain', '1 kg de poisson frais']},
