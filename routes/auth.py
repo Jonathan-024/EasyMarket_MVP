@@ -2,6 +2,8 @@ from flask import Blueprint, render_template, request, redirect, url_for, sessio
 
 auth_bp = Blueprint('auth', __name__)
 
+ADMIN_WHATSAPP = '+243000000000'
+ADMIN_CODE = 'ADMIN-2026'
 
 @auth_bp.route('/connexion')
 def connexion():
@@ -10,7 +12,14 @@ def connexion():
 
 @auth_bp.route('/login', methods=['POST'])
 def login():
-    # Vérification réelle à venir avec la DB
+    whatsapp = request.form.get('whatsapp', '').strip()
+    code = request.form.get('code', '').strip()
+
+    if whatsapp == ADMIN_WHATSAPP and code == ADMIN_CODE:
+        session['role'] = 'admin'
+        return redirect(url_for('admin.dashboard'))
+
+    # Sinon, connexion vendeur (temporaire, sans vérification réelle)
     session['role'] = 'vendeur'
     session['vendeur_nom'] = 'Jean Dupont'
     session['vendeur_initiales'] = 'JD'
