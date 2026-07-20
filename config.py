@@ -1,12 +1,15 @@
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 
 load_dotenv()
+
+BASE_DIR = Path(__file__).parent.resolve()
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-key-a-changer-en-production')
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         'DATABASE_URL',
-        'sqlite:///instance/easymarket.db'
+        f'sqlite:///{(BASE_DIR / "instance" / "easymarket.db").as_posix()}'
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
