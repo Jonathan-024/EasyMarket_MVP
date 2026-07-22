@@ -1,11 +1,7 @@
 import os
-
 from flask import Flask
-
-from flask import Flask, render_template
 from config import Config
 from models.db_models import db
-
 
 def create_app():
     app = Flask(__name__)
@@ -39,10 +35,10 @@ def create_app():
 
     @app.errorhandler(404)
     def page_not_found(e):
+        from flask import render_template
         return render_template('404.html'), 404
 
     return app
-
 
 if __name__ == '__main__':
     app = create_app()
