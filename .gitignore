@@ -5,3 +5,7 @@ instance/
 venv/
 .vscode/
 .DS_Store
+
+# Ignorer le script de génération et le fichier de code compilé
+generate_code_md.py
+code.md
