@@ -28,6 +28,12 @@
 
       <fieldset class="form-section">
         <legend class="form-section-title">Produits à réserver</legend>
+        <div class="produit-input-row">
+          <div class="input-row">
+            <input type="text" id="produit-input" name="produit_custom" class="form-input" placeholder="Ex : Tomates fraîches — 2kg — 5000 FC">
+            <button type="button" class="btn primary" id="btn-ajouter">Ajouter</button>
+          </div>
+        </div>
         
         {% if boutique and boutique.produits %}
         <div class="produits-checkbox-list">
@@ -42,8 +48,6 @@
           </div>
           {% endfor %}
         </div>
-        {% else %}
-        <p class="empty-state">Veuillez d'abord sélectionner une boutique ci-dessus pour afficher ses produits.</p>
         {% endif %}
       </fieldset>
 
@@ -51,8 +55,8 @@
         <legend class="form-section-title">Boutique</legend>
         <div class="form-group">
           <label for="boutique-select">Choisir une boutique</label>
-          <select id="boutique-select" class="form-input form-select" name="boutique_id" onchange="location.href='/reserver?boutique=' + this.value;">
-            <option value="" disabled selected>-- Sélectionnez une boutique --</option>
+          <select id="boutique-select" class="form-input form-select" name="boutique_id">
+            <option value="" disabled {% if not boutique %}selected{% endif %}>-- Sélectionnez une boutique --</option>
             {% for b in boutiques %}
             <option value="{{ b.id }}" {{ 'selected' if boutique and boutique.id == b.id else '' }}>{{ b.nom }} — {{ b.categorie_principale|default(b.categorie) }}</option>
             {% endfor %}

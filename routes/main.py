@@ -1,37 +1,58 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify
 from models.db_models import db, Boutique, Produit, Client, Reservation, LigneReservation
 
-main_bp = Blueprint('main', __name__)
+# Utiliser 'main' pour correspondre aux url_for('main....') de vos templates
+main = Blueprint('main', __name__)
 
-@main_bp.route('/')
+@main.route('/')
 def home():
     boutiques = Boutique.query.all()
     return render_template('home.html', boutiques=boutiques)
 
-
-@main_bp.route('/reserver')
+@main.route('/reserver', methods=['GET', 'POST'])
 def reserver():
+    boutique_id = request.args.get('boutique', type=int)
     boutiques = Boutique.query.all()
-    boutique_id = request.args.get('boutique')
-    boutique = None
-    if boutique_id:
-        boutique = Boutique.query.get_or_404(boutique_id)
-    return render_template('reserver.html', boutiques=boutiques, boutique=boutique)
+    boutique = Boutique.query.get(boutique_id) if boutique_id else None
 
+    if request.method == 'POST':
+        nom_client = request.form.get('nom_client')
+        whatsapp_client = request.form.get('whatsapp_client')
+        selected_boutique_id = request.form.get('boutique_id', type=int)
+        produits_ids = request.form.getlist('produits_ids', type=int)
+        produit_custom = request.form.get('produit_custom')
+        
+        return redirect(url_for('main.reserver'))
 
-@main_bp.route('/boutique/<string:boutique_id>')
+    return render_template(
+        'reserver.html', 
+        boutiques=boutiques, 
+        boutique=boutique
+    )
+
+@main.route('/api/boutique/<string:boutique_id>/produits')
+def api_produits_boutique(boutique_id):
+    boutique = Boutique.query.get_or_404(boutique_id)
+    produits_data = [{
+        'id': p.id,
+        'nom': p.nom,
+        'prix': p.prix,
+        'devise': p.devise,
+        'autres': p.autres
+    } for p in boutique.produits]
+    return jsonify(produits_data)
+
+@main.route('/boutique/<string:boutique_id>')
 def voir_boutique(boutique_id):
     boutique = Boutique.query.get_or_404(boutique_id)
     return render_template('boutique.html', boutique=boutique)
 
-
-@main_bp.route('/boutique/<string:boutique_id>/reserver', methods=['POST'])
+@main.route('/boutique/<string:boutique_id>/reserver', methods=['POST'])
 def traitement_reservation(boutique_id):
     boutique = Boutique.query.get_or_404(boutique_id)
 
     nom_client = request.form.get('nom_client', '').strip()
     whatsapp_client = request.form.get('whatsapp_client', '').strip()
-    
     produits_selectionnes_ids = request.form.getlist('produits_ids')
 
     if not nom_client or not whatsapp_client:

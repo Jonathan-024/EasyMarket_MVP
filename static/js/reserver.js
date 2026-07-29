@@ -1,3 +1,51 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const boutiqueSelect = document.getElementById('boutique-select');
+  const checkboxListContainer = document.querySelector('.produits-checkbox-list') || createCheckboxContainer();
+
+  if (boutiqueSelect) {
+    boutiqueSelect.addEventListener('change', async (e) => {
+      const boutiqueId = e.target.value;
+      if (!boutiqueId) return;
+
+      try {
+        const response = await fetch(`/api/boutique/${boutiqueId}/produits`);
+        const produits = await response.json();
+
+        // Construire dynamiquement les cases à cocher des produits
+        let html = '<p class="form-hint">Cochez les produits que vous souhaitez réserver :</p>';
+        if (produits.length > 0) {
+          produits.forEach(produit => {
+            html += `
+              <div class="produit-checkbox-item">
+                <label>
+                  <input type="checkbox" name="produits_ids" value="${produit.id}">
+                  <strong>${produit.nom}</strong> — ${produit.prix} ${produit.devise} 
+                  <span class="produit-details">(${produit.autres || ''})</span>
+                </label>
+              </div>
+            `;
+          });
+        } else {
+          html = '<p class="empty-state">Aucun produit disponible pour cette boutique.</p>';
+        }
+
+        checkboxListContainer.innerHTML = html;
+      } catch (error) {
+        console.error("Erreur lors du chargement des produits:", error);
+      }
+    });
+  }
+});
+
+// Fonction utilitaire si le conteneur n'est pas présent initialement
+function createCheckboxContainer() {
+  const section = document.querySelector('#produit-input').closest('.form-section');
+  const container = document.createElement('div');
+  container.className = 'produits-checkbox-list';
+  section.appendChild(container);
+  return container;
+}
+
 // ─── Disponibilité par boutique ───────────────────────────
 const indisponibles = {
   'marche-frais': ['mangues', 'avocats'],

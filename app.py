@@ -23,12 +23,12 @@ def create_app():
         from models.db_models import Vendeur, Boutique, Produit, Categorie, Client, Reservation, LigneReservation
         db.create_all()
 
-    from routes.main import main_bp
+    from routes.main import main
     from routes.auth import auth_bp
     from routes.vendeur import vendeur_bp
     from routes.admin import admin_bp
 
-    app.register_blueprint(main_bp)
+    app.register_blueprint(main)
     app.register_blueprint(auth_bp)
     app.register_blueprint(vendeur_bp)
     app.register_blueprint(admin_bp)
