@@ -1,4 +1,3 @@
-// ─── Nav latérale active au scroll ───────────────────────
 const sections = [
   { id: 'section-overview',   link: document.querySelector('a[href="#section-overview"]') },
   { id: 'section-vendeurs',   link: document.querySelector('a[href="#section-vendeurs"]') },
@@ -14,12 +13,11 @@ window.addEventListener('scroll', () => {
     if (el && el.getBoundingClientRect().top <= window.innerHeight / 2) current = id;
   });
   sections.forEach(({ id, link }) => {
-    link.classList.toggle('active', id === current);
+    if (link) link.classList.toggle('active', id === current);
   });
 });
 
-// ─── Génération code d'accès ──────────────────────────────
-document.getElementById('btn-gen-code').addEventListener('click', () => {
+document.getElementById('btn-gen-code')?.addEventListener('click', () => {
   const code = 'EM-' + Math.random().toString(36).substring(2, 8).toUpperCase();
   const overlay = document.createElement('div');
   overlay.classList.add('modal-overlay', 'active');
@@ -59,141 +57,3 @@ document.getElementById('btn-gen-code').addEventListener('click', () => {
     });
   });
 });
-
-// ─── Actions vendeurs ─────────────────────────────────────
-document.querySelectorAll('.vendeur-card').forEach((card) => {
-  const statut = card.dataset.statut;
-  const badge = card.querySelector('.badge-statut');
-
-  card.querySelector('.action-btn--delete')?.addEventListener('click', () => {
-    card.style.transition = 'opacity 0.3s ease';
-    card.style.opacity = '0';
-    setTimeout(() => card.remove(), 300);
-  });
-
-  card.querySelector('.action-btn--suspend')?.addEventListener('click', () => {
-    card.dataset.statut = 'suspendu';
-    badge.className = 'badge-statut statut--suspendu';
-    badge.textContent = 'Suspendu';
-  });
-
-  card.querySelector('.action-btn--confirm')?.addEventListener('click', () => {
-    card.dataset.statut = 'actif';
-    badge.className = 'badge-statut statut--actif';
-    badge.textContent = 'Actif';
-  });
-
-  card.querySelector('.action-btn--warn')?.addEventListener('click', () => {
-    const overlay = document.createElement('div');
-    overlay.classList.add('modal-overlay', 'active');
-    overlay.innerHTML = `
-      <div class="modal">
-        <h2 class="modal-title">Envoyer un avertissement</h2>
-        <div class="modal-section">
-          <p class="modal-label">Message</p>
-          <textarea class="form-input" id="warn-message" rows="4" placeholder="Motif de l'avertissement..."></textarea>
-        </div>
-        <div class="modal-actions">
-          <button class="btn secondary" id="btn-warn-annuler">Annuler</button>
-          <button class="btn primary" id="btn-warn-envoyer">Envoyer</button>
-        </div>
-      </div>
-    `;
-    document.body.appendChild(overlay);
-
-    overlay.querySelector('#btn-warn-annuler').addEventListener('click', () => overlay.remove());
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
-
-    overlay.querySelector('#btn-warn-envoyer').addEventListener('click', () => {
-      const btn = overlay.querySelector('#btn-warn-envoyer');
-      btn.textContent = 'Envoyé ✓';
-      btn.style.background = '#27AE60';
-      btn.style.borderColor = '#27AE60';
-      setTimeout(() => overlay.remove(), 1500);
-    });
-  });
-});
-
-// ─── Filtre clients ───────────────────────────────────────
-document.querySelectorAll('.clients-filtres .filtre-btn').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.clients-filtres .filtre-btn').forEach((b) => b.classList.remove('active'));
-    btn.classList.add('active');
-
-    const filtre = btn.textContent.trim();
-    document.querySelectorAll('.admin-client-card').forEach((card) => {
-      const badge = card.querySelector('.badge');
-      if (filtre === 'Tous') {
-        card.style.display = '';
-      } else if (filtre === 'Nouveaux') {
-        card.style.display = badge?.classList.contains('badge-new') ? '' : 'none';
-      } else if (filtre === 'Habitués') {
-        card.style.display = badge?.classList.contains('badge-old') ? '' : 'none';
-      }
-    });
-  });
-});
-
-// ─── Données commission par vendeur (simulées) ────────────
-const vendeurStats = {
-  'Marché Frais':       { reservations: 42, retraits: 38, caCDF: 184500 },
-  'Boucherie Centrale': { reservations: 0,  retraits: 0,  caCDF: 0 },
-  'Épicerie du Coin':   { reservations: 0,  retraits: 0,  caCDF: 0 },
-};
-
-function calcRatio(retraits, reservations) {
-  if (reservations === 0) return '—';
-  return Math.round((retraits / reservations) * 100) + '%';
-}
-
-function renderCommissionAdmin() {
-  const container = document.getElementById('commission-admin');
-  if (!container) return;
-
-  let totalCommission = 0;
-  let rows = '';
-
-  Object.entries(vendeurStats).forEach(([nom, stats]) => {
-    const commission = Math.round(stats.caCDF * 0.1);
-    const ratio = calcRatio(stats.retraits, stats.reservations);
-    const alerte = stats.reservations > 0 &&
-      (stats.retraits / stats.reservations) < 0.6;
-
-    totalCommission += commission;
-
-    rows += `
-      <tr class="${alerte ? 'row--alerte' : ''}">
-        <td>${nom}</td>
-        <td>${stats.reservations}</td>
-        <td>${stats.retraits}</td>
-        <td>${ratio}</td>
-        <td>${stats.caCDF.toLocaleString('fr-FR')} CDF</td>
-        <td>${commission.toLocaleString('fr-FR')} CDF</td>
-        <td>${alerte ? '<span class="alerte-badge">⚠ Vérifier</span>' : '—'}</td>
-      </tr>
-    `;
-  });
-
-  container.innerHTML = `
-    <div class="commission-total">
-      Commission totale du mois :
-      <strong>${totalCommission.toLocaleString('fr-FR')} CDF</strong>
-    </div>
-    <table class="historique-table commission-table">
-      <thead>
-        <tr>
-          <th>Boutique</th>
-          <th>Réservations</th>
-          <th>Retraits</th>
-          <th>Ratio</th>
-          <th>CA déclaré</th>
-          <th>Commission</th>
-          <th>Alerte</th>
-        </tr>
-      </thead>
-      <tbody>${rows}</tbody>
-    </table>
-  `;
-}
-
-renderCommissionAdmin();

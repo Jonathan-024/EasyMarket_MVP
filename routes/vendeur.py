@@ -12,7 +12,6 @@ RESERVATIONS_TEMP = [
      'nouveau_client': True, 'produits': ['1 paquet de farine', '2 litres de lait', '1 bouteille de jus']},
 ]
 
-
 @vendeur_bp.route('/boutique')
 @login_required(role='vendeur')
 def boutique():
@@ -22,13 +21,11 @@ def boutique():
         boutique={},
         clients=[]
     )
-    
 
 @vendeur_bp.route('/boutique/update', methods=['POST'])
 @login_required(role='vendeur')
 def update_boutique():
     return redirect(url_for('vendeur.boutique'))
-
 
 @vendeur_bp.route('/reservation')
 @login_required(role='vendeur')
@@ -39,7 +36,6 @@ def reservation():
         reservations_attente=RESERVATIONS_TEMP,
         boutique={'nom': 'Marché Frais'}
     )
-
 
 @vendeur_bp.route('/dashboard')
 @login_required(role='vendeur')

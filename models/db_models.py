@@ -14,7 +14,6 @@ class Vendeur(db.Model):
     statut = db.Column(db.String(20), default='actif') # 'actif', 'attente', 'suspendu'
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
     
-    # Relations
     boutique = db.relationship('Boutique', backref='vendeur', uselist=False, cascade='all, delete-orphan')
 
     def set_code(self, code_clair):
@@ -33,7 +32,6 @@ class Boutique(db.Model):
     description = db.Column(db.Text)
     vendeur_id = db.Column(db.Integer, db.ForeignKey('vendeurs.id'), nullable=False)
     
-    # Relations
     produits = db.relationship('Produit', backref='boutique', cascade='all, delete-orphan')
     reservations = db.relationship('Reservation', backref='boutique', cascade='all, delete-orphan')
 
@@ -53,7 +51,7 @@ class Produit(db.Model):
 
     id = db.Column(db.String(20), primary_key=True) # Ex: 'PRD-0001'
     nom = db.Column(db.String(100), nullable=False)
-    type_produit = db.Column(db.String(50)) # Équivalent de l'ancienne catégorie libre
+    type_produit = db.Column(db.String(50))
     prix = db.Column(db.String(20))
     devise = db.Column(db.String(5), default='CDF')
     disponible = db.Column(db.Boolean, default=True)

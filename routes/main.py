@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify
 from models.db_models import db, Boutique, Produit, Client, Reservation, LigneReservation
 
-# Utiliser 'main' pour correspondre aux url_for('main....') de vos templates
 main = Blueprint('main', __name__)
 
 @main.route('/')
@@ -16,19 +15,9 @@ def reserver():
     boutique = Boutique.query.get(boutique_id) if boutique_id else None
 
     if request.method == 'POST':
-        nom_client = request.form.get('nom_client')
-        whatsapp_client = request.form.get('whatsapp_client')
-        selected_boutique_id = request.form.get('boutique_id', type=int)
-        produits_ids = request.form.getlist('produits_ids', type=int)
-        produit_custom = request.form.get('produit_custom')
-        
         return redirect(url_for('main.reserver'))
 
-    return render_template(
-        'reserver.html', 
-        boutiques=boutiques, 
-        boutique=boutique
-    )
+    return render_template('reserver.html', boutiques=boutiques, boutique=boutique)
 
 @main.route('/api/boutique/<string:boutique_id>/produits')
 def api_produits_boutique(boutique_id):

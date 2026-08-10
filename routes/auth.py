@@ -11,18 +11,15 @@ ADMIN_CODE = os.environ.get('ADMIN_CODE')
 def connexion():
     return render_template('connexion.html')
 
-
 @auth_bp.route('/login', methods=['POST'])
 def login():
     whatsapp = request.form.get('whatsapp', '').strip()
     code = request.form.get('code', '').strip()
 
-    # Vérification Admin
     if whatsapp == ADMIN_WHATSAPP and code == ADMIN_CODE:
         session['role'] = 'admin'
         return redirect(url_for('admin.dashboard'))
 
-    # Vérification Vendeur en DB
     vendeur = Vendeur.query.filter_by(whatsapp=whatsapp).first()
     if vendeur and vendeur.check_code(code):
         if vendeur.statut == 'suspendu':
@@ -35,15 +32,12 @@ def login():
 
     return render_template('connexion.html', error="Identifiants incorrects.")
 
-
 @auth_bp.route('/register', methods=['POST'])
 def register():
-    # Vérification du code d'accès à venir avec la DB
     session['role'] = 'vendeur'
     session['vendeur_nom'] = request.form.get('nom', 'Nouveau vendeur')
     session['vendeur_initiales'] = ''.join([n[0] for n in session['vendeur_nom'].split()[:2]]).upper()
     return redirect(url_for('vendeur.dashboard'))
-
 
 @auth_bp.route('/logout', methods=['POST'])
 def logout():

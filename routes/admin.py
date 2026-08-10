@@ -3,7 +3,6 @@ from utils.decorators import login_required
 
 admin_bp = Blueprint('admin', __name__, url_prefix='/admin')
 
-
 @admin_bp.route('/')
 @login_required(role='admin')
 def dashboard():
