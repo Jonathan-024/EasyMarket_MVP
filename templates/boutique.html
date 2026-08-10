@@ -43,7 +43,7 @@
 
             <div class="form-group">
               <label for="vendeur-nom">Nom du vendeur</label>
-              <input type="text" id="vendeur-nom" name="vendeur_nom" class="form-input" placeholder="Ex : Jean Dupont" value="{{ boutique.vendeur_nom|default('') }}">
+              <input type="text" id="vendeur-nom" name="vendeur_nom" class="form-input" placeholder="Ex : Jean Dupont" value="{{ session.vendeur_nom or '' }}">
             </div>
 
             <div class="form-group">
@@ -63,7 +63,7 @@
 
             <div class="form-group">
               <label for="boutique-categorie">Catégorie</label>
-              <input type="text" id="boutique-categorie" name="categorie" class="form-input" placeholder="Ex : Épicerie générale" value="{{ boutique.categorie|default('') }}">
+              <input type="text" id="boutique-categorie" name="categorie" class="form-input" placeholder="Ex : Épicerie générale" value="{{ boutique.categorie_principale|default('') }}">
             </div>
 
             <div class="form-group form-group--full">
@@ -112,21 +112,43 @@
         <h2 class="section-heading">Produits</h2>
 
         <div class="produits-actions">
-          <button class="btn primary" id="btn-add-produit">
+          <button class="btn primary" id="btn-add-produit" type="button">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             Ajouter un produit
           </button>
-          <button class="btn secondary" id="btn-add-categorie">
+          <button class="btn secondary" id="btn-add-categorie" type="button">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             Ajouter une catégorie
           </button>
         </div>
 
+        <form method="post" action="{{ url_for('vendeur.ajouter_produit') }}" class="inline-form" style="margin-top: 16px; display: none;" id="form-add-produit">
+          <input type="text" name="nom" class="form-input" placeholder="Nom du produit" required>
+          <input type="text" name="prix" class="form-input" placeholder="Prix" required>
+          <input type="text" name="autres" class="form-input" placeholder="Détails" >
+          <select name="devise" class="form-input">
+            <option value="CDF">CDF</option>
+            <option value="USD">USD</option>
+          </select>
+          <button type="submit" class="btn primary">Valider</button>
+        </form>
+
+        <form method="post" action="{{ url_for('vendeur.ajouter_categorie') }}" class="inline-form" style="margin-top: 16px; display: none;" id="form-add-categorie">
+          <input type="text" name="nom" class="form-input" placeholder="Nom de la catégorie" required>
+          <button type="submit" class="btn secondary">Ajouter</button>
+        </form>
+
         <!-- Catégories -->
         <div class="produits-block">
           <h3 class="produits-block-title">Par catégorie</h3>
           <div class="categories-list" id="categories-list">
-            <p class="empty-state">Aucune catégorie ajoutée.</p>
+            {% if categories %}
+              {% for categorie in categories %}
+                <span class="badge category-badge">{{ categorie.nom }}</span>
+              {% endfor %}
+            {% else %}
+              <p class="empty-state">Aucune catégorie ajoutée.</p>
+            {% endif %}
           </div>
         </div>
 
@@ -135,7 +157,17 @@
           <h3 class="produits-block-title">Tous les produits</h3>
           <div class="produits-filtres" id="produits-filtres"></div>
           <div class="produits-list" id="produits-list">
-            <p class="empty-state">Aucun produit ajouté.</p>
+            {% if produits %}
+              {% for produit in produits %}
+                <div class="produit-item">
+                  <strong>{{ produit.nom }}</strong>
+                  <span>{{ produit.prix }} {{ produit.devise }}</span>
+                  {% if produit.autres %}<small>{{ produit.autres }}</small>{% endif %}
+                </div>
+              {% endfor %}
+            {% else %}
+              <p class="empty-state">Aucun produit ajouté.</p>
+            {% endif %}
           </div>
         </div>
 

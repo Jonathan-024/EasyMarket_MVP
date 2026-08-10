@@ -61,6 +61,9 @@
             <option value="{{ b.id }}" {{ 'selected' if boutique and boutique.id == b.id else '' }}>{{ b.nom }} — {{ b.categorie_principale|default(b.categorie) }}</option>
             {% endfor %}
           </select>
+          <p class="form-hint">
+            Vous êtes commerçant ? <a href="{{ url_for('auth.inscription') }}">Inscrivez votre boutique ici</a>
+          </p>
           {% if boutique %}
           <button type="button" class="btn btn-choisir-boutique" data-id="{{ boutique.id }}">Choisir cette boutique</button>
           {% endif %}

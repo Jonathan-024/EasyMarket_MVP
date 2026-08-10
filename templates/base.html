@@ -29,6 +29,7 @@
         <div class="navbar-actions">
           {% block navbar_actions %}
           <button class="btn primary" onclick="location.href='{{ url_for('main.reserver') }}'">Réserver</button>
+          <a class="btn secondary vendor-btn" href="{{ url_for('auth.inscription') }}">Devenir Vendeur</a>
           {% if not session.role %}
           <button class="btn secondary" onclick="location.href='{{ url_for('auth.connexion') }}'">Connexion</button>
           {% endif %}

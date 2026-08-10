@@ -1,7 +1,6 @@
 @charset "UTF-8";
 /* main.scss */
 /* _variables.scss */
-/* ─── Variables ─────────────────────────────────────────── */
 /* ─── Reset ─────────────────────────────────────────────── */
 * {
   margin: 0;
@@ -112,6 +111,7 @@ body {
   background: #EAF6FF;
   border-color: #1E90FF;
   color: #1070CC;
+  text-decoration: none;
 }
 .btn.secondary:hover {
   background: #1E90FF;

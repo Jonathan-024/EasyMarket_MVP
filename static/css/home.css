@@ -342,11 +342,30 @@ body {
 .hero .hero-brand .hero-logo-name .brand-market {
   color: #0A3D62;
 }
+.hero .hero-brand .hero-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 14px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.hero .hero-brand .btn {
+  min-height: 42px;
+}
 .hero .hero-brand .btn.primary {
-  width: 100%;
+  width: auto;
+  min-width: 120px;
   font-size: 1rem;
-  padding: 10px 0;
+  padding: 10px 18px;
   text-align: center;
+}
+.hero .hero-brand .vendor-btn {
+  min-width: 170px;
+  padding: 10px 18px;
 }
 .hero .hero-pitch {
   background: #fff;

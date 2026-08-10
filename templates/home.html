@@ -13,7 +13,9 @@
       <span class="hero-logo-name">
         <span class="brand-easy">Easy</span><span class="brand-market">Market</span>
       </span>
-      <button class="btn primary" onclick="location.href='{{ url_for('main.reserver') }}'">Réserver</button>
+      <div class="hero-actions">
+        <button class="btn primary" onclick="location.href='{{ url_for('main.reserver') }}'">Réserver</button>
+      </div>
     </div>
 
     <div class="hero-pitch">
@@ -30,8 +32,8 @@
       <div class="boutique-card">
         <div class="boutique-info">
           <h3 class="boutique-name">{{ boutique.nom }}</h3>
-          <span class="boutique-category">{{ boutique.categorie }}</span>
-          <p class="boutique-desc">{{ boutique.description }}</p>
+          <span class="boutique-category">{{ boutique.categorie_principale or boutique.categorie or 'Boutique' }}</span>
+          <p class="boutique-desc">{{ boutique.description or 'Boutique active sur EasyMarket.' }}</p>
         </div>
         <button class="btn primary" onclick="location.href='{{ url_for('main.reserver') }}?boutique={{ boutique.id }}'">Réserver</button>
       </div>

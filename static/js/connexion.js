@@ -6,6 +6,10 @@ function switchTab(target) {
   forms.forEach((form) => form.classList.toggle('active', form.id === `form-${target}`));
 }
 
+const params = new URLSearchParams(window.location.search);
+const initialTab = params.get('tab') === 'register' ? 'register' : 'login';
+switchTab(initialTab);
+
 tabs.forEach((tab) => {
   tab.addEventListener('click', () => switchTab(tab.dataset.tab));
 });
