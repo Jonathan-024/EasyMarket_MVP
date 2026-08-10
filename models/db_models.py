@@ -11,7 +11,7 @@ class Vendeur(db.Model):
     nom = db.Column(db.String(100), nullable=False)
     whatsapp = db.Column(db.String(20), unique=True, nullable=False)
     code_hash = db.Column(db.String(255), nullable=False)
-    statut = db.Column(db.String(20), default='actif') # 'actif', 'attente', 'suspendu'
+    statut = db.Column(db.String(20), default='actif')
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
     
     boutique = db.relationship('Boutique', backref='vendeur', uselist=False, cascade='all, delete-orphan')
@@ -26,7 +26,7 @@ class Vendeur(db.Model):
 class Boutique(db.Model):
     __tablename__ = 'boutiques'
 
-    id = db.Column(db.String(50), primary_key=True) # Ex: 'marche-frais'
+    id = db.Column(db.String(50), primary_key=True)
     nom = db.Column(db.String(100), nullable=False)
     categorie_principale = db.Column(db.String(100))
     description = db.Column(db.Text)
@@ -49,7 +49,7 @@ class Categorie(db.Model):
 class Produit(db.Model):
     __tablename__ = 'produits'
 
-    id = db.Column(db.String(20), primary_key=True) # Ex: 'PRD-0001'
+    id = db.Column(db.String(20), primary_key=True)
     nom = db.Column(db.String(100), nullable=False)
     type_produit = db.Column(db.String(50))
     prix = db.Column(db.String(20))
@@ -76,7 +76,7 @@ class Reservation(db.Model):
     __tablename__ = 'reservations'
 
     id = db.Column(db.Integer, primary_key=True)
-    statut = db.Column(db.String(20), default='attente') # 'attente', 'pret', 'servi', 'retire'
+    statut = db.Column(db.String(20), default='attente')
     montant = db.Column(db.String(20))
     devise = db.Column(db.String(5), default='CDF')
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)

@@ -10,11 +10,14 @@ def home():
 
 @main.route('/reserver', methods=['GET', 'POST'])
 def reserver():
-    boutique_id = request.args.get('boutique', type=int)
+    boutique_id = request.args.get('boutique', type=str)
     boutiques = Boutique.query.all()
     boutique = Boutique.query.get(boutique_id) if boutique_id else None
 
     if request.method == 'POST':
+        boutique_id = request.form.get('boutique_id')
+        if boutique_id:
+            return redirect(url_for('main.voir_boutique', boutique_id=boutique_id))
         return redirect(url_for('main.reserver'))
 
     return render_template('reserver.html', boutiques=boutiques, boutique=boutique)
@@ -44,12 +47,8 @@ def traitement_reservation(boutique_id):
     whatsapp_client = request.form.get('whatsapp_client', '').strip()
     produits_selectionnes_ids = request.form.getlist('produits_ids')
 
-    if not nom_client or not whatsapp_client:
-        flash("Veuillez renseigner votre nom et votre numéro WhatsApp.", "error")
-        return redirect(url_for('main.voir_boutique', boutique_id=boutique_id))
-
-    if not produits_selectionnes_ids:
-        flash("Veuillez sélectionner au moins un produit à réserver.", "error")
+    if not nom_client or not whatsapp_client or not produits_selectionnes_ids:
+        flash("Informations incomplètes ou aucun produit sélectionné.", "error")
         return redirect(url_for('main.voir_boutique', boutique_id=boutique_id))
 
     client = Client.query.filter_by(whatsapp=whatsapp_client).first()
@@ -62,7 +61,8 @@ def traitement_reservation(boutique_id):
     lignes_a_creer = []
 
     for p_id in produits_selectionnes_ids:
-        produit = Produit.query.filter_by(id=p_id, boutique_id=boutique_id).first()
+        # Seuls les produits existants ET marqués disponibles sont retenus
+        produit = Produit.query.filter_by(id=p_id, boutique_id=boutique_id, disponible=True).first()
         if produit:
             try:
                 montant_total += float(produit.prix)
@@ -72,6 +72,10 @@ def traitement_reservation(boutique_id):
             lignes_a_creer.append(
                 LigneReservation(libelle_produit=f"{produit.nom} ({produit.prix} {produit.devise})")
             )
+
+    if not lignes_a_creer:
+        flash("Aucun des produits sélectionnés n'est disponible.", "error")
+        return redirect(url_for('main.voir_boutique', boutique_id=boutique_id))
 
     nouvelle_reservation = Reservation(
         statut='attente',
@@ -90,5 +94,5 @@ def traitement_reservation(boutique_id):
     
     db.session.commit()
 
-    flash("Votre réservation a été enregistrée avec succès ! Le vendeur va la valider.", "success")
+    flash("Votre réservation a été transmise avec succès au vendeur !", "success")
     return redirect(url_for('main.home'))

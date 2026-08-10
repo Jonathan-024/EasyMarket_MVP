@@ -41,7 +41,7 @@
           {% for produit in boutique.produits %}
           <div class="produit-checkbox-item">
             <label>
-              <input type="checkbox" name="produits_ids" value="{{ produit.id }}">
+              <input type="checkbox" name="produits_ids" value="{{ produit.id }}" data-nom="{{ produit.nom }}" data-prix="{{ produit.prix }} {{ produit.devise }}" data-disponible="{{ 'true' if produit.disponible else 'false' }}">
               <strong>{{ produit.nom }}</strong> — {{ produit.prix }} {{ produit.devise }} 
               <span class="produit-details">({{ produit.autres }})</span>
             </label>
@@ -54,21 +54,33 @@
       <fieldset class="form-section">
         <legend class="form-section-title">Boutique</legend>
         <div class="form-group">
-          <label for="boutique-select">Choisir une boutique</label>
-          <select id="boutique-select" class="form-input form-select" name="boutique_id">
+          <label for="select-boutique">Choisir une boutique</label>
+          <select id="select-boutique" class="form-input form-select" name="boutique_id">
             <option value="" disabled {% if not boutique %}selected{% endif %}>-- Sélectionnez une boutique --</option>
             {% for b in boutiques %}
             <option value="{{ b.id }}" {{ 'selected' if boutique and boutique.id == b.id else '' }}>{{ b.nom }} — {{ b.categorie_principale|default(b.categorie) }}</option>
             {% endfor %}
           </select>
+          {% if boutique %}
+          <button type="button" class="btn btn-choisir-boutique" data-id="{{ boutique.id }}">Choisir cette boutique</button>
+          {% endif %}
         </div>
       </fieldset>
 
       <div class="form-submit">
-        <button type="submit" class="btn primary" id="btn-envoyer">Envoyer</button>
+        <button type="button" class="btn primary" id="btn-ouvrir-confirmation">Envoyer</button>
       </div>
 
     </form>
+
+    <div id="modal-confirmation" style="display:none;" class="modal">
+      <h2>Vérification de votre commande</h2>
+      <div id="recap-produits-container"></div>
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
+        <button type="button" id="btn-annuler-modal">Annuler</button>
+        <button type="button" id="btn-valider-final" class="btn-primary">Valider la réservation</button>
+      </div>
+    </div>
   </div>
 </main>
 

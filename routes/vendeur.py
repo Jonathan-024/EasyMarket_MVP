@@ -1,25 +1,20 @@
 from flask import Blueprint, render_template, redirect, url_for, session
 from utils.decorators import login_required
+from models.db_models import db, Reservation, Boutique, Produit, Client
 
 vendeur_bp = Blueprint('vendeur', __name__)
-
-RESERVATIONS_TEMP = [
-    {'id': 1, 'client_nom': 'Jonathan M.', 'client_whatsapp': '+243 84 991 2381',
-     'nouveau_client': False, 'produits': ['5 kg de riz blanc', "2 litres d'huile végétale", '1 paquet de café moulu']},
-    {'id': 2, 'client_nom': 'Jean-Paul N.', 'client_whatsapp': '+243 82 564 7890',
-     'nouveau_client': False, 'produits': ['6 bananes plantain', '1 kg de poisson frais']},
-    {'id': 3, 'client_nom': 'Lina M.', 'client_whatsapp': '+243 85 300 1122',
-     'nouveau_client': True, 'produits': ['1 paquet de farine', '2 litres de lait', '1 bouteille de jus']},
-]
 
 @vendeur_bp.route('/boutique')
 @login_required(role='vendeur')
 def boutique():
+    vendeur_id = session.get('vendeur_id')
+    boutique_obj = Boutique.query.filter_by(vendeur_id=vendeur_id).first()
+    
     return render_template(
         'boutique.html',
-        vendeur={'nom': session['vendeur_nom'], 'initiales': session['vendeur_initiales']},
-        boutique={},
-        clients=[]
+        vendeur={'nom': session.get('vendeur_nom'), 'initiales': session.get('vendeur_initiales')},
+        boutique=boutique_obj,
+        clients=Client.query.all() if boutique_obj else []
     )
 
 @vendeur_bp.route('/boutique/update', methods=['POST'])
@@ -30,31 +25,45 @@ def update_boutique():
 @vendeur_bp.route('/reservation')
 @login_required(role='vendeur')
 def reservation():
+    vendeur_id = session.get('vendeur_id')
+    boutique_obj = Boutique.query.filter_by(vendeur_id=vendeur_id).first()
+    
+    reservations_attente = []
+    if boutique_obj:
+        reservations_attente = Reservation.query.filter_by(
+            boutique_id=boutique_obj.id, 
+            statut='attente'
+        ).all()
+
     return render_template(
         'reservation.html',
-        vendeur={'nom': session['vendeur_nom'], 'initiales': session['vendeur_initiales']},
-        reservations_attente=RESERVATIONS_TEMP,
-        boutique={'nom': 'Marché Frais'}
+        vendeur={'nom': session.get('vendeur_nom'), 'initiales': session.get('vendeur_initiales')},
+        reservations_attente=reservations_attente,
+        boutique=boutique_obj
     )
 
 @vendeur_bp.route('/dashboard')
 @login_required(role='vendeur')
 def dashboard():
-    historique_temp = [
-        {'date': '12 juil. 2026', 'reservations': 15, 'ca_cdf': '210 000', 'ca_usd': 280, 'nouveaux_clients': 2},
-        {'date': '11 juil. 2026', 'reservations': 9, 'ca_cdf': '132 500', 'ca_usd': 150, 'nouveaux_clients': 1},
-        {'date': '10 juil. 2026', 'reservations': 18, 'ca_cdf': '265 000', 'ca_usd': 410, 'nouveaux_clients': 4},
-    ]
+    vendeur_id = session.get('vendeur_id')
+    boutique_obj = Boutique.query.filter_by(vendeur_id=vendeur_id).first()
+    
+    produits = Produit.query.filter_by(boutique_id=boutique_obj.id).all() if boutique_obj else []
+    total_produits = len(produits)
+    indisponibles = sum(1 for p in produits if not p.disponible)
+    
+    reservations = Reservation.query.filter_by(boutique_id=boutique_obj.id).all() if boutique_obj else []
+    
     return render_template(
         'dashboard.html',
         taux_change=2250,
-        ca_cdf='184 500',
-        reservations_jour=12,
-        reservations_attente=4,
-        reservations_traitees=8,
-        produits_total=38,
-        produits_indisponibles=5,
-        clients_total=124,
-        clients_nouveaux=3,
-        historique=historique_temp,
+        ca_cdf='0',
+        reservations_jour=len(reservations),
+        reservations_attente=sum(1 for r in reservations if r.statut == 'attente'),
+        reservations_traitees=sum(1 for r in reservations if r.statut != 'attente'),
+        produits_total=total_produits,
+        produits_indisponibles=indisponibles,
+        clients_total=Client.query.count(),
+        clients_nouveaux=0,
+        historique=[]
     )

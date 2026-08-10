@@ -29,17 +29,11 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
     
-    # --- SOLUTION : S'assurer que le dossier instance existe physiquement ---
     instance_path = app.instance_path
     if not os.path.exists(instance_path):
         os.makedirs(instance_path, exist_ok=True)
-    # ------------------------------------------------------------------------
 
-    print("Avant init :", app.config["SQLALCHEMY_DATABASE_URI"])
-    
-    # Initialisation de SQLAlchemy
     db.init_app(app)
-    print("Après init :", app.config["SQLALCHEMY_DATABASE_URI"])
 
     with app.app_context():
         from models.db_models import Vendeur, Boutique, Produit, Categorie, Client, Reservation, LigneReservation
@@ -73,26 +67,20 @@ load_dotenv()
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-key-a-changer-en-production')
-    # Fichier stocké directement à la racine du projet
     SQLALCHEMY_DATABASE_URI = 'sqlite:///easymarket.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False""",
 
     "generate_code_md.py": """import os
 
-# Extensions de fichiers à inclure
 EXTENSIONS = {".py", ".html", ".scss", ".js", ".txt", ".env"}
-# Fichiers spécifiques sans extension autorisés
 SPECIAL_FILES = {".gitignore", ".env"}
-# Dossiers à ignorer
 EXCLUDE_DIRS = {".git", "__pycache__", "node_modules", "venv", ".venv"}
 
 OUTPUT_FILE = "code.md"
 
 def should_process(filename):
     ext = os.path.splitext(filename)[1].lower()
-    if ext in EXTENSIONS:
-        return True
-    if filename in SPECIAL_FILES:
+    if ext in EXTENSIONS or filename in SPECIAL_FILES:
         return True
     return False
 
@@ -111,13 +99,8 @@ def generate_markdown():
                 
                 ext = os.path.splitext(file)[1].lower()
                 lang_map = {
-                    ".py": "python",
-                    ".html": "html",
-                    ".scss": "scss",
-                    ".js": "javascript",
-                    ".env": "env",
-                    ".gitignore": "gitignore",
-                    ".txt": "text"
+                    ".py": "python", ".html": "html", ".scss": "scss",
+                    ".js": "javascript", ".env": "env", ".gitignore": "gitignore", ".txt": "text"
                 }
                 lang = lang_map.get(ext, "")
                 
@@ -217,7 +200,7 @@ class Vendeur(db.Model):
     nom = db.Column(db.String(100), nullable=False)
     whatsapp = db.Column(db.String(20), unique=True, nullable=False)
     code_hash = db.Column(db.String(255), nullable=False)
-    statut = db.Column(db.String(20), default='actif') # 'actif', 'attente', 'suspendu'
+    statut = db.Column(db.String(20), default='actif')
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
     
     boutique = db.relationship('Boutique', backref='vendeur', uselist=False, cascade='all, delete-orphan')
@@ -232,7 +215,7 @@ class Vendeur(db.Model):
 class Boutique(db.Model):
     __tablename__ = 'boutiques'
 
-    id = db.Column(db.String(50), primary_key=True) # Ex: 'marche-frais'
+    id = db.Column(db.String(50), primary_key=True)
     nom = db.Column(db.String(100), nullable=False)
     categorie_principale = db.Column(db.String(100))
     description = db.Column(db.Text)
@@ -255,7 +238,7 @@ class Categorie(db.Model):
 class Produit(db.Model):
     __tablename__ = 'produits'
 
-    id = db.Column(db.String(20), primary_key=True) # Ex: 'PRD-0001'
+    id = db.Column(db.String(20), primary_key=True)
     nom = db.Column(db.String(100), nullable=False)
     type_produit = db.Column(db.String(50))
     prix = db.Column(db.String(20))
@@ -282,7 +265,7 @@ class Reservation(db.Model):
     __tablename__ = 'reservations'
 
     id = db.Column(db.Integer, primary_key=True)
-    statut = db.Column(db.String(20), default='attente') # 'attente', 'pret', 'servi', 'retire'
+    statut = db.Column(db.String(20), default='attente')
     montant = db.Column(db.String(20))
     devise = db.Column(db.String(5), default='CDF')
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
@@ -409,12 +392,8 @@ def traitement_reservation(boutique_id):
     whatsapp_client = request.form.get('whatsapp_client', '').strip()
     produits_selectionnes_ids = request.form.getlist('produits_ids')
 
-    if not nom_client or not whatsapp_client:
-        flash("Veuillez renseigner votre nom et votre numéro WhatsApp.", "error")
-        return redirect(url_for('main.voir_boutique', boutique_id=boutique_id))
-
-    if not produits_selectionnes_ids:
-        flash("Veuillez sélectionner au moins un produit à réserver.", "error")
+    if not nom_client or not whatsapp_client or not produits_selectionnes_ids:
+        flash("Informations incomplètes ou aucun produit sélectionné.", "error")
         return redirect(url_for('main.voir_boutique', boutique_id=boutique_id))
 
     client = Client.query.filter_by(whatsapp=whatsapp_client).first()
@@ -427,7 +406,8 @@ def traitement_reservation(boutique_id):
     lignes_a_creer = []
 
     for p_id in produits_selectionnes_ids:
-        produit = Produit.query.filter_by(id=p_id, boutique_id=boutique_id).first()
+        # Seuls les produits existants ET marqués disponibles sont retenus
+        produit = Produit.query.filter_by(id=p_id, boutique_id=boutique_id, disponible=True).first()
         if produit:
             try:
                 montant_total += float(produit.prix)
@@ -437,6 +417,10 @@ def traitement_reservation(boutique_id):
             lignes_a_creer.append(
                 LigneReservation(libelle_produit=f"{produit.nom} ({produit.prix} {produit.devise})")
             )
+
+    if not lignes_a_creer:
+        flash("Aucun des produits sélectionnés n'est disponible.", "error")
+        return redirect(url_for('main.voir_boutique', boutique_id=boutique_id))
 
     nouvelle_reservation = Reservation(
         statut='attente',
@@ -455,31 +439,26 @@ def traitement_reservation(boutique_id):
     
     db.session.commit()
 
-    flash("Votre réservation a été enregistrée avec succès ! Le vendeur va la valider.", "success")
+    flash("Votre réservation a été transmise avec succès au vendeur !", "success")
     return redirect(url_for('main.home'))""",
 
     "routes/vendeur.py": """from flask import Blueprint, render_template, redirect, url_for, session
 from utils.decorators import login_required
+from models.db_models import db, Reservation, Boutique, Produit, Client
 
 vendeur_bp = Blueprint('vendeur', __name__)
-
-RESERVATIONS_TEMP = [
-    {'id': 1, 'client_nom': 'Jonathan M.', 'client_whatsapp': '+243 84 991 2381',
-     'nouveau_client': False, 'produits': ['5 kg de riz blanc', "2 litres d'huile végétale", '1 paquet de café moulu']},
-    {'id': 2, 'client_nom': 'Jean-Paul N.', 'client_whatsapp': '+243 82 564 7890',
-     'nouveau_client': False, 'produits': ['6 bananes plantain', '1 kg de poisson frais']},
-    {'id': 3, 'client_nom': 'Lina M.', 'client_whatsapp': '+243 85 300 1122',
-     'nouveau_client': True, 'produits': ['1 paquet de farine', '2 litres de lait', '1 bouteille de jus']},
-]
 
 @vendeur_bp.route('/boutique')
 @login_required(role='vendeur')
 def boutique():
+    vendeur_id = session.get('vendeur_id')
+    boutique_obj = Boutique.query.filter_by(vendeur_id=vendeur_id).first()
+    
     return render_template(
         'boutique.html',
-        vendeur={'nom': session['vendeur_nom'], 'initiales': session['vendeur_initiales']},
-        boutique={},
-        clients=[]
+        vendeur={'nom': session.get('vendeur_nom'), 'initiales': session.get('vendeur_initiales')},
+        boutique=boutique_obj,
+        clients=Client.query.all() if boutique_obj else []
     )
 
 @vendeur_bp.route('/boutique/update', methods=['POST'])
@@ -490,33 +469,47 @@ def update_boutique():
 @vendeur_bp.route('/reservation')
 @login_required(role='vendeur')
 def reservation():
+    vendeur_id = session.get('vendeur_id')
+    boutique_obj = Boutique.query.filter_by(vendeur_id=vendeur_id).first()
+    
+    reservations_attente = []
+    if boutique_obj:
+        reservations_attente = Reservation.query.filter_by(
+            boutique_id=boutique_obj.id, 
+            statut='attente'
+        ).all()
+
     return render_template(
         'reservation.html',
-        vendeur={'nom': session['vendeur_nom'], 'initiales': session['vendeur_initiales']},
-        reservations_attente=RESERVATIONS_TEMP,
-        boutique={'nom': 'Marché Frais'}
+        vendeur={'nom': session.get('vendeur_nom'), 'initiales': session.get('vendeur_initiales')},
+        reservations_attente=reservations_attente,
+        boutique=boutique_obj
     )
 
 @vendeur_bp.route('/dashboard')
 @login_required(role='vendeur')
 def dashboard():
-    historique_temp = [
-        {'date': '12 juil. 2026', 'reservations': 15, 'ca_cdf': '210 000', 'ca_usd': 280, 'nouveaux_clients': 2},
-        {'date': '11 juil. 2026', 'reservations': 9, 'ca_cdf': '132 500', 'ca_usd': 150, 'nouveaux_clients': 1},
-        {'date': '10 juil. 2026', 'reservations': 18, 'ca_cdf': '265 000', 'ca_usd': 410, 'nouveaux_clients': 4},
-    ]
+    vendeur_id = session.get('vendeur_id')
+    boutique_obj = Boutique.query.filter_by(vendeur_id=vendeur_id).first()
+    
+    produits = Produit.query.filter_by(boutique_id=boutique_obj.id).all() if boutique_obj else []
+    total_produits = len(produits)
+    indisponibles = sum(1 for p in produits if not p.disponible)
+    
+    reservations = Reservation.query.filter_by(boutique_id=boutique_obj.id).all() if boutique_obj else []
+    
     return render_template(
         'dashboard.html',
         taux_change=2250,
-        ca_cdf='184 500',
-        reservations_jour=12,
-        reservations_attente=4,
-        reservations_traitees=8,
-        produits_total=38,
-        produits_indisponibles=5,
-        clients_total=124,
-        clients_nouveaux=3,
-        historique=historique_temp,
+        ca_cdf='0',
+        reservations_jour=len(reservations),
+        reservations_attente=sum(1 for r in reservations if r.statut == 'attente'),
+        reservations_traitees=sum(1 for r in reservations if r.statut != 'attente'),
+        produits_total=total_produits,
+        produits_indisponibles=indisponibles,
+        clients_total=Client.query.count(),
+        clients_nouveaux=0,
+        historique=[]
     )""",
 
     "static/js/admin.js": """const sections = [
@@ -536,72 +529,98 @@ window.addEventListener('scroll', () => {
   sections.forEach(({ id, link }) => {
     if (link) link.classList.toggle('active', id === current);
   });
-});
-
-document.getElementById('btn-gen-code')?.addEventListener('click', () => {
-  const code = 'EM-' + Math.random().toString(36).substring(2, 8).toUpperCase();
-  const overlay = document.createElement('div');
-  overlay.classList.add('modal-overlay', 'active');
-  overlay.innerHTML = `
-    <div class="modal">
-      <h2 class="modal-title">Code d'accès généré</h2>
-      <div class="modal-section">
-        <p class="modal-label">Code à transmettre au vendeur</p>
-        <div class="code-block" id="code-display">${code}</div>
-      </div>
-      <div class="modal-section">
-        <p class="modal-label">Nom du vendeur (optionnel)</p>
-        <input type="text" class="form-input" id="code-vendeur" placeholder="Ex : Boulangerie Dorée">
-      </div>
-      <div class="modal-actions">
-        <button class="btn secondary" id="btn-code-fermer">Fermer</button>
-        <button class="btn primary" id="btn-code-copier">Copier le code</button>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(overlay);
-
-  overlay.querySelector('#btn-code-fermer').addEventListener('click', () => overlay.remove());
-  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
-
-  overlay.querySelector('#btn-code-copier').addEventListener('click', () => {
-    navigator.clipboard.writeText(code).then(() => {
-      const btn = overlay.querySelector('#btn-code-copier');
-      btn.textContent = 'Copié ✓';
-      btn.style.background = '#27AE60';
-      btn.style.borderColor = '#27AE60';
-      setTimeout(() => {
-        btn.textContent = 'Copier le code';
-        btn.style.background = '';
-        btn.style.borderColor = '';
-      }, 2000);
-    });
-  });
 });""",
 
-    "static/js/boutique.js": """let produits = [];
-let categories = [];
-let produitIdCounter = 1;
-let filtreActif = '';
+    "static/js/boutique.js": """document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('form-reservation');
+  const btnOuvrir = document.getElementById('btn-ouvrir-confirmation');
+  const btnAnnuler = document.getElementById('btn-annuler-modal');
+  const btnValiderFinal = document.getElementById('btn-valider-final');
+  const modal = document.getElementById('modal-confirmation');
+  const recapContainer = document.getElementById('recap-produits-container');
 
-const produitsList = document.getElementById('produits-list');
-const categoriesList = document.getElementById('categories-list');
+  if (!btnOuvrir || !form) return;
 
-function generateId() {
-  return `PRD-${String(produitIdCounter++).padStart(4, '0')}`;
-}
+  btnOuvrir.addEventListener('click', () => {
+    const nomEl = document.getElementById('nom_client');
+    const whatsappEl = document.getElementById('whatsapp_client');
+    const nom = nomEl ? nomEl.value.trim() : '';
+    const whatsapp = whatsappEl ? whatsappEl.value.trim() : '';
+    const checkboxes = form.querySelectorAll('input[name="produits_ids"]:checked');
 
-function renderProduits() {
-  if (!produitsList) return;
-  produitsList.innerHTML = '';
-  const filtered = filtreActif ? produits.filter((p) => p.type === filtreActif) : [...produits];
-  if (filtered.length === 0) {
-    produitsList.innerHTML = '<p class="empty-state">Aucun produit dans cette catégorie.</p>';
-    return;
+    if (!nom || !whatsapp) {
+      alert('Veuillez remplir votre nom et votre numéro WhatsApp.');
+      return;
+    }
+
+    if (checkboxes.length === 0) {
+      alert('Veuillez sélectionner au moins un produit.');
+      return;
+    }
+
+    recapContainer.innerHTML = '';
+    
+    checkboxes.forEach((cb) => {
+      const nomProduit = cb.dataset.nom || 'Produit';
+      const prixProduit = cb.dataset.prix || '';
+      const disponible = cb.dataset.disponible === 'true';
+
+      const itemDiv = document.createElement('div');
+      itemDiv.style.display = 'flex';
+      itemDiv.style.justifyContent = 'space-between';
+      itemDiv.style.alignItems = 'center';
+      itemDiv.style.padding = '8px 0';
+      itemDiv.style.borderBottom = '1px solid #eee';
+
+      itemDiv.innerHTML = `
+        <div>
+          <strong>${nomProduit}</strong> (${prixProduit})
+          ${!disponible ? '<br><small style="color: #e32d2d;">⚠️ Produit actuellement indisponible</small>' : ''}
+        </div>
+        <button type="button" class="btn-retirer" data-id="${cb.value}" style="background: #FFF5F5; border: 1px solid #FCCACA; color: #e32d2d; padding: 4px 8px; border-radius: 4px; cursor: pointer;">
+          Retirer
+        </button>
+      `;
+
+      recapContainer.appendChild(itemDiv);
+    });
+
+    recapContainer.querySelectorAll('.btn-retirer').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const prodId = e.currentTarget.dataset.id;
+        const cbOriginal = form.querySelector(`input[name="produits_ids"][value="${prodId}"]`);
+        if (cbOriginal) {
+          cbOriginal.checked = false;
+        }
+        e.currentTarget.parentElement.remove();
+
+        if (recapContainer.children.length === 0) {
+          recapContainer.innerHTML = '<p style="color: #777;">Aucun produit sélectionné.</p>';
+        }
+      });
+    });
+
+    modal.style.display = 'block';
+  });
+
+  if (btnAnnuler) {
+    btnAnnuler.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
   }
-}
 
-renderProduits();""",
+  if (btnValiderFinal) {
+    btnValiderFinal.addEventListener('click', () => {
+      const checkboxesRestantes = form.querySelectorAll('input[name="produits_ids"]:checked');
+      if (checkboxesRestantes.length === 0) {
+        alert('Votre liste est vide. Sélectionnez au moins un produit.');
+        modal.style.display = 'none';
+        return;
+      }
+      form.submit();
+    });
+  }
+});""",
 
     "static/js/connexion.js": """const tabs = document.querySelectorAll('.auth-tab');
 const forms = document.querySelectorAll('.auth-form');
@@ -615,8 +634,7 @@ tabs.forEach((tab) => {
   tab.addEventListener('click', () => switchTab(tab.dataset.tab));
 });""",
 
-    "static/js/dashboard.js": """const caTotalCDF = 184500;
-const tauxInput = document.getElementById('taux-change');
+    "static/js/dashboard.js": """const tauxInput = document.getElementById('taux-change');
 const caCDFEl = document.getElementById('ca-cdf');
 const caUSDEl = document.getElementById('ca-usd');
 
@@ -624,6 +642,7 @@ function formatNombre(n) { return n.toLocaleString('fr-FR'); }
 
 function updateCA() {
   if (!tauxInput || !caCDFEl || !caUSDEl) return;
+  const caTotalCDF = 0;
   const taux = parseFloat(tauxInput.value) || 1;
   const caUSD = (caTotalCDF / taux).toFixed(2);
   caCDFEl.innerHTML = `${formatNombre(caTotalCDF)} <span class="kpi-unit">CDF</span>`;
@@ -649,8 +668,8 @@ document.addEventListener('click', (e) => {
 });""",
 
     "static/js/register.js": "",
-    "static/js/reservation.js": """// Script de gestion des notifications WhatsApp et des états de réservations""",
-    "static/js/reserver.js": """// Script d'interaction pour la page de réservation""",
+    "static/js/reservation.js": "",
+    "static/js/reserver.js": "",
 
     "static/scss/_variables.scss": """/* _variables.scss */
 $primary-blue:   #1E90FF;
@@ -673,7 +692,7 @@ $danger-dark:    #be2424;""",
 }
 
 def generate_project():
-    print("🚀 Début de la restauration du projet EasyMarket MVP...")
+    print("🚀 Début de la mise à jour des fichiers du projet EasyMarket MVP...")
     created_files = 0
     
     for filepath, content in FILES_DATA.items():
@@ -684,9 +703,9 @@ def generate_project():
         with open(filepath, "w", encoding="utf-8") as f:
             f.write(content)
         created_files += 1
-        print(f"  ✓ [{created_files}/{len(FILES_DATA)}] Créé : {filepath}")
+        print(f"  ✓ [{created_files}/{len(FILES_DATA)}] Créé/Mis à jour : {filepath}")
 
-    print("\n✅ Tous les fichiers du projet ont été régénérés avec succès !")
+    print("\n✅ Régénération du projet terminée avec succès !")
 
 if __name__ == "__main__":
     generate_project()
