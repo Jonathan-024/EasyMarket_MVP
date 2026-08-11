@@ -95,7 +95,7 @@ def register():
     return redirect(url_for('vendeur.dashboard'))
 
 
-@auth_bp.route('/logout', methods=['POST'])
+@auth_bp.route('/logout', methods=['GET', 'POST'])
 def logout():
     session.clear()
     return redirect(url_for('main.home'))

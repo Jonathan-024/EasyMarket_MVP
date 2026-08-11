@@ -45,9 +45,10 @@ def traitement_reservation(boutique_id):
 
     nom_client = request.form.get('nom_client', '').strip()
     whatsapp_client = request.form.get('whatsapp_client', '').strip()
-    produits_selectionnes_ids = request.form.getlist('produits_ids')
+    produits_selectionnes = request.form.getlist('produits_ids')
+    produits_personnalises = request.form.getlist('produits_custom')
 
-    if not nom_client or not whatsapp_client or not produits_selectionnes_ids:
+    if not nom_client or not whatsapp_client or (not produits_selectionnes and not produits_personnalises):
         flash("Informations incomplètes ou aucun produit sélectionné.", "error")
         return redirect(url_for('main.voir_boutique', boutique_id=boutique_id))
 
@@ -57,24 +58,46 @@ def traitement_reservation(boutique_id):
         db.session.add(client)
         db.session.commit()
 
-    montant_total = 0
+    montant_total = 0.0
     lignes_a_creer = []
 
-    for p_id in produits_selectionnes_ids:
-        # Seuls les produits existants ET marqués disponibles sont retenus
-        produit = Produit.query.filter_by(id=p_id, boutique_id=boutique_id, disponible=True).first()
-        if produit:
-            try:
-                montant_total += float(produit.prix)
-            except ValueError:
-                pass
-            
-            lignes_a_creer.append(
-                LigneReservation(libelle_produit=f"{produit.nom} ({produit.prix} {produit.devise})")
-            )
+    for produit_ref in produits_selectionnes:
+        if not produit_ref:
+            continue
+
+        if produit_ref.startswith('custom:'):
+            libelle = produit_ref.replace('custom:', '', 1).replace('+', ' ')
+            lignes_a_creer.append(LigneReservation(libelle_produit=libelle))
+            continue
+
+        if produit_ref.startswith('custom_'):
+            libelle = produit_ref.replace('custom_', '', 1).replace('+', ' ')
+            lignes_a_creer.append(LigneReservation(libelle_produit=libelle))
+            continue
+
+        produit = Produit.query.get(produit_ref)
+        if not produit or produit.boutique_id != boutique_id:
+            continue
+
+        if not produit.disponible:
+            continue
+
+        try:
+            montant_total += float(produit.prix)
+        except (TypeError, ValueError):
+            pass
+
+        lignes_a_creer.append(
+            LigneReservation(libelle_produit=f"{produit.nom} ({produit.prix} {produit.devise})")
+        )
+
+    for produit_personnalise in produits_personnalises:
+        if not produit_personnalise:
+            continue
+        lignes_a_creer.append(LigneReservation(libelle_produit=produit_personnalise.strip()))
 
     if not lignes_a_creer:
-        flash("Aucun des produits sélectionnés n'est disponible.", "error")
+        flash("Aucun produit valide n'a été sélectionné pour cette réservation.", "error")
         return redirect(url_for('main.voir_boutique', boutique_id=boutique_id))
 
     nouvelle_reservation = Reservation(
@@ -82,16 +105,16 @@ def traitement_reservation(boutique_id):
         montant=str(montant_total),
         devise='CDF',
         client_id=client.id,
-        boutique_id=boutique.id
+        boutique_id=boutique.id,
     )
-    
+
     db.session.add(nouvelle_reservation)
     db.session.commit()
 
     for ligne in lignes_a_creer:
         ligne.reservation_id = nouvelle_reservation.id
         db.session.add(ligne)
-    
+
     db.session.commit()
 
     flash("Votre réservation a été transmise avec succès au vendeur !", "success")
