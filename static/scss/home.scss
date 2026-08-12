@@ -1,6 +1,5 @@
 /* home.scss */
 
-/* ─── Transitions globales ──────────────────────────────── */
 .boutique-card,
 .contact-channel,
 .footer-link,
@@ -9,26 +8,22 @@
   transition: all 0.25s ease;
 }
 
-/* ─── Scroll behavior ───────────────────────────────────── */
 html {
   scroll-behavior: smooth;
 }
 
-/* ─── Légère ombre de séparation entre header et main ───── */
 header {
   position: sticky;
   top: 0;
   z-index: 50;
 }
 
-/* ─── Body ──────────────────────────────────────────────── */
 body {
   font-family: 'Segoe UI', system-ui, sans-serif;
   background: #fff;
   color: $text-dark;
 }
 
-/* ─── Navbar ────────────────────────────────────────────── */
 .navbar {
   background: #fff;
   border-bottom: 2px solid $primary-blue;
@@ -76,7 +71,6 @@ body {
   }
 }
 
-/* ─── Boutons ───────────────────────────────────────────── */
 .btn {
   padding: 8px 18px;
   border-radius: 6px;
@@ -124,7 +118,6 @@ body {
   }
 }
 
-/* ─── Menu burger ───────────────────────────────────────── */
 .burger-menu {
   position: relative;
 
@@ -156,7 +149,6 @@ body {
     }
   }
 
-  /* Animation burger → croix */
   #menu-toggle:checked ~ .menu-icon span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
   }
@@ -188,7 +180,6 @@ body {
     display: flex;
   }
 
-  /* Profil */
   .menu-profile {
     display: flex;
     align-items: center;
@@ -226,14 +217,12 @@ body {
     }
   }
 
-  /* Séparateur */
   .menu-divider {
     height: 1px;
     background: $border-blue;
     margin: 6px 0;
   }
 
-  /* Liens */
   .menu-link {
     display: flex;
     align-items: center;
@@ -263,7 +252,6 @@ body {
   }
 }
 
-/* ─── Hero ──────────────────────────────────────────────── */
 .hero {
   display: flex;
   align-items: center;
@@ -339,7 +327,6 @@ body {
   }
 }
 
-/* ─── Boutique ──────────────────────────────────────────────── */
 .boutiques {
   background: #fff;
   padding: 60px 20px 70px;
@@ -423,7 +410,6 @@ body {
   }
 }
 
-/* ─── About ─────────────────────────────────────────────── */
 .about {
   background: $light-blue;
   padding: 50px 20px;
@@ -456,7 +442,6 @@ body {
   }
 }
 
-/* ─── Contact ─────────────────────────────────────────────── */
 .contact {
   background: #fff;
   padding: 60px 20px 70px;
@@ -536,7 +521,6 @@ body {
   }
 }
 
-/* ─── Séparations entre sections ───────────────────────── */
 main > section {
   border-top: 1px solid $border-blue;
 }
@@ -545,7 +529,6 @@ main > section:first-child {
   border-top: none;
 }
 
-// ─── Validation formulaire ────────────────────────────────
 .input-error {
   border-color: $danger-red;
   box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);

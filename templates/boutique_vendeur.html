@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Gestion Boutique - Vendeur{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/boutique.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="vendeur-boutique-container">
+    <h1>Gestion de mon catalogue</h1>
+    {% if boutique %}
+        <h3>Lien public de votre boutique : 
+            <a href="{{ url_for('main.boutique_publique', boutique_id=boutique.id) }}" target="_blank">
+                {{ request.host_url }}b/{{ boutique.id }}
+            </a>
+        </h3>
+
+        <table style="width:100%; border-collapse: collapse; margin-top: 20px;">
+            <thead style="background:#0A3D62; color:white;">
+                <tr>
+                    <th style="padding:12px;">Nom</th>
+                    <th style="padding:12px;">Prix</th>
+                    <th style="padding:12px;">Statut</th>
+                    <th style="padding:12px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in boutique.produits %}
+                <tr style="border-bottom:1px solid #D6EAFF;">
+                    <td style="padding:12px;">{{ p.nom }}</td>
+                    <td style="padding:12px;">{{ p.prix }} {{ p.devise }}</td>
+                    <td style="padding:12px;">{{ "Disponible" if p.disponible else "Masqué" }}</td>
+                    <td style="padding:12px;">
+                        <form action="{{ url_for('vendeur.toggle_produit', produit_id=p.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" style="padding:6px 12px; background:#1E90FF; color:white; border:none; border-radius:4px; cursor:pointer;">
+                                {{ "Masquer" if p.disponible else "Afficher" }}
+                            </button>
+                        </form>
+                        <form action="{{ url_for('vendeur.delete_produit', produit_id=p.id) }}" method="POST" style="display:inline; margin-left:8px;">
+                            <button type="submit" style="padding:6px 12px; background:#e32d2d; color:white; border:none; border-radius:4px; cursor:pointer;">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Vous n'avez pas encore configuré de boutique.</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/boutique.js') }}"></script>
+{% endblock %}

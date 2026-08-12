@@ -1,7 +1,6 @@
 /* dashboard.scss */
 @use 'variables' as *;
 
-/* ─── Page ──────────────────────────────────────────────── */
 .dashboard-main {
   background: $light-blue;
   min-height: calc(100vh - 70px);
@@ -51,7 +50,6 @@
   }
 }
 
-/* ─── Taux de change ─────────────────────────────────────── */
 .taux-row {
   display: flex;
   align-items: center;
@@ -86,7 +84,6 @@
   }
 }
 
-/* ─── Card danger ────────────────────────────────────────── */
 .kpi-card--danger {
   border-color: #FCCACA;
 
@@ -101,7 +98,6 @@
   border: 1px solid #FCCACA;
 }
 
-/* ─── KPI Grid ───────────────────────────────────────────── */
 .kpi-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -180,7 +176,6 @@
   }
 }
 
-/* ─── Historique ─────────────────────────────────────────── */
 .historique-section {
   .section-heading {
     font-size: 1.2rem;

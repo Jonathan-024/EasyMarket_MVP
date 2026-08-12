@@ -1,7 +1,6 @@
 /* connexion.scss */
 @use 'variables' as *;
 
-/* ─── Page ──────────────────────────────────────────────── */
 .auth-page {
   min-height: 100vh;
   background: $light-blue;
@@ -12,7 +11,6 @@
   padding: 40px 20px;
 }
 
-/* ─── Brand ──────────────────────────────────────────────── */
 .auth-brand {
   display: flex;
   align-items: center;
@@ -30,7 +28,6 @@
   }
 }
 
-/* ─── Card ───────────────────────────────────────────────── */
 .auth-card {
   width: 100%;
   max-width: 400px;
@@ -49,7 +46,6 @@
   }
 }
 
-/* ─── Tabs ───────────────────────────────────────────────── */
 .auth-tabs {
   display: flex;
   background: $light-blue;
@@ -78,7 +74,6 @@
   }
 }
 
-/* ─── Formulaires ────────────────────────────────────────── */
 .auth-form {
   display: none;
   flex-direction: column;
@@ -127,7 +122,6 @@
   margin-top: 2px;
 }
 
-/* ─── Submit ─────────────────────────────────────────────── */
 .auth-submit {
   width: 100%;
   padding: 13px;
@@ -136,7 +130,6 @@
   text-align: center;
 }
 
-/* ─── Switch ─────────────────────────────────────────────── */
 .auth-switch {
   text-align: center;
   font-size: 0.85rem;
@@ -160,7 +153,6 @@
   }
 }
 
-/* ─── Footer note ────────────────────────────────────────── */
 .auth-footer-note {
   margin-top: 24px;
   font-size: 0.8rem;

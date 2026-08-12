@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}{{ boutique.nom }} - Vitrine Officielle{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/boutique.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="public-store-header">
+    <h1>{{ boutique.nom }}</h1>
+    <p>{{ boutique.description }}</p>
+</div>
+
+<div class="public-store-container">
+    <form id="form-reservation-publique" action="{{ url_for('main.traitement_reservation', boutique_id=boutique.id) }}" method="POST">
+        <h3>Catalogue des articles</h3>
+        <div class="grid-produits">
+            {% for p in produits %}
+            <div class="card-produit">
+                <input type="checkbox" name="produits_ids" value="{{ p.id }}" id="p-{{ p.id }}" data-nom="{{ p.nom }}" data-prix="{{ p.prix }} {{ p.devise }}">
+                <label for="p-{{ p.id }}">
+                    <strong>{{ p.nom }}</strong>
+                    <span>{{ p.prix }} {{ p.devise }}</span>
+                </label>
+            </div>
+            {% else %}
+            <p>Aucun produit disponible pour le moment.</p>
+            {% endfor %}
+        </div>
+
+        <div class="client-info-section">
+            <h3>Vos informations de réservation</h3>
+            <input type="text" id="nom_client" name="nom_client" placeholder="Votre nom complet" required>
+            <input type="text" id="whatsapp_client" name="whatsapp_client" placeholder="Votre numéro WhatsApp" required>
+            <button type="submit" class="btn-primary">Valider la réservation</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/boutique.js') }}"></script>
+{% endblock %}
