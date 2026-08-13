@@ -6,6 +6,14 @@ venv/
 .vscode/
 .DS_Store
 
-# Ignorer le script de génération et le fichier de code compilé
+tests/
+
 generate_code_md.py
 code.md
+
+prompt_rules.md
+prompt_templates.md
+roadmap_mvp.md
+test_api.py
+seed.py
+init_db.py
