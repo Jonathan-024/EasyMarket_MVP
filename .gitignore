@@ -6,14 +6,7 @@ venv/
 .vscode/
 .DS_Store
 
-tests/
-
-generate_code_md.py
-code.md
-
-prompt_rules.md
-prompt_templates.md
-roadmap_mvp.md
-test_api.py
-seed.py
-init_db.py
+# --- Fichiers de travail IA (générés ou transitoires) ---
+.ai/index.md
+.ai/response.md
+*.bak
