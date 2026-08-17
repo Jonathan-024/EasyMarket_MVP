@@ -5,14 +5,14 @@
 
 ## Quoi coller selon la demande
 
-| Type de demande | prompt-template.md + project.md | conventions.md | extrait de index.md | fichier(s) réel(s) concerné(s) |
-|---|---|---|---|---|
-| Début de toute conversation | ✅ une fois | — | — | — |
-| Bug sur un élément existant | déjà collé | non | non (tu sais déjà quel fichier) | ✅ juste le fichier en cause |
-| Design / déplacement d'un élément | déjà collé | non | non | ✅ le SCSS/HTML concerné |
-| Nouvelle route / fonctionnalité | déjà collé | ✅ | ✅ (pour voir où ça s'intègre) | selon ce que ça touche |
-| Nouveau fichier dans la structure existante | déjà collé | ✅ | ✅ | — |
-| Question non-code (archi, choix technique) | déjà collé | selon le sujet | non | non |
+| Type de demande                             | prompt-template.md + project.md | conventions.md | extrait de index.md             | fichier(s) réel(s) concerné(s) |
+| ------------------------------------------- | ------------------------------- | -------------- | ------------------------------- | ------------------------------ |
+| Début de toute conversation                 | ✅ une fois                     | —              | —                               | —                              |
+| Bug sur un élément existant                 | déjà collé                      | non            | non (tu sais déjà quel fichier) | ✅ juste le fichier en cause   |
+| Design / déplacement d'un élément           | déjà collé                      | non            | non                             | ✅ le SCSS/HTML concerné       |
+| Nouvelle route / fonctionnalité             | déjà collé                      | ✅             | ✅ (pour voir où ça s'intègre)  | selon ce que ça touche         |
+| Nouveau fichier dans la structure existante | déjà collé                      | ✅             | ✅                              | —                              |
+| Question non-code (archi, choix technique)  | déjà collé                      | selon le sujet | non                             | non                            |
 
 ## Règles d'efficacité
 

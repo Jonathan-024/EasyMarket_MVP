@@ -11,8 +11,8 @@ client, vendeur, administrateur.
 ## Stack technique
 - Backend : Flask + Jinja2, architecture par blueprints, sessions basées sur les rôles, SQLAlchemy
 - Frontend : HTML + SCSS (palette bleue), JS vanilla, logo en SVG inline — PAS de framework JS (pas de Next.js/React)
-- Base de données : [à préciser — SQLite / PostgreSQL / autre]
-- Déploiement cible : [à préciser — Render / Railway / VPS / autre]
+- Base de données : SQLite en développement local, PostgreSQL en production (le disque de Render n'est pas persistant en free tier, SQLite y perdrait ses données à chaque redémarrage)
+- Déploiement cible : Render
 
 ## Rôles et pages
 - **Client** : accueil, réservations
