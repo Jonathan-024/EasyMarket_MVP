@@ -1,3 +1,51 @@
+function showFormMessage(text, type) {
+  const existing = document.querySelector('.form-message');
+  if (existing) existing.remove();
+
+  const msg = document.createElement('p');
+  msg.className = `form-message form-message--${type}`;
+  msg.textContent = text;
+  form.appendChild(msg);
+
+  setTimeout(() => msg.remove(), 4000);
+}
+
+function showFormMessage(text, type) {
+  const existing = document.querySelector('.form-message');
+  if (existing) existing.remove();
+
+  const msg = document.createElement('p');
+  msg.className = `form-message form-message--${type}`;
+  msg.textContent = text;
+  form.appendChild(msg);
+
+  setTimeout(() => msg.remove(), 4000);
+}
+
+function showFormMessage(text, type) {
+  const existing = document.querySelector('.form-message');
+  if (existing) existing.remove();
+
+  const msg = document.createElement('p');
+  msg.className = `form-message form-message--${type}`;
+  msg.textContent = text;
+  form.appendChild(msg);
+
+  setTimeout(() => msg.remove(), 4000);
+}
+
+function showFormMessage(text, type) {
+  const existing = document.querySelector('.form-message');
+  if (existing) existing.remove();
+
+  const msg = document.createElement('p');
+  msg.className = `form-message form-message--${type}`;
+  msg.textContent = text;
+  form.appendChild(msg);
+
+  setTimeout(() => msg.remove(), 4000);
+}
+
 const form = document.querySelector('.contact-form');
 if (form) {
   form.addEventListener('submit', (event) => {
@@ -24,9 +72,10 @@ if (form) {
       })
       .then(() => {
         form.reset();
+        showFormMessage('Message envoyé, merci !', 'success');
       })
       .catch(() => {
-        console.warn('Le formulaire de contact n’a pas de traitement backend configuré.');
+        showFormMessage('Erreur lors de l’envoi, réessaie plus tard.', 'error');
       });
   });
 }

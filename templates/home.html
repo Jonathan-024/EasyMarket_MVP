@@ -52,12 +52,13 @@
     <h2 class="section-title">Contactez-nous</h2>
 
     <div class="contact-wrapper">
-      <div class="contact-form">
-        <input type="text" class="form-input" placeholder="Votre nom">
-        <input type="email" class="form-input" placeholder="Votre email">
-        <textarea class="form-input" rows="4" placeholder="Votre message"></textarea>
-        <button class="btn primary form-input">Envoyer</button>
-      </div>
+      <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" data-ajax="true">
+        <input type="hidden" name="access_key" value="b7efc4b7-4e6c-416b-bcca-b030337d97f4">
+        <input type="text" name="name" class="form-input" placeholder="Votre nom" required>
+        <input type="email" name="email" class="form-input" placeholder="Votre email" required>
+        <textarea name="message" class="form-input" rows="4" placeholder="Votre message" required></textarea>
+        <button type="submit" class="btn primary form-input">Envoyer</button>
+      </form>
     </div>
   </section>
 </main>
