@@ -159,6 +159,17 @@
 - Alternative écartée : [à remplir, ou supprimer cette ligne si aucune]
 
 
+### [2026-08-19] BROUILLON — Test pour valider install_hook.sh
+- Fichiers touchés :
+  - M	.ai/decisions.md
+  - A	.ai/index.md
+  - M	.ai/install_hook.sh
+  - M	.gitignore
+- Contexte : [à remplir — pourquoi ce changement ?]
+- Décision : [à remplir]
+- Alternative écartée : [à remplir, ou supprimer cette ligne si aucune]
+
+
 ### [2026-08-19] BROUILLON — Test
 - Fichiers touchés :
   - R100	ai/GUIDE.md	.ai/GUIDE.md
