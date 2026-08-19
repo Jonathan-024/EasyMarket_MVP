@@ -7,16 +7,25 @@
 ## Structure des dossiers
 ```
 easymarket/
-├── app/
-│   ├── blueprints/       # un dossier par domaine (auth, vendeur, admin, client)
-│   ├── templates/        # Jinja2, un sous-dossier par blueprint
-│   ├── static/
-│   │   ├── scss/
-│   │   └── js/
-│   └── models/           # modèles DB (à créer)
-├── requirements.txt
-├── .env.example
-└── .gitignore
+├── .ai/
+├── docs/
+├── instance/
+├── models/
+├── routes/
+├── scripts/
+├── static/
+│   ├── css/
+│   ├── js/
+│   └── scss/
+├── templates/
+├── tests/ 
+├── utils/ 
+├── .env
+├── .gitignore
+├── app.py
+├── config.py
+├── README.md
+└── requirements.txt
 ```
 [Ajuste cet arbre à ta structure réelle si elle diffère.]
 

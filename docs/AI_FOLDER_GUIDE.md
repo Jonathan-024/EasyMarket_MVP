@@ -37,10 +37,10 @@ l'utiliser, et ce qu'il y a (ou non) à remplir soi-même.
 - **`draft_decision.py`** → crée les brouillons dans `decisions.md`
 - **`apply_changes.py`** → écrit dans les fichiers le code donné par l'IA :
   ```
-  python ai/apply_changes.py ai/response.md          # aperçu
-  python ai/apply_changes.py ai/response.md --apply   # écriture réelle
+  python .ai/apply_changes.py .ai/response.md          # aperçu
+  python .ai/apply_changes.py .ai/response.md --apply   # écriture réelle
   ```
-- **`install_hook.sh`** → à lancer **une seule fois** (`bash ai/install_hook.sh`) pour que les deux premiers scripts se lancent automatiquement après chaque commit. Ensuite, on l'oublie.
+- **`install_hook.sh`** → à lancer **une seule fois** (`bash .ai/install_hook.sh`) pour que les deux premiers scripts se lancent automatiquement après chaque commit. Ensuite, on l'oublie.
 
 ## 4. Générés ou remplis automatiquement — jamais à toucher à la main
 
