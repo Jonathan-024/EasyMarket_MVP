@@ -7,6 +7,5 @@ venv/
 .DS_Store
 
 # --- Fichiers de travail IA (générés ou transitoires) ---
-.ai/index.md
 .ai/response.md
 *.bak

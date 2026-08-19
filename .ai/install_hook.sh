@@ -4,6 +4,10 @@ set -e
 HOOK=".git/hooks/post-commit"
 cat > "$HOOK" << 'EOF'
 #!/usr/bin/env bash
+if [ -n "$AI_HOOK_RUNNING" ]; then
+  exit 0
+fi
+export AI_HOOK_RUNNING=1
 python .ai/generate_index.py . --out .ai/index.md
 python .ai/draft_decision.py --decisions .ai/decisions.md
 git add .ai/index.md .ai/decisions.md

@@ -16,6 +16,169 @@
 
 ## Historique
 
+### [2026-08-19] BROUILLON — Test pour valider install_hook.sh
+- Fichiers touchés :
+  - M	.ai/decisions.md
+  - A	.ai/index.md
+  - M	.ai/install_hook.sh
+  - M	.gitignore
+- Contexte : [à remplir — pourquoi ce changement ?]
+- Décision : [à remplir]
+- Alternative écartée : [à remplir, ou supprimer cette ligne si aucune]
+
+
+### [2026-08-19] BROUILLON — Test pour valider install_hook.sh
+- Fichiers touchés :
+  - M	.ai/decisions.md
+  - A	.ai/index.md
+  - M	.ai/install_hook.sh
+  - M	.gitignore
+- Contexte : [à remplir — pourquoi ce changement ?]
+- Décision : [à remplir]
+- Alternative écartée : [à remplir, ou supprimer cette ligne si aucune]
+
+
+### [2026-08-19] BROUILLON — Test pour valider install_hook.sh
+- Fichiers touchés :
+  - M	.ai/decisions.md
+  - A	.ai/index.md
+  - M	.ai/install_hook.sh
+  - M	.gitignore
+- Contexte : [à remplir — pourquoi ce changement ?]
+- Décision : [à remplir]
+- Alternative écartée : [à remplir, ou supprimer cette ligne si aucune]
+
+
+### [2026-08-19] BROUILLON — Test pour valider install_hook.sh
+- Fichiers touchés :
+  - M	.ai/decisions.md
+  - A	.ai/index.md
+  - M	.ai/install_hook.sh
+  - M	.gitignore
+- Contexte : [à remplir — pourquoi ce changement ?]
+- Décision : [à remplir]
+- Alternative écartée : [à remplir, ou supprimer cette ligne si aucune]
+
+
+### [2026-08-19] BROUILLON — Test pour valider install_hook.sh
+- Fichiers touchés :
+  - M	.ai/decisions.md
+  - A	.ai/index.md
+  - M	.ai/install_hook.sh
+  - M	.gitignore
+- Contexte : [à remplir — pourquoi ce changement ?]
+- Décision : [à remplir]
+- Alternative écartée : [à remplir, ou supprimer cette ligne si aucune]
+
+
+### [2026-08-19] BROUILLON — Test pour valider install_hook.sh
+- Fichiers touchés :
+  - M	.ai/decisions.md
+  - A	.ai/index.md
+  - M	.ai/install_hook.sh
+  - M	.gitignore
+- Contexte : [à remplir — pourquoi ce changement ?]
+- Décision : [à remplir]
+- Alternative écartée : [à remplir, ou supprimer cette ligne si aucune]
+
+
+### [2026-08-19] BROUILLON — Test pour valider install_hook.sh
+- Fichiers touchés :
+  - M	.ai/decisions.md
+  - A	.ai/index.md
+  - M	.ai/install_hook.sh
+  - M	.gitignore
+- Contexte : [à remplir — pourquoi ce changement ?]
+- Décision : [à remplir]
+- Alternative écartée : [à remplir, ou supprimer cette ligne si aucune]
+
+
+### [2026-08-19] BROUILLON — Test pour valider install_hook.sh
+- Fichiers touchés :
+  - M	.ai/decisions.md
+  - A	.ai/index.md
+  - M	.ai/install_hook.sh
+  - M	.gitignore
+- Contexte : [à remplir — pourquoi ce changement ?]
+- Décision : [à remplir]
+- Alternative écartée : [à remplir, ou supprimer cette ligne si aucune]
+
+
+### [2026-08-19] BROUILLON — Test pour valider install_hook.sh
+- Fichiers touchés :
+  - M	.ai/decisions.md
+  - A	.ai/index.md
+  - M	.ai/install_hook.sh
+  - M	.gitignore
+- Contexte : [à remplir — pourquoi ce changement ?]
+- Décision : [à remplir]
+- Alternative écartée : [à remplir, ou supprimer cette ligne si aucune]
+
+
+### [2026-08-19] BROUILLON — Test pour valider install_hook.sh
+- Fichiers touchés :
+  - M	.ai/decisions.md
+  - A	.ai/index.md
+  - M	.ai/install_hook.sh
+  - M	.gitignore
+- Contexte : [à remplir — pourquoi ce changement ?]
+- Décision : [à remplir]
+- Alternative écartée : [à remplir, ou supprimer cette ligne si aucune]
+
+
+### [2026-08-19] BROUILLON — Test pour valider install_hook.sh
+- Fichiers touchés :
+  - M	.ai/decisions.md
+  - A	.ai/index.md
+  - M	.ai/install_hook.sh
+  - M	.gitignore
+- Contexte : [à remplir — pourquoi ce changement ?]
+- Décision : [à remplir]
+- Alternative écartée : [à remplir, ou supprimer cette ligne si aucune]
+
+
+### [2026-08-19] BROUILLON — Test pour valider install_hook.sh
+- Fichiers touchés :
+  - M	.ai/decisions.md
+  - A	.ai/index.md
+  - M	.ai/install_hook.sh
+  - M	.gitignore
+- Contexte : [à remplir — pourquoi ce changement ?]
+- Décision : [à remplir]
+- Alternative écartée : [à remplir, ou supprimer cette ligne si aucune]
+
+
+### [2026-08-19] BROUILLON — Test pour valider install_hook.sh
+- Fichiers touchés :
+  - M	.ai/decisions.md
+  - A	.ai/index.md
+  - M	.ai/install_hook.sh
+  - M	.gitignore
+- Contexte : [à remplir — pourquoi ce changement ?]
+- Décision : [à remplir]
+- Alternative écartée : [à remplir, ou supprimer cette ligne si aucune]
+
+
+### [2026-08-19] BROUILLON — Test
+- Fichiers touchés :
+  - R100	ai/GUIDE.md	.ai/GUIDE.md
+  - R100	ai/apply_changes.py	.ai/apply_changes.py
+  - R074	ai/conventions.md	.ai/conventions.md
+  - A	.ai/decisions.md
+  - R100	ai/draft_decision.py	.ai/draft_decision.py
+  - R100	ai/generate_index.py	.ai/generate_index.py
+  - R100	ai/install_hook.sh	.ai/install_hook.sh
+  - R100	ai/project.md	.ai/project.md
+  - R100	ai/prompt-template.md	.ai/prompt-template.md
+  - D	ai/decisions.md
+  - D	ai/index.md
+  - D	ai/response.md
+  - M	docs/AI_FOLDER_GUIDE.md
+- Contexte : [à remplir — pourquoi ce changement ?]
+- Décision : [à remplir]
+- Alternative écartée : [à remplir, ou supprimer cette ligne si aucune]
+
+
 ### [2026-08-19] BROUILLON — Test
 - Fichiers touchés :
   - R100	ai/GUIDE.md	.ai/GUIDE.md
