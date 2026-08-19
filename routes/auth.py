@@ -38,7 +38,7 @@ def login():
     whatsapp = normalize_whatsapp(request.form.get('whatsapp', ''))
     code = request.form.get('code', '').strip()
 
-    if whatsapp == ADMIN_WHATSAPP and code == ADMIN_CODE:
+    if whatsapp == normalize_whatsapp(ADMIN_WHATSAPP) and code == ADMIN_CODE:
         session['role'] = 'admin'
         return redirect(url_for('admin.dashboard'))
 

@@ -46,6 +46,18 @@ function showFormMessage(text, type) {
   setTimeout(() => msg.remove(), 4000);
 }
 
+function showFormMessage(text, type) {
+  const existing = document.querySelector('.form-message');
+  if (existing) existing.remove();
+
+  const msg = document.createElement('p');
+  msg.className = `form-message form-message--${type}`;
+  msg.textContent = text;
+  form.appendChild(msg);
+
+  setTimeout(() => msg.remove(), 4000);
+}
+
 const form = document.querySelector('.contact-form');
 if (form) {
   form.addEventListener('submit', (event) => {
