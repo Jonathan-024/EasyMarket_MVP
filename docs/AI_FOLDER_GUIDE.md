@@ -42,6 +42,29 @@ l'utiliser, et ce qu'il y a (ou non) à remplir soi-même.
   ```
 - **`install_hook.sh`** → à lancer **une seule fois** (`bash .ai/install_hook.sh`) pour que les deux premiers scripts se lancent automatiquement après chaque commit. Ensuite, on l'oublie.
 
+### `generate_code_md.py`
+
+- **Utilité** : extrait tout le code lié à une fonctionnalité ou partie précise du site
+  (ex: footer, boutique, reservation) — fichiers entiers si le nom correspond,
+  blocs HTML/SCSS/JS ciblés sinon — et le regroupe dans `code.md`
+- **Usage** :
+```bash
+  python .ai/generate_code_md.py --keywords vendeur boutique --output .ai/code.md
+  python .ai/generate_code_md.py --tags footer --classes footer-link footer-content --scan-sections --output .ai/code.md
+```
+- **Quand l'utiliser** : avant de coller une demande à l'IA qui touche une
+  fonctionnalité précise — colle le contenu de `code.md` généré à la place de
+  chercher les fichiers toi-même
+
+### `code.md`
+
+- **Utilité** : contient le code extrait par `generate_code_md.py` pour la
+  dernière fonctionnalité ciblée
+- **Usage** : coller son contenu dans le chat juste après `project.md`
+  (et `conventions.md` si la demande touche la structure)
+- **À remplir** : rien — régénéré à chaque nouvelle extraction, écrase le
+  contenu précédent
+
 ## 4. Générés ou remplis automatiquement — jamais à toucher à la main
 
 - **`index.md`** — régénéré automatiquement à chaque commit

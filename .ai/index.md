@@ -8,13 +8,16 @@
 - `.gitignore`
 - `app.py`
 - `config.py`
+- `generate_code_md.py`
 - `requirements.txt`
 
 ## .ai/
 
 - `apply_changes.py` — usr/bin/env python3
 - `draft_decision.py` — usr/bin/env python3
+- `generate_code_md.py`
 - `generate_index.py` — usr/bin/env python3
+- `requirements.txt`
 
 ## models/
 

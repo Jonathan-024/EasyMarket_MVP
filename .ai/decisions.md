@@ -16,6 +16,23 @@
 
 ## Historique
 
+### [2026-08-26] BROUILLON — CrÃ©ation de generate_code_md.py et code.md, et autres amÃ©liorations
+- Fichiers touchés :
+  - D	.ai/GUIDE.md
+  - A	.ai/code.md
+  - A	.ai/generate_code_md.py
+  - A	.ai/requirements.txt
+  - D	PROMPT_RULES.md
+  - D	PROMPT_TEMPLATES.md
+  - D	ROADMAP_MVP.md
+  - D	code.md
+  - M	docs/AI_FOLDER_GUIDE.md
+  - D	test_api.py
+- Contexte : [à remplir — pourquoi ce changement ?]
+- Décision : [à remplir]
+- Alternative écartée : [à remplir, ou supprimer cette ligne si aucune]
+
+
 ### [2026-08-19] BROUILLON — Test pour valider install_hook.sh
 - Fichiers touchés :
   - M	.ai/decisions.md
