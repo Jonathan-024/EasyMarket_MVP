@@ -8,7 +8,6 @@
 - `.gitignore`
 - `app.py`
 - `config.py`
-- `generate_code_md.py`
 - `requirements.txt`
 
 ## .ai/

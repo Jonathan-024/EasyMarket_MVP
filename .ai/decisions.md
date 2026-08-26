@@ -16,6 +16,15 @@
 
 ## Historique
 
+### [2026-08-26] BROUILLON — Modif de code.md
+- Fichiers touchés :
+  - M	.ai/code.md
+  - D	generate_code_md.py
+- Contexte : [à remplir — pourquoi ce changement ?]
+- Décision : [à remplir]
+- Alternative écartée : [à remplir, ou supprimer cette ligne si aucune]
+
+
 ### [2026-08-26] BROUILLON — CrÃ©ation de generate_code_md.py et code.md, et autres amÃ©liorations
 - Fichiers touchés :
   - D	.ai/GUIDE.md
