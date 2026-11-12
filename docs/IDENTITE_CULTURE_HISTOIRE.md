@@ -18,9 +18,17 @@ L'objectif initial n'est pas de créer une place de marché géante. C'est de re
 
 Le fondateur a relié cette difficulté vécue à ses connaissances en création d'entreprise : un projet utile doit partir d'un problème **concret et clairement observable**. L'idée est alors apparue de permettre aux clients de **transmettre leur liste de courses à l'avance**, afin que la commerçante puisse anticiper la préparation et que le retrait soit plus simple.
 
-**Le concept a précédé le nom :** au moment où l'idée est née, le fondateur ne savait pas encore comment l'appeler. La commerçante à l'origine de cette expérience a par la suite accepté de participer au **premier test** d'EasyMarket.
+**Le concept a précédé le nom :** au moment où l'idée est née, le fondateur ne savait pas encore comment l'appeler. Il explique avoir trouvé son inspiration pour nommer le projet après avoir regardé une vidéo de **Racem Flazi**, qui évoquait notamment **Free** et encourageait à choisir un nom simple, capable d'améliorer la perception de l'entreprise. La commerçante à l'origine de cette expérience a par la suite accepté de participer au **premier test** d'EasyMarket.
 
 **Précision historique :** le moment exact du déclic, la date d'adoption du nom et les étapes entre l'idée et les premiers prototypes restent à documenter ; ne pas leur attribuer de date sans témoignage.
+
+### Le choix du nom et l'influence des idées de communication
+
+**Témoignage du fondateur (12 novembre 2026).** Le nom **EasyMarket** a été choisi après la naissance du concept. Le déclencheur rapporté est une vidéo de **Racem Flazi** : il y découvrait notamment l'exemple de **Free** et l'importance de trouver un nom d'entreprise simple et favorable à sa perception. Le nom choisi reflète l'ambition de rendre les courses de proximité plus faciles, mais **la formulation précise voulue par le fondateur reste à valider**.
+
+Ce contenu lui a également transmis un principe de **communication efficace à faible budget** : l'enjeu est de bâtir une idée ou une proposition suffisamment claire et remarquable pour être remarquée et partagée, sans devoir dépenser massivement en publicité. Il se souvient d'une image attribuée à **Xavier Niel** : « construire sa tour en bois » parce que le bois coûte moins cher. **À traiter comme métaphore rapportée**, et non comme une citation authentifiée de Xavier Niel ou un fait de construction vérifié. Des articles sur la communication de Free décrivent par ailleurs un recours important au bouche-à-oreille et à la couverture médiatique pour son lancement : [La Tribune (2012)](https://www.latribune.fr/technos-medias/telecoms/20120109trib000676747/free-un-buzz-gratuit-estime-a-8-millions-d-euros.html).
+
+**Point à préserver :** cette source d'inspiration pour le nom et la publicité est distincte du **problème vécu chez la commerçante** qui a donné naissance au service. Ne pas attribuer à EasyLearn l'origine du nom d'EasyMarket sans témoignage.
 
 ### Origines documentées
 
@@ -36,7 +44,7 @@ Nous avons connu nous-mêmes les longues files d'attente dans un commerce de pro
 
 Cette situation nous a amenés à poser une question simple : **et si le vendeur connaissait la liste des clients avant leur arrivée ?** En reliant ce problème à nos réflexions sur l'entrepreneuriat, nous avons imaginé un service qui permet d'envoyer sa liste, de laisser le commerçant préparer la commande et de passer la récupérer en boutique.
 
-L'idée est venue **avant son nom**. Plus tard, elle est devenue EasyMarket. La commerçante dont l'activité avait inspiré le projet a accepté d'en tester la première version.
+L'idée est venue **avant son nom**. La recherche d'un nom simple a ensuite été influencée par une vidéo de Racem Flazi mentionnant notamment Free et l'importance de la perception d'une marque. Le projet est devenu EasyMarket. La commerçante dont l'activité avait inspiré le projet a accepté d'en tester la première version.
 
 EasyMarket conserve ainsi son objectif initial : répondre à une difficulté quotidienne concrète, sans compliquer les habitudes des clients ou le travail des vendeurs.
 
@@ -119,8 +127,16 @@ Cette comparaison décrit **le positionnement choisi** et non toutes les autres 
 
 ## 11. Points à compléter avec le fondateur
 
+### Idée publicitaire à examiner ultérieurement — ne pas présenter comme fait établi
+
+Le fondateur souhaite revenir plus tard sur une seconde vidéo de Racem Flazi, qui racontait que **Red Bull** aurait disposé des canettes vides dans des poubelles pour donner une impression de forte consommation. Cette anecdote circule largement, **mais son authenticité n'est pas établie** ; elle a été décrite comme une légende non confirmée et a fait l'objet de contestations ([Creative Bloq, 2025](https://www.creativebloq.com/creative-inspiration/advertising/what-we-can-learn-from-red-bulls-legendary-empty-can-campaign) ; [C'est vrai ça ?, 2025](https://cestvraica.com/debunk/le-marketing-de-genie-de-red-bull)).
+
+**Principe pour EasyMarket :** lors d'une future discussion sur la publicité à faible budget, examiner les mécanismes de notoriété, de bouche-à-oreille et de preuve sociale **authentique**, sans fausse popularité, témoignages inventés ou manipulation des clients.
+
+
+
 - **Période à préciser :** à quelle époque l'idée née de cette attente s'est-elle transformée en projet concret, puis en premiers prototypes ?
-- **Nom :** comment et quand le nom « EasyMarket » a-t-il été choisi après la naissance de l'idée ? Quelle nuance doit porter « Easy » ?
+- **Nom :** inspiration identifiée (vidéo de Racem Flazi, exemple de Free, simplicité et perception). À préciser : la date du choix du nom et le sens exact que le fondateur souhaite donner au mot « Easy ».
 - **Ambition :** rester centré sur la réservation/retrait, ou proposer à terme d'autres services pour les commerces ?
 - **Identité de marque :** valider ou réécrire mission, vision, valeurs et devise.
 - **Preuves :** après le pilote, ajouter les premiers résultats réels, sans inventer une success-story.
