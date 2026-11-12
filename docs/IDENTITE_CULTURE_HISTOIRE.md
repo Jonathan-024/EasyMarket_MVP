@@ -1,6 +1,6 @@
 # EasyMarket — Histoire, mission, vision et culture
 
-> **Statut : document de travail (12 novembre 2026).** Les éléments de parcours et les décisions fonctionnelles ci-dessous sont documentés ; les formulations de mission, de vision, de devise et de valeurs sont **proposées, non encore validées par le fondateur**. À ne pas publier comme histoire officielle sans relecture et validation.
+> **Statut : document de travail (mis à jour le 12 novembre 2026).** L'origine vécue est documentée d'après le témoignage direct du fondateur. Le récit public, la mission, la vision, la devise et les valeurs sont encore **des formulations proposées, à relire et valider**. À ne pas publier comme identité officielle avant relecture.
 >
 > Ce document concerne l'identité du projet. Il ne constitue ni un engagement commercial de performance, ni une preuve de disponibilité du site.
 
@@ -10,7 +10,17 @@
 
 L'objectif initial n'est pas de créer une place de marché géante. C'est de rendre plus efficace une relation commerciale qui existe déjà entre un commerçant et ses habitués.
 
-## 2. Histoire du projet — faits établis et récit provisoire
+## 2. Histoire du projet — témoignage du fondateur et repères
+
+### Le déclic : une longue attente dans une boutique fréquentée par le fondateur
+
+**Témoignage communiqué par le fondateur le 12 novembre 2026 :** lui et les siens ont fait partie des habitués d'une commerçante dont le magasin attire beaucoup de monde. Lorsqu'ils y achetaient des marchandises, l'attente pouvait dépasser **une heure** avant de les recevoir.
+
+Le fondateur a relié cette difficulté vécue à ses connaissances en création d'entreprise : un projet utile doit partir d'un problème **concret et clairement observable**. L'idée est alors apparue de permettre aux clients de **transmettre leur liste de courses à l'avance**, afin que la commerçante puisse anticiper la préparation et que le retrait soit plus simple.
+
+**Le concept a précédé le nom :** au moment où l'idée est née, le fondateur ne savait pas encore comment l'appeler. La commerçante à l'origine de cette expérience a par la suite accepté de participer au **premier test** d'EasyMarket.
+
+**Précision historique :** le moment exact du déclic, la date d'adoption du nom et les étapes entre l'idée et les premiers prototypes restent à documenter ; ne pas leur attribuer de date sans témoignage.
 
 ### Origines documentées
 
@@ -20,15 +30,17 @@ L'objectif initial n'est pas de créer une place de marché géante. C'est de re
 - **Décision structurante :** un commerçant n'a **pas besoin de créer son catalogue dès le premier jour**. Le client peut écrire librement ses courses ; le vendeur fixe les prix et signale les indisponibilités. Le paiement intervient au retrait.
 - **Stade à la date de rédaction :** une application pilote est en cours de construction/publication et d'audit ; l'utilisation réelle régulière et l'impact ne sont pas encore démontrés par des résultats terrain.
 
-### Récit public proposé (à valider)
+### Récit public proposé (basé sur ce témoignage ; formulation à valider)
 
-Dans les commerces de proximité, de nombreux clients connaissent déjà les produits qu'ils achètent, leurs conditionnements et les commerçants auprès desquels ils se fournissent. Ils n'ont pas nécessairement besoin d'un nouveau catalogue complexe : ils veulent surtout pouvoir préparer leurs achats sans perdre de temps.
+Nous avons connu nous-mêmes les longues files d'attente dans un commerce de proximité. Chez une commerçante que nous fréquentions régulièrement, l'affluence était telle qu'il fallait parfois attendre plus d'une heure pour récupérer nos achats.
 
-EasyMarket part de cette réalité. Le client transmet sa liste à l'avance ; le vendeur vérifie, ajuste et prépare ; le client vient récupérer et paie en boutique.
+Cette situation nous a amenés à poser une question simple : **et si le vendeur connaissait la liste des clients avant leur arrivée ?** En reliant ce problème à nos réflexions sur l'entrepreneuriat, nous avons imaginé un service qui permet d'envoyer sa liste, de laisser le commerçant préparer la commande et de passer la récupérer en boutique.
 
-L'ambition est d'introduire progressivement le numérique là où il apporte un avantage concret, tout en conservant les pratiques utiles et la confiance déjà construite entre vendeurs et acheteurs.
+L'idée est venue **avant son nom**. Plus tard, elle est devenue EasyMarket. La commerçante dont l'activité avait inspiré le projet a accepté d'en tester la première version.
 
-**Limite de ce récit :** il expose une logique d'origine et une observation de marché. Il ne prétend pas raconter une anecdote personnelle précise ou le premier événement déclencheur du fondateur. Cette partie devra être complétée uniquement avec son témoignage.
+EasyMarket conserve ainsi son objectif initial : répondre à une difficulté quotidienne concrète, sans compliquer les habitudes des clients ou le travail des vendeurs.
+
+**Note éditoriale :** ce récit est fidèle aux éléments transmis par le fondateur ; il reste une proposition de rédaction publique à relire. Il ne faut pas présenter comme déjà mesurés des gains de temps qui seront évalués pendant le pilote.
 
 ## 3. Mission — proposition
 
@@ -107,8 +119,8 @@ Cette comparaison décrit **le positionnement choisi** et non toutes les autres 
 
 ## 11. Points à compléter avec le fondateur
 
-- **Véritable déclic personnel :** quand et pourquoi l'idée EasyMarket est-elle apparue initialement ? Quelle situation précise l'a inspirée ?
-- **Nom :** pourquoi le choix du terme « EasyMarket » ? Quelle nuance doit porter « Easy » ?
+- **Période à préciser :** à quelle époque l'idée née de cette attente s'est-elle transformée en projet concret, puis en premiers prototypes ?
+- **Nom :** comment et quand le nom « EasyMarket » a-t-il été choisi après la naissance de l'idée ? Quelle nuance doit porter « Easy » ?
 - **Ambition :** rester centré sur la réservation/retrait, ou proposer à terme d'autres services pour les commerces ?
 - **Identité de marque :** valider ou réécrire mission, vision, valeurs et devise.
 - **Preuves :** après le pilote, ajouter les premiers résultats réels, sans inventer une success-story.
