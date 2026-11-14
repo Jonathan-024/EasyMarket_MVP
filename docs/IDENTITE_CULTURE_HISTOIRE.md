@@ -150,4 +150,4 @@ Le fondateur souhaite revenir plus tard sur une seconde vidéo de Racem Flazi, q
 - [Bilan et plan de reprise](https://app.notion.com/p/4151494ec694813b860dc42a2de19cf4)
 - [Pages et fonctionnalités MVP](https://app.notion.com/p/4151494ec694813c9554c7868787a607)
 
-**Règle d'édition :** lorsque le fondateur valide les formulations, retirer la mention « proposition » de celles approuvées, conserver l'historique du document, puis réutiliser les formulations validées sur le site et les canaux professionnels.
+**Règle d'édition :** la devise est officiellement validée ; lorsque le fondateur confirme d'autres formulations, retirer la mention « proposition » de celles approuvées, conserver l'historique du document, puis réutiliser les formulations validées sur le site et les canaux professionnels.
