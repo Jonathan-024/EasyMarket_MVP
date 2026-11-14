@@ -1,6 +1,6 @@
 # EasyMarket — Histoire, mission, vision et culture
 
-> **Statut : document de travail (mis à jour le 12 novembre 2026).** L'origine vécue est documentée d'après le témoignage direct du fondateur. Le récit public, la mission, la vision, la devise et les valeurs sont encore **des formulations proposées, à relire et valider**. À ne pas publier comme identité officielle avant relecture.
+> **Statut : document de travail (mis à jour le 14 novembre 2026).** L'origine vécue est documentée d'après le témoignage direct du fondateur. La devise **« Moins d'attente. Plus de simplicité. »** a été explicitement validée par le fondateur le 14 novembre 2026. Le récit public, la mission, la vision et les valeurs restent **des formulations proposées, à relire et valider**.
 >
 > Ce document concerne l'identité du projet. Il ne constitue ni un engagement commercial de performance, ni une preuve de disponibilité du site.
 
@@ -67,10 +67,10 @@ Cette vision est un cap à long terme, **pas une promesse de présence dans plus
 - **Promesse :** gagner du temps sur la préparation et le retrait des achats, sans compliquer les habitudes.
 - **Positionnement initial :** solution de réservation et de préparation pour commerces physiques, avec paiement au retrait.
 - **Publics prioritaires :** commerçant pilote, puis ses clients habituels ; extension éventuelle à d'autres commerces après résultats vérifiés.
-- **Devise de travail possible :** **« Simple pour le client. Utile pour le vendeur. »**
-- **Signature descriptive possible :** **« Réservez. Récupérez. Continuez. »**
+- **Devise officielle validée le 14 novembre 2026 :** **« Moins d'attente. Plus de simplicité. »**
+- **Signature descriptive alternative non retenue comme devise :** « Réservez. Récupérez. Continuez. »
 
-Aucune devise ou signature ci-dessus n'est officiellement validée.
+La devise exprime une direction à poursuivre ; elle ne constitue pas une garantie de durée d'attente sans mesures réelles.
 
 ## 6. Valeurs proposées et comportements observables
 
@@ -138,7 +138,7 @@ Le fondateur souhaite revenir plus tard sur une seconde vidéo de Racem Flazi, q
 - **Période à préciser :** à quelle époque l'idée née de cette attente s'est-elle transformée en projet concret, puis en premiers prototypes ?
 - **Nom :** inspiration identifiée (vidéo de Racem Flazi, exemple de Free, simplicité et perception). À préciser : la date du choix du nom et le sens exact que le fondateur souhaite donner au mot « Easy ».
 - **Ambition :** rester centré sur la réservation/retrait, ou proposer à terme d'autres services pour les commerces ?
-- **Identité de marque :** valider ou réécrire mission, vision, valeurs et devise.
+- **Identité de marque :** devise validée le 14 novembre 2026 ; valider ou réécrire mission, vision et valeurs.
 - **Preuves :** après le pilote, ajouter les premiers résultats réels, sans inventer une success-story.
 
 ---
