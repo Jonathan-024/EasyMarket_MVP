@@ -1,6 +1,6 @@
 # EasyMarket — Histoire, mission, vision et culture
 
-> **Statut : document de travail (mis à jour le 14 novembre 2026).** L'origine vécue est documentée d'après le témoignage direct du fondateur. La devise **« Moins d'attente. Plus de simplicité. »** a été explicitement validée par le fondateur le 14 novembre 2026. Le récit public, la mission, la vision et les valeurs restent **des formulations proposées, à relire et valider**.
+> **Statut : identité fondamentale validée le 14 novembre 2026.** L'origine vécue est documentée d'après le témoignage direct du fondateur. **Mission, vision, cinq valeurs et devise** ont été validées par le fondateur. Le récit public reste un projet rédactionnel à relire ; cette validation ne confirme pas l'ouverture opérationnelle du service.
 >
 > Ce document concerne l'identité du projet. Il ne constitue ni un engagement commercial de performance, ni une preuve de disponibilité du site.
 
@@ -50,15 +50,15 @@ EasyMarket conserve ainsi son objectif initial : répondre à une difficulté qu
 
 **Note éditoriale :** ce récit est fidèle aux éléments transmis par le fondateur ; il reste une proposition de rédaction publique à relire. Il ne faut pas présenter comme déjà mesurés des gains de temps qui seront évalués pendant le pilote.
 
-## 3. Mission — proposition
+## 3. Mission — officielle (validée le 14 novembre 2026)
 
-> Simplifier les achats de proximité en permettant aux clients de réserver leurs courses à l'avance et aux commerçants de mieux préparer les commandes.
+> Faciliter les achats de proximité en permettant aux clients de préparer leurs courses à l'avance et aux commerçants d'organiser efficacement les commandes.
 
 La mission se traduit par une action claire : faire fonctionner une réservation utile sans imposer au client un compte ou au vendeur un catalogue complet.
 
-## 4. Vision — proposition
+## 4. Vision — officielle (validée le 14 novembre 2026)
 
-> Construire un réseau de commerces de proximité plus accessibles, organisés et efficaces, grâce à des outils numériques simples qui préservent la relation humaine.
+> Bâtir un vaste réseau de commerces de proximité connectés, où chacun peut effectuer ses achats plus facilement, gagner du temps et bénéficier d'un service fiable.
 
 Cette vision est un cap à long terme, **pas une promesse de présence dans plusieurs commerces à ce jour**.
 
@@ -72,15 +72,15 @@ Cette vision est un cap à long terme, **pas une promesse de présence dans plus
 
 La devise exprime une direction à poursuivre ; elle ne constitue pas une garantie de durée d'attente sans mesures réelles.
 
-## 6. Valeurs proposées et comportements observables
+## 6. Valeurs officielles et comportements observables (validés le 14 novembre 2026)
 
-| Valeur proposée | Ce qu'elle doit changer dans les décisions |
+| Valeur | Engagement concret |
 | --- | --- |
-| **Simplicité utile** | Le client peut envoyer une liste libre, même avec un catalogue vide. Ne pas introduire une étape sans valeur pratique. |
-| **Confiance** | La boutique garde la maîtrise des prix et des disponibilités ; les changements sont visibles et vérifiables. |
-| **Transparence** | Ne jamais annoncer un prix définitif, une notification envoyée ou une commande prête sans confirmation réelle. |
-| **Respect du commerce local** | Adapter l'outil aux méthodes du vendeur et aux usages de ses clients, au lieu d'imposer une organisation unique. |
-| **Fiabilité** | Prioriser la conservation des commandes, la protection des contacts, des statuts exacts et des corrections sans perte d'historique. |
+| **Simplicité** | Éliminer toute étape inutile pour les clients et les vendeurs ; accepter une réservation en liste libre, même sans catalogue. |
+| **Fiabilité** | Respecter les réservations, les informations et les engagements pris ; protéger les données et conserver l'historique des modifications. |
+| **Transparence** | Communiquer clairement les prix réels, les indisponibilités et les conditions ; ne pas annoncer de notification ni de paiement qui n'a pas été confirmé. |
+| **Proximité** | Écouter les commerçants et leurs clients avant de prendre des décisions ; adapter le service à leurs pratiques. |
+| **Ingéniosité** | Trouver des solutions économiques et efficaces avec les ressources disponibles ; mesurer l'utilité avant d'ajouter des fonctionnalités. |
 
 **Principe transversal :** améliorer sur la base de retours de vrais vendeurs et clients, plutôt qu'ajouter des fonctions pour impressionner.
 
@@ -138,7 +138,7 @@ Le fondateur souhaite revenir plus tard sur une seconde vidéo de Racem Flazi, q
 - **Période à préciser :** à quelle époque l'idée née de cette attente s'est-elle transformée en projet concret, puis en premiers prototypes ?
 - **Nom :** inspiration identifiée (vidéo de Racem Flazi, exemple de Free, simplicité et perception). À préciser : la date du choix du nom et le sens exact que le fondateur souhaite donner au mot « Easy ».
 - **Ambition :** rester centré sur la réservation/retrait, ou proposer à terme d'autres services pour les commerces ?
-- **Identité de marque :** devise validée le 14 novembre 2026 ; valider ou réécrire mission, vision et valeurs.
+- **Identité de marque :** mission, vision, cinq valeurs et devise validées le 14 novembre 2026. Le récit public reste à relire avant une publication en tant que récit officiel.
 - **Preuves :** après le pilote, ajouter les premiers résultats réels, sans inventer une success-story.
 
 ---
@@ -150,4 +150,4 @@ Le fondateur souhaite revenir plus tard sur une seconde vidéo de Racem Flazi, q
 - [Bilan et plan de reprise](https://app.notion.com/p/4151494ec694813b860dc42a2de19cf4)
 - [Pages et fonctionnalités MVP](https://app.notion.com/p/4151494ec694813c9554c7868787a607)
 
-**Règle d'édition :** la devise est officiellement validée ; lorsque le fondateur confirme d'autres formulations, retirer la mention « proposition » de celles approuvées, conserver l'historique du document, puis réutiliser les formulations validées sur le site et les canaux professionnels.
+**Règle d'édition :** mission, vision, valeurs et devise sont officiellement validées ; conserver leurs formulations dans les communications de marque. Le récit public, les promesses non mesurées et les autres signatures restent à relire ou à éprouver. Conserver l'historique du document.
